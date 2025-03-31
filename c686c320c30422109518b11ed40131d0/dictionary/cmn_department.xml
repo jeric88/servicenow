@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="kagami_csindex_enabled=true" create_roles="user_admin" db_object_id="6c43f910190312104f3423cebaaa854a" label="Department" max_length="40" name="cmn_department" type="collection">
+        <element label="Approver" max_length="32" name="x_1636309_employ_0_approver" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="x_1636309_employ_0_approver"/>
+        </index>
+    </element>
+</database>

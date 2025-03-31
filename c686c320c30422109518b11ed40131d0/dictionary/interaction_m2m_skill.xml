@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="7a72421ac32422109518b11ed401314c" label="Interaction Skill" max_length="40" name="interaction_m2m_skill" type="collection">
+        <element attributes="encode_utf8=false" label="Skill Level" max_length="32" name="skill_level" reference="cmn_skill_level" reference_qual="javascript: 'skill_level_type =' + current.skill.level_type;" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="encode_utf8=false" label="Skill" mandatory="true" max_length="32" name="skill" reference="cmn_skill" reference_cascade_rule="delete" type="reference"/>
+        <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
+        <element attributes="encode_utf8=false" label="Interaction" mandatory="true" max_length="32" name="interaction" reference="interaction" reference_cascade_rule="delete" type="reference"/>
+        <index name="index">
+            <element name="interaction"/>
+        </index>
+        <index name="index2" unique="true">
+            <element name="interaction"/>
+            <element name="skill"/>
+        </index>
+        <index name="index3">
+            <element name="skill"/>
+        </index>
+        <index name="index4">
+            <element name="skill_level"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog">
+    <sc_cat_item_catalog action="DELETE">
+        <sc_cat_item display_value="New Employee Access Request">4b744185c3c022109518b11ed4013193</sc_cat_item>
+        <sc_catalog display_value="Service Catalog">e0d08b13c3330100c8b837659bba8fb4</sc_catalog>
+        <sys_class_name>sc_cat_item_catalog</sys_class_name>
+        <sys_created_by>aes.creator</sys_created_by>
+        <sys_created_on>2025-03-01 04:26:33</sys_created_on>
+        <sys_id>cd45c1c5c3c022109518b11ed401314d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Service Catalog.New Employee Access Request</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sc_cat_item_catalog_cd45c1c5c3c022109518b11ed401314d</sys_update_name>
+        <sys_updated_by>aes.creator</sys_updated_by>
+        <sys_updated_on>2025-03-01 04:26:33</sys_updated_on>
+    </sc_cat_item_catalog>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sc_cat_item_catalog_cd45c1c5c3c022109518b11ed401314d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog"><sc_cat_item_catalog action="INSERT_OR_UPDATE"><sc_cat_item display_value="New Employee Access Request">4b744185c3c022109518b11ed4013193</sc_cat_item><sc_catalog display_value="Service Catalog">e0d08b13c3330100c8b837659bba8fb4</sc_catalog><sys_class_name>sc_cat_item_catalog</sys_class_name><sys_created_by>aes.creator</sys_created_by><sys_created_on>2025-03-01 04:26:33</sys_created_on><sys_id>cd45c1c5c3c022109518b11ed401314d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Service Catalog.New Employee Access Request</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sc_cat_item_catalog_cd45c1c5c3c022109518b11ed401314d</sys_update_name><sys_updated_by>aes.creator</sys_updated_by><sys_updated_on>2025-03-01 04:26:33</sys_updated_on></sc_cat_item_catalog></record_update>]]></payload>
+        <payload_hash>941934759</payload_hash>
+        <record_name>Service Catalog.New Employee Access Request</record_name>
+        <reverted_from/>
+        <source>aa860720c30422109518b11ed4013174</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aes.creator</sys_created_by>
+        <sys_created_on>2025-03-01 04:26:33</sys_created_on>
+        <sys_id>4545c1c5c3c022109518b11ed4013151</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1954ff4ba620000001</sys_recorded_at>
+        <sys_updated_by>aes.creator</sys_updated_by>
+        <sys_updated_on>2025-03-01 04:26:33</sys_updated_on>
+        <type>Catalog Items Catalog</type>
+        <update_guid>8545c1c5aac0221033640ee41544ea50</update_guid>
+        <update_guid_history>8545c1c5aac0221033640ee41544ea50:941934759</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Service Catalog.New Employee Access Request">d88509c5c3c022109518b11ed4013199</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>aes.creator</sys_created_by>
+        <sys_created_on>2025-03-01 04:27:35</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item_catalog">sc_cat_item_catalog</sys_db_object>
+        <sys_id>0153907ec0064468800f5f4b66a8a040</sys_id>
+        <sys_metadata>cd45c1c5c3c022109518b11ed401314d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Service Catalog.New Employee Access Request</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent display_value="New Employee Access Request">4b744185c3c022109518b11ed4013193</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sc_cat_item_catalog_cd45c1c5c3c022109518b11ed401314d</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_catalog_cd45c1c5c3c022109518b11ed401314d">4545c1c5c3c022109518b11ed4013151</sys_update_version>
+        <sys_updated_by>aes.creator</sys_updated_by>
+        <sys_updated_on>2025-03-01 04:27:35</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

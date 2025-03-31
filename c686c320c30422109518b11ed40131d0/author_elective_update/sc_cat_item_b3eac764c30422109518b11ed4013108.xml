@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item">
+    <sc_cat_item action="DELETE">
+        <access_type>restricted</access_type>
+        <active>true</active>
+        <availability>on_desktop</availability>
+        <billable>false</billable>
+        <category/>
+        <checked_out/>
+        <cost>0</cost>
+        <custom_cart/>
+        <delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan>
+        <delivery_plan_script/>
+        <delivery_time>1970-01-03 00:00:00</delivery_time>
+        <description/>
+        <display_price_property>non_zero</display_price_property>
+        <entitlement_script/>
+        <flow_designer_flow/>
+        <fulfillment_automation_level>unspecified</fulfillment_automation_level>
+        <group/>
+        <hide_sp>false</hide_sp>
+        <icon/>
+        <ignore_price>true</ignore_price>
+        <image/>
+        <location/>
+        <make_item_non_conversational>false</make_item_non_conversational>
+        <mandatory_attachment>false</mandatory_attachment>
+        <meta/>
+        <mobile_hide_price>false</mobile_hide_price>
+        <mobile_picture/>
+        <mobile_picture_type>use_desktop_picture</mobile_picture_type>
+        <model/>
+        <name>New Employee Access Request</name>
+        <no_attachment_v2>false</no_attachment_v2>
+        <no_cart>false</no_cart>
+        <no_cart_v2>true</no_cart_v2>
+        <no_delivery_time_v2>true</no_delivery_time_v2>
+        <no_order>false</no_order>
+        <no_order_now>false</no_order_now>
+        <no_proceed_checkout>false</no_proceed_checkout>
+        <no_quantity>false</no_quantity>
+        <no_quantity_v2>true</no_quantity_v2>
+        <no_save_as_draft>false</no_save_as_draft>
+        <no_search>false</no_search>
+        <no_wishlist_v2>false</no_wishlist_v2>
+        <omit_price>false</omit_price>
+        <order>0</order>
+        <ordered_item_link/>
+        <owner display_value="Creator User">d76cffdbc33312109518b11ed4013137</owner>
+        <picture/>
+        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=b3eac764c30422109518b11ed4013108&amp;sysparm_preview=true", "summary");</preview>
+        <price>0</price>
+        <published_ref/>
+        <recurring_frequency/>
+        <request_method>submit</request_method>
+        <roles/>
+        <sc_catalogs/>
+        <sc_ic_item_staging/>
+        <sc_ic_version/>
+        <sc_template display_value="AES Standard items in Service Catalog">03302dd377023010f082d599cf5a99ba</sc_template>
+        <short_description>Request for new employee access to the systems</short_description>
+        <show_variable_help_on_load>false</show_variable_help_on_load>
+        <start_closed>false</start_closed>
+        <state/>
+        <sys_class_name>sc_cat_item</sys_class_name>
+        <sys_created_by>aes.creator</sys_created_by>
+        <sys_created_on>2025-02-28 00:53:35</sys_created_on>
+        <sys_id>b3eac764c30422109518b11ed4013108</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>New Employee Access Request</sys_name>
+        <sys_package display_value="Employee Onboarding" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Employee Onboarding">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sc_cat_item_b3eac764c30422109518b11ed4013108</sys_update_name>
+        <sys_updated_by>aes.creator</sys_updated_by>
+        <sys_updated_on>2025-03-01 01:20:30</sys_updated_on>
+        <taxonomy_topic display_value="Technology services">06d3df67c3053010069aec4b7d40dd70</taxonomy_topic>
+        <template/>
+        <template_manager_roles/>
+        <type>item</type>
+        <use_sc_layout>true</use_sc_layout>
+        <vendor/>
+        <version>24</version>
+        <visible_bundle>true</visible_bundle>
+        <visible_guide>true</visible_guide>
+        <visible_standalone>true</visible_standalone>
+        <workflow/>
+    </sc_cat_item>
+    <sys_translated_text action="DELETE" query="documentkey=b3eac764c30422109518b11ed4013108"/>
+    <fx_price action="DELETE" query="id=b3eac764c30422109518b11ed4013108"/>
+    <fx_price action="DELETE">
+        <amount>0</amount>
+        <currency display_value="USD">USD</currency>
+        <field>price</field>
+        <id>b3eac764c30422109518b11ed4013108</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="USD">USD</reference_currency>
+        <sys_created_by>aes.creator</sys_created_by>
+        <sys_created_on>2025-02-28 00:53:35</sys_created_on>
+        <sys_id>ffeac764c30422109518b11ed401310d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>aes.creator</sys_updated_by>
+        <sys_updated_on>2025-02-28 00:53:35</sys_updated_on>
+        <table>sc_cat_item</table>
+        <type>calculated</type>
+    </fx_price>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sc_cat_item_b3eac764c30422109518b11ed4013108</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item"><sc_cat_item action="INSERT_OR_UPDATE"><access_type>restricted</access_type><active>true</active><availability>on_desktop</availability><billable>false</billable><category/><checked_out/><cost>0</cost><custom_cart/><delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan><delivery_plan_script/><delivery_time>1970-01-03 00:00:00</delivery_time><description/><display_price_property>non_zero</display_price_property><entitlement_script/><flow_designer_flow/><fulfillment_automation_level>unspecified</fulfillment_automation_level><group/><hide_sp>false</hide_sp><icon/><ignore_price>true</ignore_price><image/><location/><make_item_non_conversational>false</make_item_non_conversational><mandatory_attachment>false</mandatory_attachment><meta/><mobile_hide_price>false</mobile_hide_price><mobile_picture/><mobile_picture_type>use_desktop_picture</mobile_picture_type><model/><name>New Employee Access Request</name><no_attachment_v2>false</no_attachment_v2><no_cart>false</no_cart><no_cart_v2>true</no_cart_v2><no_delivery_time_v2>true</no_delivery_time_v2><no_order>false</no_order><no_order_now>false</no_order_now><no_proceed_checkout>false</no_proceed_checkout><no_quantity>false</no_quantity><no_quantity_v2>true</no_quantity_v2><no_save_as_draft>false</no_save_as_draft><no_search>false</no_search><no_wishlist_v2>false</no_wishlist_v2><omit_price>false</omit_price><order>0</order><ordered_item_link/><owner display_value="Creator User">d76cffdbc33312109518b11ed4013137</owner><picture/><preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=b3eac764c30422109518b11ed4013108&amp;sysparm_preview=true", "summary");</preview><price>0</price><published_ref/><recurring_frequency/><request_method>submit</request_method><roles/><sc_catalogs/><sc_ic_item_staging/><sc_ic_version/><sc_template display_value="AES Standard items in Service Catalog">03302dd377023010f082d599cf5a99ba</sc_template><short_description>Request for new employee access to the systems</short_description><show_variable_help_on_load>false</show_variable_help_on_load><start_closed>false</start_closed><state/><sys_class_name>sc_cat_item</sys_class_name><sys_created_by>aes.creator</sys_created_by><sys_created_on>2025-02-28 00:53:35</sys_created_on><sys_id>b3eac764c30422109518b11ed4013108</sys_id><sys_mod_count>24</sys_mod_count><sys_name>New Employee Access Request</sys_name><sys_package display_value="Employee Onboarding" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="Employee Onboarding">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sc_cat_item_b3eac764c30422109518b11ed4013108</sys_update_name><sys_updated_by>aes.creator</sys_updated_by><sys_updated_on>2025-03-01 01:20:30</sys_updated_on><taxonomy_topic display_value="Technology services">06d3df67c3053010069aec4b7d40dd70</taxonomy_topic><template/><template_manager_roles/><type>item</type><use_sc_layout>true</use_sc_layout><vendor/><version>24</version><visible_bundle>true</visible_bundle><visible_guide>true</visible_guide><visible_standalone>true</visible_standalone><workflow/></sc_cat_item><sys_translated_text action="delete_multiple" query="documentkey=b3eac764c30422109518b11ed4013108"/><fx_price action="delete_multiple" query="id=b3eac764c30422109518b11ed4013108"/><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="USD">USD</currency><field>price</field><id>b3eac764c30422109518b11ed4013108</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>aes.creator</sys_created_by><sys_created_on>2025-02-28 00:53:35</sys_created_on><sys_id>ffeac764c30422109518b11ed401310d</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>aes.creator</sys_updated_by><sys_updated_on>2025-02-28 00:53:35</sys_updated_on><table>sc_cat_item</table><type>calculated</type></fx_price></record_update>]]></payload>
+        <payload_hash>-696094206</payload_hash>
+        <record_name>New Employee Access Request</record_name>
+        <reverted_from/>
+        <source>aa860720c30422109518b11ed4013174</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>aes.creator</sys_created_by>
+        <sys_created_on>2025-03-01 01:20:30</sys_created_on>
+        <sys_id>ffaa5c05c30022109518b11ed40131d7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1954f4a66ba0000001</sys_recorded_at>
+        <sys_updated_by>aes.creator</sys_updated_by>
+        <sys_updated_on>2025-03-01 01:20:30</sys_updated_on>
+        <type>Catalog Item</type>
+        <update_guid>b7aa5c05ad00221024bbcb57e38a2ed7</update_guid>
+        <update_guid_history>b7aa5c05ad00221024bbcb57e38a2ed7:-696094206,2e1a9cc1b30022100d49a1a1e0db2c12:741630791,861a5cc142002210c81ae7381f5f6373:-1848705658,257950c16500221095ff0e3348f4a672:-144074811,bdee47a8de042210f6f4c8faaebe2adc:-156818947,71ee47a87c042210971766c46e849ed3:-1309645977,25ee47a88104221019237e4e52bb68c9:394984870,e5ee47a8d5042210859c909d963f20bf:2099615717,adee47a82b04221056c41dc5cf121db3:-490720732,f6cec3a8bb04221051643a5ee7455d91:1213910115,8f0e4768f604221076bbba2504d30523:-1532766194,8f0e4768e90422109071bac0b369c317:171864653,e20e076823042210bf14b01932ea22c3:1876495500,5b9d4f28250422107db52f70c3861012:-713840949,2a9dcb28e3042210dabefdd3a62d4bce:990789898,afcc0fe45b04221031a0b62ea1ae2ceb:1688227376,b6cc0fe4620422107e6fbc48dbdb7076:-902109073,12ab87a4dc0422107e04156a8f5f0bfc:802521774,c2ab87a4c1042210f7dffcf099395080:-1787814675,ceab87a454042210c7b4fd3006073a72:-83183828,468bc3a40804221052363b4ab10609b4:1621447019,df7b83a4b90422109dc70b391c3e4ed0:501482539,d64b8f64d1042210692aa845c7eb0b8f:1724025615,ccfac76422042210ce0524f44bc6b137:-2117415219,04fac7641c042210c85fce69acf3aa2d:1276741963</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="New Employee Access Request">80ba5c05c30022109518b11ed40131db</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2025-03-01 01:20:31</sys_created_on>
+        <sys_db_object display_value="" name="sc_cat_item">sc_cat_item</sys_db_object>
+        <sys_id>33ef8fb9992a4a81bdf6dfcbdb746381</sys_id>
+        <sys_metadata>b3eac764c30422109518b11ed4013108</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>New Employee Access Request</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sc_cat_item_b3eac764c30422109518b11ed4013108</sys_update_name>
+        <sys_update_version display_value="sc_cat_item_b3eac764c30422109518b11ed4013108">ffaa5c05c30022109518b11ed40131d7</sys_update_version>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2025-03-01 01:20:31</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

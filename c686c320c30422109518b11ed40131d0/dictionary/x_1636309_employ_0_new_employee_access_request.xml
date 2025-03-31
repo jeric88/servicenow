@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="955079dac34022109518b11ed4013147" label="New Employee Access Request" max_length="40" name="x_1636309_employ_0_new_employee_access_request" type="collection">
+        <element label="Employee Manager's Name" max_length="40" name="employee_manager_s_name" type="string"/>
+        <element label="Department" max_length="32" name="department" reference="x_1636309_employ_0_department" type="reference"/>
+        <element default="YYYY-MM-DD" label="Deployment Date" max_length="255" name="deployment_date" type="glide_date"/>
+        <element default="+1" label="Mobile Number" max_length="255" name="mobile_number" type="phone_number_e164"/>
+        <element choice="3" label="Branch" max_length="40" name="branch" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Branch 2" sequence="1" value="Branch 2"/>
+                <element inactive_on_update="false" label="Branch 1" sequence="0" value="Branch 1"/>
+            </choice>
+        </element>
+        <element display="true" label="Requested For" max_length="32" name="requested_for" reference="x_1636309_employ_0_custom_users" type="reference"/>
+        <element choice="3" default="Pending" label="Approval Status" max_length="255" name="approval_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Rejected" sequence="1" value="Rejected"/>
+                <element inactive_on_update="false" label="Pending" sequence="2" value="Pending"/>
+                <element inactive_on_update="false" label="Approved" sequence="0" value="Approve"/>
+            </choice>
+        </element>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Request Number" max_length="40" name="number" type="string"/>
+        <element label="Personal Email" max_length="40" name="personal_email" type="string"/>
+        <element label="First Name" max_length="40" name="first_name" type="string"/>
+        <element choice="3" label="Employee Access Request" max_length="40" name="employee_access_request" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Yes" sequence="0" value="Yes"/>
+                <element inactive_on_update="false" label="No" sequence="1" value="No"/>
+            </choice>
+        </element>
+        <element choice="3" label="Employee Onboarding Type" max_length="40" name="employee_onboarding_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="New Hire" sequence="0" value="New Hire"/>
+                <element inactive_on_update="false" label="Rehire" sequence="1" value="Rehire"/>
+                <element inactive_on_update="false" label="Reassignment" sequence="2" value="Reassignment"/>
+            </choice>
+        </element>
+        <element label="Last Name" max_length="40" name="last_name" type="string"/>
+        <element label="Job Title" max_length="40" name="job_title" type="string"/>
+    </element>
+</database>

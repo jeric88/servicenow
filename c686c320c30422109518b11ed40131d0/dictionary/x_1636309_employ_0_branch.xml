@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="50b484d5c36022109518b11ed4013114" label="Branch" max_length="40" name="x_1636309_employ_0_branch" type="collection">
+        <element label="Name" mandatory="true" max_length="40" name="name" type="string"/>
+        <element label="Location" max_length="40" name="location" type="string"/>
+    </element>
+</database>

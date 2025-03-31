@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="cxs_ui_action_config">
+    <cxs_ui_action_config action="INSERT_OR_UPDATE">
+        <action_condition/>
+        <action_label>This helped</action_label>
+        <action_undo_label/>
+        <action_value>This helped</action_value>
+        <active>true</active>
+        <advanced_visibility>false</advanced_visibility>
+        <attach_note_field>comments</attach_note_field>
+        <attachment_type/>
+        <badge_label>Helpful</badge_label>
+        <current_action_condition/>
+        <current_table/>
+        <order>600</order>
+        <rest_api/>
+        <search_res_config display_value="Resolved Problems">3d0a959087452300fb3ad61e36cb0ba3</search_res_config>
+        <search_resource display_value="">com.snc.contextual_search.search_resource.GlideRecordSearchResource</search_resource>
+        <search_ui_action display_value="This helped">31173286872a0300692cbba826cb0be1</search_ui_action>
+        <search_ui_config display_value="Case [sn_customerservice_case]">c5999c52c312310015519f2974d3aee9</search_ui_config>
+        <show_on_new>true</show_on_new>
+        <sys_class_name>cxs_ui_action_config</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-03-30 02:37:46</sys_created_on>
+        <sys_id>ee72ced6c32422109518b11ed40131c7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>This helped</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>cxs_ui_action_config_ee72ced6c32422109518b11ed40131c7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-03-30 02:37:46</sys_updated_on>
+        <table/>
+        <trend_recommendation/>
+        <ui_action_visibility_script/>
+        <use_custom_field_for_attach>false</use_custom_field_for_attach>
+    </cxs_ui_action_config>
+    <sys_translated_text action="delete_multiple" query="documentkey=ee72ced6c32422109518b11ed40131c7"/>
+</record_update>

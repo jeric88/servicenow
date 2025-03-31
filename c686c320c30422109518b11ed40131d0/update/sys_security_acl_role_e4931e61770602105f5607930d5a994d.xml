@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2024-05-08 17:08:53</sys_created_on>
+        <sys_id>e4931e61770602105f5607930d5a994d</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>promin_model_child_def.snc_internal</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_security_acl display_value="promin_model_child_def">a3e0314f53510010a980ddeeff7b1206</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_e4931e61770602105f5607930d5a994d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-05-08 17:30:23</sys_updated_on>
+        <sys_user_role display_value="snc_internal" name="snc_internal">7fcaa702933002009c8579b4f47ffbde</sys_user_role>
+    </sys_security_acl_role>
+</record_update>

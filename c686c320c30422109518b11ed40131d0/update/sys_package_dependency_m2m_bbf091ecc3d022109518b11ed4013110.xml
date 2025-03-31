@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
+    <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
+        <dependency display_value="System (apps/system_user)" source="apps/system_user">1443b910190312104f3423cebaaa85b9</dependency>
+        <min_version/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-03-12 02:16:31</sys_created_on>
+        <sys_id>bbf091ecc3d022109518b11ed4013110</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-03-12 02:16:31</sys_updated_on>
+    </sys_package_dependency_m2m>
+</record_update>

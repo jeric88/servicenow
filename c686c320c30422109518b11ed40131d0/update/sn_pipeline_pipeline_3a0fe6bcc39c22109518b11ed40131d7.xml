@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sn_pipeline_pipeline">
+    <sn_pipeline_pipeline action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <name>EVO</name>
+        <pipeline_type display_value="Application Deployment">268f9c0fb73430100290b9708e11a9de</pipeline_type>
+        <source_environment display_value="EVO">9f2e267cc39c22109518b11ed4013179</source_environment>
+        <sys_class_name>sn_pipeline_pipeline</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-03-13 03:46:10</sys_created_on>
+        <sys_id>3a0fe6bcc39c22109518b11ed40131d7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>EVO</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sn_pipeline_pipeline_3a0fe6bcc39c22109518b11ed40131d7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-03-13 03:46:10</sys_updated_on>
+    </sn_pipeline_pipeline>
+</record_update>

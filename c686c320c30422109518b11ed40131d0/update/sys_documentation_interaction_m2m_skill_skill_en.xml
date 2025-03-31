@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="skill" label="Skill" language="en" table="interaction_m2m_skill">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>skill</element>
+            <help/>
+            <hint/>
+            <label>Skill</label>
+            <language>en</language>
+            <name>interaction_m2m_skill</name>
+            <plural>Skills</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-03-30 02:37:48</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Skill</sys_name>
+            <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+            <sys_update_name>sys_documentation_interaction_m2m_skill_skill_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-03-30 02:37:48</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

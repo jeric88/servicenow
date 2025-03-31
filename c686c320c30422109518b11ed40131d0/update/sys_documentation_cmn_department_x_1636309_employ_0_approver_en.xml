@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="x_1636309_employ_0_approver" label="Approver" language="en" table="cmn_department">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>x_1636309_employ_0_approver</element>
+            <help/>
+            <hint/>
+            <label>Approver</label>
+            <language>en</language>
+            <name>cmn_department</name>
+            <plural>Approvers</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-03-12 02:16:31</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Approver</sys_name>
+            <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+            <sys_update_name>sys_documentation_cmn_department_x_1636309_employ_0_approver_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-03-12 02:16:31</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

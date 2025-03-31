@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="3b11461ec3e022109518b11ed40131b2" extends="sso_properties" label="Digest Properties" max_length="40" name="digest_properties" type="collection">
+        <element choice="1" hint="The session would be considered as per the value selected for this field. The same would be used to evaluate the corresponding security attributes." label="Client Type" max_length="40" name="client_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Iframe Embedded" sequence="10" value="iframe_embedded"/>
+            </choice>
+        </element>
+    </element>
+</database>

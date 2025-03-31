@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="89c369f2c35c22109518b11ed40131b3" label="Approvers" max_length="40" name="x_1636309_employ_0_approvers" type="collection">
+        <element label="Name" max_length="32" name="name" reference="x_1636309_employ_0_custom_users" type="reference"/>
+        <element choice="1" label="Approval Type" max_length="40" name="approval_type" type="choice">
+            <choice/>
+        </element>
+        <element label="Email Approver" max_length="40" name="email_approver" type="string"/>
+        <element label="Role" max_length="40" name="role" type="string"/>
+        <element label="Department" max_length="32" name="department" reference="x_1636309_employ_0_department" type="reference"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <index name="index">
+            <element name="department"/>
+        </index>
+        <index name="index2">
+            <element name="name"/>
+        </index>
+        <index name="index3">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

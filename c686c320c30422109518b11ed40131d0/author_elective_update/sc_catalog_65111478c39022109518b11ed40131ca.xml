@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_catalog">
+    <sc_catalog action="DELETE">
+        <active>true</active>
+        <description>This request gathers employee information to assign the necessary system access.</description>
+        <desktop_continue_shopping/>
+        <desktop_home_page/>
+        <desktop_image/>
+        <editors/>
+        <enable_wish_list>false</enable_wish_list>
+        <manager display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</manager>
+        <sys_class_name>sc_catalog</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-03-12 16:16:40</sys_created_on>
+        <sys_id>65111478c39022109518b11ed40131ca</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>New Employee Access Request</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sc_catalog_65111478c39022109518b11ed40131ca</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-03-12 16:16:40</sys_updated_on>
+        <title>New Employee Access Request</title>
+    </sc_catalog>
+    <sys_translated_text action="DELETE" query="documentkey=65111478c39022109518b11ed40131ca"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sc_catalog_65111478c39022109518b11ed40131ca</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_catalog"><sc_catalog action="INSERT_OR_UPDATE"><active>true</active><description>This request gathers employee information to assign the necessary system access.</description><desktop_continue_shopping/><desktop_home_page/><desktop_image/><editors/><enable_wish_list>false</enable_wish_list><manager display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</manager><sys_class_name>sc_catalog</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-03-12 16:16:40</sys_created_on><sys_id>65111478c39022109518b11ed40131ca</sys_id><sys_mod_count>0</sys_mod_count><sys_name>New Employee Access Request</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sc_catalog_65111478c39022109518b11ed40131ca</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-03-12 16:16:40</sys_updated_on><title>New Employee Access Request</title></sc_catalog><sys_translated_text action="delete_multiple" query="documentkey=65111478c39022109518b11ed40131ca"/></record_update>]]></payload>
+        <payload_hash>-1850663235</payload_hash>
+        <record_name>New Employee Access Request</record_name>
+        <reverted_from/>
+        <source>aa860720c30422109518b11ed4013174</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-03-12 16:16:41</sys_created_on>
+        <sys_id>7e415878c39022109518b11ed401310e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1958b24d30c0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-03-12 16:16:41</sys_updated_on>
+        <type>Catalog</type>
+        <update_guid>724158785d9022102a823adf84000a0e</update_guid>
+        <update_guid_history>724158785d9022102a823adf84000a0e:-1850663235</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="New Employee Access Request">de2cee8dc39422109518b11ed4013175</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-03-13 22:11:48</sys_created_on>
+        <sys_db_object display_value="" name="sc_catalog">sc_catalog</sys_db_object>
+        <sys_id>bb47cbbbaebc4c1b93e3dce3149b1809</sys_id>
+        <sys_metadata>65111478c39022109518b11ed40131ca</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>New Employee Access Request</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sc_catalog_65111478c39022109518b11ed40131ca</sys_update_name>
+        <sys_update_version display_value="sc_catalog_65111478c39022109518b11ed40131ca">7e415878c39022109518b11ed401310e</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-03-13 22:11:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
