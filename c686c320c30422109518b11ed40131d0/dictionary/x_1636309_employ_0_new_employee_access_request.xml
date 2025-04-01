@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="955079dac34022109518b11ed4013147" label="New Employee Access Request" max_length="40" name="x_1636309_employ_0_new_employee_access_request" type="collection">
         <element label="Employee Manager's Name" max_length="40" name="employee_manager_s_name" type="string"/>
+        <element choice="3" label="Request Status" max_length="40" name="request_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Unprocessed" sequence="2" value="unprocessed"/>
+                <element inactive_on_update="false" label="Completed" sequence="1" value="completed"/>
+                <element inactive_on_update="false" label="In progress" sequence="0" value="in_progress"/>
+            </choice>
+        </element>
         <element label="Department" max_length="32" name="department" reference="x_1636309_employ_0_department" type="reference"/>
         <element default="YYYY-MM-DD" label="Deployment Date" max_length="255" name="deployment_date" type="glide_date"/>
         <element default="+1" label="Mobile Number" max_length="255" name="mobile_number" type="phone_number_e164"/>

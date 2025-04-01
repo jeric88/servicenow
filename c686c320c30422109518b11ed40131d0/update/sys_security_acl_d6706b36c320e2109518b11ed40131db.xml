@@ -6,24 +6,24 @@
         <applies_to/>
         <condition/>
         <decision_type>allow</decision_type>
-        <description>Default access control on x_1636309_employ_0_approvers</description>
+        <description/>
         <local_or_existing>Local</local_or_existing>
-        <name>x_1636309_employ_0_approvers</name>
-        <operation display_value="delete">delete</operation>
+        <name>interaction_m2m_skill</name>
+        <operation display_value="write">write</operation>
         <script/>
         <security_attribute/>
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-03-19 03:26:21</sys_created_on>
-        <sys_id>7e146136c35c22109518b11ed401310c</sys_id>
+        <sys_created_on>2025-03-31 22:45:25</sys_created_on>
+        <sys_id>d6706b36c320e2109518b11ed40131db</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>x_1636309_employ_0_approvers</sys_name>
+        <sys_name>interaction_m2m_skill</sys_name>
         <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
         <sys_policy/>
         <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
-        <sys_update_name>sys_security_acl_7e146136c35c22109518b11ed401310c</sys_update_name>
+        <sys_update_name>sys_security_acl_d6706b36c320e2109518b11ed40131db</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-03-19 03:26:21</sys_updated_on>
+        <sys_updated_on>2025-03-31 22:45:25</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>
