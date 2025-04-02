@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="INSERT_OR_UPDATE">
+        <child display_value="Requested Items">0785ded7c32466109518b11ed401314c</child>
+        <cloned>2025-04-02 06:35:01</cloned>
+        <last_validated>2025-04-02 06:35:01</last_validated>
+        <parent display_value="Requested Items">624afdb3d7230200a9addd173e24d4f4</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;sc&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function requestedItemsController($scope, $rootScope, $interpolate, $window) {
+  
+  $scope.$watch("data.conversation_title", function() {
+    $rootScope.$broadcast('sp.conversation_title.changed', $scope.data.conversation_title);
+  });
+
+  $scope.onClick = function($event, item, url, action) {
+    $event.stopPropagation();
+    $event.preventDefault();
+
+    if (url) {
+      var link = $interpolate(url)(item);
+      $window.location = link;
+    } else {
+      var eventObj = {};
+      eventObj.url = url;
+      eventObj.table = $scope.data.table;
+      eventObj.record = item;
+      eventObj.rectangle_id = $scope.data.sys_id;
+      eventObj.action = action;
+      $rootScope.$broadcast('$sp.list.click', eventObj);
+    }
+  };
+	
+	$scope.toggle = function($event, item) {
+		item.expand = !item.expand;
+	};
+	
+	if ($scope.data.list.length == 1)
+		$scope.data.list[0].expand = true;
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance_vlist&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list&gt;table,filter,maximum_entries,display_field,order_by,order_direction,title,color,sp_page,order&lt;/field_list&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id/&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link/&gt;&lt;name&gt;Requested Items&lt;/name&gt;&lt;option_schema&gt;[{"hint":"Auto Expand Request Item Stages","name":"auto_expand_request_item_stages","section":"Presentation","default_value":"true","label":"Auto Expand Request Item Stages","type":"boolean"}]&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+	var rec = $sp.getRecord();
+	if (rec != null &amp;&amp; rec.isValid())
+		data.conversation_title = rec.getDisplayValue();
+	if (!data.conversation_title)
+		data.conversation_title = gs.getMessage("Request");
+	
+	data.title = options.title || gs.getMessage("Requested Items");
+	var gr = new GlideRecord("sc_req_item"); // does ACL checking for us
+	gr.addQuery("request", $sp.getParameter("sys_id"));
+
+	options.secondary_fields = options.secondary_fields || "number";
+	options.secondary_fields = options.secondary_fields.split(",");
+
+	if (options.order_direction == "asc")
+		gr.orderBy(options.order_by);
+	else
+		gr.orderByDesc(options.order_by);
+
+	if (options.maximum_entries &gt; 0)
+		gr.setLimit(options.maximum_entries);
+	gr.query();
+
+	data.actions = [];
+	data.list = [];
+	while (gr.next()) {
+		if (!gr.canRead())
+			continue;
+      
+		if (gr.getRowCount() == 1)
+			data.conversation_title = gr.request.getDisplayValue() + " - " + gr.getValue("short_description");
+
+		var record = {};
+
+		record.sys_id = gr.sys_id.getDisplayValue();
+		if (options.image_field) {
+			record.image_field = gr.getDisplayValue(options.image_field);
+			if (!record.image_field)
+				record.image_field = "/noimage.pngx";
+		}
+		if (options.display_field)
+			record.display_field = gr.getDisplayValue(options.display_field);
+
+		record.secondary_fields = [];
+		options.secondary_fields.forEach(function(f) {
+			var secondaryField = getField(gr, f);
+			if (secondaryField != null)
+				record.secondary_fields.push(secondaryField);
+		});
+
+		if (options.sp_page_dv)
+			record.url = "?id="+options.sp_page_dv+"&amp;table="+options.table+"&amp;sys_id="+record.sys_id+"&amp;view=sp";
+		else
+			record.url = "";
+
+		record.stage = gr.getValue("stage");
+
+		// get appropriate Stage choices for this requested item
+		record.stageWidget = $sp.getWidget("cb6631d39f2003002899d4b4232e7030", {req_item_id: record.sys_id, onload_expand_request_item_stages: options.auto_expand_request_item_stages});
+
+		data.list.push(record);
+	}
+
+	if (gr.getRowCount() &gt; 1)
+		data.conversation_title = gr.request.getDisplayValue() + " - " + gr.getRowCount() + " items";
+
+	function getField(gr, name) {
+		var f = {};
+		f.display_value = gr.getDisplayValue(name);
+		f.value = gr.getValue(name);
+		var ge = gr.getElement(name);
+		if (ge == null)
+			return null;
+
+		f.type = ge.getED().getInternalType();
+		f.label = ge.getLabel();
+		return f;
+	}
+
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;true&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2015-11-12 17:40:29&lt;/sys_created_on&gt;&lt;sys_id&gt;624afdb3d7230200a9addd173e24d4f4&lt;/sys_id&gt;&lt;sys_mod_count&gt;223&lt;/sys_mod_count&gt;&lt;sys_name&gt;Requested Items&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal - Service Catalog (do not activate...see plugin description)" source="com.glide.service-portal.service-catalog"&gt;e50df15819c312104f3423cebaaa8547&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_624afdb3d7230200a9addd173e24d4f4&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-09-26 05:11:14&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div class="panel panel-{{c.options.color}} b" ng-if="always_show || data.list.length"&gt;
+  &lt;div class="panel-heading"&gt;
+    &lt;h2 class="panel-title"&gt;{{::c.data.title}}&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class="list-group"&gt;
+    &lt;div ng-repeat="item in data.list" class="block list-group-item" &gt;
+      &lt;a ng-click="onClick($event, item, item.url, {})" href="javascript:void(0)" &gt;
+        &lt;span ng-if="data.image_field" class="pull-left thumb-sm avatar m-r"&gt;
+          &lt;img ng-src="{{item.image_field}}" alt="..." class="img-circle"&gt;
+        &lt;/span&gt;
+        &lt;div &gt;
+          &lt;div ng-class="{'l-h-40': !item.secondary_fields.length}"&gt;{{item.display_field}}&lt;/div&gt;
+          &lt;small class="block text-muted m-b-xs" ng-repeat="f in item.secondary_fields"&gt;
+            &lt;span ng-if="!$first"&gt; • &lt;/span&gt;
+            &lt;span ng-switch="f.type" title="{{::f.label}}"&gt;
+              &lt;span ng-switch-when="glide_date"&gt;&lt;sn-time-ago timestamp="::f.value"&gt;&lt;/sn-time-ago&gt;&lt;/span&gt;
+              &lt;span ng-switch-when="glide_date_time"&gt;&lt;sn-time-ago timestamp="::f.value"&gt;&lt;/sn-time-ago&gt;&lt;/span&gt;
+              &lt;span ng-switch-default=""&gt;{{f.display_value}}&lt;/span&gt;
+            &lt;/span&gt;
+          &lt;/small&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+      &lt;sp-widget widget="item.stageWidget" options="{onload_expand_request_item_stages:c.options.auto_expand_request_item_stages}"&gt;&lt;/sp-widget&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:35:01</sys_created_on>
+        <sys_id>4385ded7c32466109518b11ed4013150</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>0785ded7c32466109518b11ed401314c</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_4385ded7c32466109518b11ed4013150</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:35:01</sys_updated_on>
+    </sp_rel_widget_clone>
+</record_update>

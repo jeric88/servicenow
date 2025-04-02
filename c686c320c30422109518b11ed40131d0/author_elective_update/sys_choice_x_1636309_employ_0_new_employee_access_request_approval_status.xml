@@ -20,7 +20,7 @@
             <element>approval_status</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Approved</label>
+            <label>Pending</label>
             <language>en</language>
             <name>x_1636309_employ_0_new_employee_access_request</name>
             <sequence>0</sequence>
@@ -29,9 +29,28 @@
             <sys_created_on>2025-03-08 03:19:36</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>aes.creator</sys_updated_by>
-            <sys_updated_on>2025-03-08 03:19:36</sys_updated_on>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-04-02 05:21:56</sys_updated_on>
+            <value>Pending</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>approval_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Approved</label>
+            <language>en</language>
+            <name>x_1636309_employ_0_new_employee_access_request</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>aes.creator</sys_created_by>
+            <sys_created_on>2025-03-08 03:19:36</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-04-02 05:21:56</sys_updated_on>
             <value>Approve</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -42,35 +61,16 @@
             <label>Rejected</label>
             <language>en</language>
             <name>x_1636309_employ_0_new_employee_access_request</name>
-            <sequence>1</sequence>
-            <synonyms/>
-            <sys_created_by>aes.creator</sys_created_by>
-            <sys_created_on>2025-03-08 03:19:36</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>aes.creator</sys_updated_by>
-            <sys_updated_on>2025-03-08 03:19:36</sys_updated_on>
-            <value>Rejected</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>approval_status</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Pending</label>
-            <language>en</language>
-            <name>x_1636309_employ_0_new_employee_access_request</name>
             <sequence>2</sequence>
             <synonyms/>
             <sys_created_by>aes.creator</sys_created_by>
             <sys_created_on>2025-03-08 03:19:36</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>aes.creator</sys_updated_by>
-            <sys_updated_on>2025-03-08 03:19:36</sys_updated_on>
-            <value>Pending</value>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-04-02 05:21:56</sys_updated_on>
+            <value>Rejected</value>
         </sys_choice>
     </sys_choice>
 </record_update>

@@ -4,27 +4,37 @@
         <basic_auth_password/>
         <basic_auth_profile/>
         <basic_auth_user/>
-        <content/>
-        <function_name>Create Okta User</function_name>
+        <content>{&#13;
+  "profile": {&#13;
+    "firstName": "John",&#13;
+    "lastName": "Doe",&#13;
+    "email": "johndoe@example.com",&#13;
+    "login": "johndoe@example.com"&#13;
+  },&#13;
+  "credentials": {&#13;
+    "password": { "value": "Password123!" }&#13;
+  }&#13;
+}</content>
+        <function_name>Create User</function_name>
         <http_method>post</http_method>
         <lock>false</lock>
         <oauth2_profile/>
         <protocol_name/>
-        <qualified_name>Okta Integration - NEAR [ Create Okta User ]</qualified_name>
-        <rest_endpoint>https://trial-2843604.workflows.okta.com/api/flo/1f3c49ddabf72d2b84d4279ebaafc025/invoke?clientToken=95f1e13db0d2e88ef3e6734b7595b7d2256f197ca49aac85d9a642778b06f2b4</rest_endpoint>
-        <rest_message display_value="Okta Integration - NEAR">4aa420c3c3a4e2109518b11ed401317e</rest_message>
+        <qualified_name>Okta User Creation [ Create User ]</qualified_name>
+        <rest_endpoint>https://dev-47736733.okta.com/oauth2/default</rest_endpoint>
+        <rest_message display_value="Okta User Creation">9dbfcdd7c3ac26109518b11ed401317b</rest_message>
         <sys_class_name>sys_rest_message_fn</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-04-01 03:56:03</sys_created_on>
-        <sys_id>fb16ec07c3a4e2109518b11ed401315d</sys_id>
-        <sys_mod_count>13</sys_mod_count>
-        <sys_name>Create Okta User</sys_name>
+        <sys_created_on>2025-04-02 01:35:39</sys_created_on>
+        <sys_id>12201957c3ac26109518b11ed40131df</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Create User</sys_name>
         <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
         <sys_policy/>
         <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
-        <sys_update_name>sys_rest_message_fn_fb16ec07c3a4e2109518b11ed401315d</sys_update_name>
+        <sys_update_name>sys_rest_message_fn_12201957c3ac26109518b11ed40131df</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-04-02 16:16:37</sys_updated_on>
+        <sys_updated_on>2025-04-02 01:38:45</sys_updated_on>
         <use_basic_auth>false</use_basic_auth>
         <use_mid_server/>
         <use_mutual_auth>false</use_mutual_auth>

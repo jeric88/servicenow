@@ -3,23 +3,23 @@
         <access>public</access>
         <access_token_lifespan>1800</access_token_lifespan>
         <active>true</active>
-        <auth_code_lifespan>60</auth_code_lifespan>
-        <auth_url/>
+        <auth_code_lifespan>0</auth_code_lifespan>
+        <auth_url>https://dev-47736733.okta.com/oauth2/default</auth_url>
         <certificate_url/>
-        <client_id>167bf1c654dd4581ae998ba9588fbb2d</client_id>
-        <client_secret>﷞﷟﷒316ab79bc3f312109518b11ed40131e8﷬﷔1﷬﷭tKibCNcD6kSjQznm-2Uxuw==4SpHn65p9bcUqKVYg4Ag16xM3qlwjqRGYTPQWyD_XNqFRRIS﷮﷯</client_secret>
-        <client_type>integration_as_a_service</client_type>
-        <client_uuid>d71b025ac36422109518b11ed40131a5</client_uuid>
+        <client_id>0oao3rghiwVC8zwK95d7</client_id>
+        <client_secret>﷞﷟﷒316ab79bc3f312109518b11ed40131e8﷬﷔1﷬﷭RNU2DBt4yfiPZvlmXhAIug==mKED30jLbG6qEfm0x3Dd6iSPgsT7SBThZQgZ2xCRSo6EDPmAiXH-Smc4225qmpsx8ghSJqarTPgY58GdE1EfsTLCJx-Efyy8jRFlkjY4hq0=﷮﷯</client_secret>
+        <client_type/>
+        <client_uuid>bb1d11dbc3ec26109518b11ed40131da</client_uuid>
         <code_challenge_method>S256</code_challenge_method>
         <comments/>
         <default_grant_type>password</default_grant_type>
-        <id_token_lifespan>86400</id_token_lifespan>
+        <id_token_lifespan>0</id_token_lifespan>
         <jwt_provider/>
         <login_url/>
         <logo_url/>
-        <message_signature_lifespan>60</message_signature_lifespan>
+        <message_signature_lifespan>0</message_signature_lifespan>
         <mobile_client>false</mobile_client>
-        <name>OKTA API Integration</name>
+        <name>Okta OAuth Integration</name>
         <oauth_api_script/>
         <protocol_name/>
         <public_client>false</public_client>
@@ -28,23 +28,23 @@
         <refresh_token_url/>
         <restricted_binding>false</restricted_binding>
         <revoke_token_url/>
-        <salt/>
+        <salt>0</salt>
         <send_client_credentials_as>request_body_parameter</send_client_credentials_as>
         <skip_authorize>false</skip_authorize>
         <sys_class_name>oauth_entity</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-03-30 03:17:49</sys_created_on>
-        <sys_id>1b1b025ac36422109518b11ed40131a5</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>OKTA API Integration</sys_name>
+        <sys_created_on>2025-04-02 02:30:20</sys_created_on>
+        <sys_id>fb1d11dbc3ec26109518b11ed40131da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Okta OAuth Integration</sys_name>
         <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
         <sys_policy/>
         <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
-        <sys_update_name>oauth_entity_1b1b025ac36422109518b11ed40131a5</sys_update_name>
+        <sys_update_name>oauth_entity_fb1d11dbc3ec26109518b11ed40131da</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-03-31 16:11:36</sys_updated_on>
-        <token_url/>
-        <type>client</type>
+        <sys_updated_on>2025-04-02 02:30:20</sys_updated_on>
+        <token_url>https://dev-47736733.okta.com/oauth2/default/v1/token</token_url>
+        <type>oauth_provider</type>
         <use_mutual_auth>false</use_mutual_auth>
         <user/>
     </oauth_entity>

@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="INSERT_OR_UPDATE">
+        <child display_value="Requests and Approvals">8f145657c32466109518b11ed40131a0</child>
+        <cloned>2025-04-02 06:28:44</cloned>
+        <last_validated>2025-04-02 06:28:44</last_validated>
+        <parent display_value="Requests and Approvals">69deca02675003004b8d794717415a9b</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category/&gt;&lt;client_script&gt;&lt;![CDATA[function($scope, spUtil) {
+  var c = this;
+	$rootScope.hasRequestsOrApprovals = c.data.request.hasAny || c.data.approvals.hasAny;
+	this.KEYS = {
+						DOWN:40,
+						LEFT:37,
+						RIGHT:39,
+						TAB:9,
+						UP:38
+					 };
+
+	$scope.show_request = true;
+	$scope.changePanel = function(panel_name) {
+		if ($scope.show_request) {
+			if (panel_name == 'approval')
+				$scope.show_request = false;
+		} else {
+			if (panel_name == 'request')
+				$scope.show_request = true;
+		}
+	};
+	if (c.data.showApprovals)
+		spUtil.recordWatch($scope, "sysapproval_approver", "state=requested^approverIN" +  $scope.data.approvals.myApprovals.toString());
+	
+	function get() {
+		spUtil.update($scope).then(
+			function(response) {
+				if (!c.data.approvals.hasAny) {
+					$scope.$$postDigest(function() {
+						$('#tab-my-requests').click();
+					});
+				}
+			});
+	}
+
+	$scope.approve = function(id) {
+		$scope.data.op = "approved";
+		$scope.data.target = id;
+		get();
+	};
+
+	$scope.reject = function(id) {
+		$scope.data.op = "rejected";
+		$scope.data.target = id;
+		get();
+	};
+	
+	$scope.switchTab = function($event, tab) {
+		var key = null;
+		if (event.keyCode === c.KEYS.LEFT || event.keyCode === c.KEYS.UP)
+			key = c.KEYS.LEFT;
+		else if (event.keyCode === c.KEYS.RIGHT || event.keyCode === c.KEYS.DOWN)
+			key = c.KEYS.RIGHT;
+		else if (event.keyCode === c.KEYS.TAB) {
+			return;
+		}
+		if (key === null)
+			return;
+
+		$event.preventDefault();
+		if (!c.data.approvals.hasAny)
+			return;
+		$scope.show_request = !$scope.show_request;
+		if ($scope.show_request)
+			$('div.request').focus();
+		else
+			$('div.approval').focus();
+	}
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.sp-approval &amp;gt; .approval-rows {
+            padding: 10px;
+            }
+
+            @media only screen and (max-width: 991px) {
+            .panels-container {
+            max-height: 250px;
+            overflow-y: auto;
+            }
+            }
+
+            @media only screen and (min-width: 992px) {
+            .panels-container {
+            height: 250px;
+            overflow-y: auto;
+            }
+            }
+
+            .panel {
+            padding-bottom: 0;
+            }
+
+            .pad-bottom {
+            padding-bottom: 0px;
+            }
+
+            .nav &amp;gt; li.item {
+            text-align: center;
+            }
+
+            .list-group-item {
+            border-bottom-width: 0 !important;
+            }
+
+            .request, .approval {
+            position: relative;
+            display: block;
+            padding: $nav-link-padding;
+            line-height: $line-height-base;
+            margin-right: 2px;
+            border-radius: $border-radius-base $border-radius-base 0 0;
+            color: $brand-primary-darker;
+
+            &amp;amp;:hover {
+            border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+            }
+
+            &amp;amp;:focus {
+            box-shadow: 0 0 0 1.5px $input-border-focus;
+            outline: 4px solid transparent;
+            }
+
+            &amp;amp;:hover, &amp;amp;:focus {
+            text-decoration: none;
+            background-color: $nav-link-hover-bg;
+            }
+
+            &amp;amp;.sc-tab-div {
+            border: 0;
+            border-bottom: 3px solid $primary;
+            background-color: transparent;
+            color: $primary;
+
+            &amp;amp;:hover, &amp;amp;:focus {
+            background-color: $nav-link-hover-bg;
+            }
+
+            &amp;amp;:hover {
+            border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+            }
+            }
+            }&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;sc_request_and_approvals&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link/&gt;&lt;name&gt;Requests and Approvals&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+	g_approval_form_request = true;
+	var localInput = input; //to safeguard pullution of "input" via BR or other scripts
+
+  if (localInput) {
+		if (localInput.op == 'approved' || localInput.op == 'rejected') {
+			var app = new GlideRecord("sysapproval_approver");
+			if (app.get(localInput.target)) {
+				var isMine = gs.hasRole("approval_admin") || (gs.hasRole("approver_user") &amp;&amp; (new ApprovalDelegationUtil().isMyApproval(app)));
+				if (!!isMine) {
+					app.state = localInput.op;
+					app.update();
+				}
+			}
+		}
+	}
+
+	function getField(gr, name) {
+			var f = {};
+			var id = gr.getUniqueValue();
+			gr = new GlideRecord(gr.getRecordClassName());
+			gr.get(id);
+			f.display_value = gr.getDisplayValue(name);
+			f.value = gr.getValue(name);
+			var ge = gr.getElement(name);
+		  if (ge) {
+				var ed = ge.getED();
+				if (ed)
+					f.type = ed.getInternalType();
+				f.label = ge.getLabel();
+			}
+			return f;
+	}
+
+	function getMyRequestSysIds() {
+		var ids = {};
+		var rq_filter = new GlideRecord('request_filter');
+		rq_filter.addActiveQuery();
+		if (rq_filter.isValidField('applies_to'))
+			rq_filter.addQuery('applies_to', 1).addOrCondition('applies_to', 10);
+		rq_filter.query();
+		while(rq_filter.next()) {
+			var tableName = rq_filter.table_name;
+			if (rq_filter.isValidField('table'))
+				tableName = rq_filter.table;
+			var gr = new GlideRecord(tableName);
+			if (!gr.isValid())
+				continue;
+			
+			gr.addQuery(rq_filter.filter);
+			gr.query();
+			while(gr.next()) {
+				var portalSettings = {};
+				portalSettings.page = rq_filter.portal_page.nil()? '' : rq_filter.portal_page.getDisplayValue() + '';
+				portalSettings.primary_display = rq_filter.primary_display.nil()? '': rq_filter.primary_display + '';
+				portalSettings.secondary_displays = rq_filter.secondary_display.nil()? '': rq_filter.secondary_display + '';
+				ids[gr.sys_id + ''] = portalSettings;
+			}
+		}
+		return ids;
+	}
+
+	// retrieve the request's
+	var myRequestMap = getMyRequestSysIds();
+	var taskIDs = Object.keys(myRequestMap);
+	var gr = new GlideRecordSecure('task');
+	gr.addActiveQuery();
+	gr.addQuery('sys_id', taskIDs);
+	gr.orderByDesc('sys_created_on');
+	gr.chooseWindow(0, 11);
+	gr.query();
+
+	data.request = {};
+
+	data.request.req_list = [];
+	var recordIdx = 0;
+
+	while (gr.next()) {
+		if (recordIdx == 10)
+			break;
+		var portalSettings = myRequestMap[gr.getUniqueValue()];
+		if (typeof portalSettings == 'undefined')
+			portalSettings = {};
+
+		var record = {};
+		record.sys_id = gr.getValue('sys_id');
+
+		if (gr.getRecordClassName() == 'sc_request') {
+				var ritm = new GlideRecord("sc_req_item");
+				if (!ritm.isValid())
+					continue;
+			
+				ritm.addQuery("request", gr.getUniqueValue());
+				ritm.query();
+				if (ritm.getRowCount() == 0)
+					continue;
+				if (ritm.getRowCount() &gt; 1)
+					record.display_field = gs.getMessage("{0} requested items", ritm.getRowCount());
+				else {
+					ritm.next();
+					record.display_field = ritm.cat_item.getDisplayValue() || ritm.getDisplayValue("short_description");
+				}
+				record.url = { id: portalSettings.page? portalSettings.page: 'sc_request', table: 'sc_request', sys_id: record.sys_id};
+		} else {
+				record.display_field = portalSettings.primary_display ? getField(gr, portalSettings.primary_display).display_value : getField(gr, 'number').display_value;
+				record.url = { id: portalSettings.page? portalSettings.page :'ticket', table: gr.getRecordClassName(), sys_id: record.sys_id};
+		}
+		if (portalSettings.secondary_displays) {
+			record.secondary_displays = [];
+			portalSettings.secondary_displays.split(",").forEach(function (sDisplay){
+				record.secondary_displays.push(getField(gr, sDisplay));
+			});
+		}
+		else
+			record.secondary_displays = getField(gr, 'short_description');
+
+		record.task_number = getField(gr, 'number');
+		record.updated_on = gr.getValue('sys_updated_on');
+		data.request.req_list.push(record);
+		recordIdx++;
+	}
+
+	if (recordIdx == 10 &amp;&amp; gr.isValidRecord())
+		data.request.maximum_entries = true;
+	data.request.hasAny = data.request.req_list.length &gt; 0 ? true : false;
+	// fetch approvals for the user.
+	data.approvals = {};
+	data.showApprovals = gs.getUser().hasRole('approver_user');
+	data.approvals.myApprovals = [];
+	// Retreive approvals related to the User.
+	if (data.showApprovals) {
+	gr = new GlideRecord('sysapproval_approver');
+	gr.chooseWindow(0, 11);
+	var qc1 = gr.addQuery("state", "requested");
+	var sysid = new ApprovalDelegationUtil().getMyAndDelegatedApprovals();
+	var approvers = new ApprovalDelegationUtil().getApprovers();
+	gr.addQuery("sys_id", sysid).addOrCondition("approver", approvers);
+	gr.orderBy("sys_created_on");
+	gr.query();
+
+	var approvals = [];
+	var ids = [];
+
+	while (gr.next()) {
+		data.approvals.myApprovals.push(new String(gr.sys_id));
+		if (approvals.length === 10) {
+			data.approvals.show_viewAll = true;
+			break;
+		}
+		var task = getRecordBeingApproved(gr);
+		if (!task.isValidRecord())
+			continue;
+
+		ids.push(gr.getUniqueValue());
+		var t = {};
+		t.number = task.getDisplayValue();
+		t.short_description = task.short_description.toString();
+	  if (gr.getValue("approver") != gs.getUserID())
+	   t.approver = gr.approver.getDisplayValue();
+    if (task.isValidField("opened_by") &amp;&amp; !task.opened_by.nil())
+	   t.opened_by = task.opened_by.getDisplayValue();
+	  // requestor &gt;&gt; opener
+    if (task.isValidField("requested_by") &amp;&amp; !task.requested_by.nil())
+	   t.opened_by = task.requested_by.getDisplayValue();
+
+    t.start_date = task.getDisplayValue('start_date');
+    t.end_date = task.getDisplayValue('end_date');
+    t.quantity = task.getDisplayValue('quantity');
+    t.table = task.getLabel();
+		if (task.getValue("price") &gt; 0)
+			t.price = task.getDisplayValue("price");
+
+		if (task.getValue("recurring_price") &gt; 0)
+			t.recurring_price = task.getDisplayValue("recurring_price");
+
+		t.recurring_frequency = task.getDisplayValue("recurring_frequency");
+
+		var items = [];
+		var idx = 0;
+		var itemsGR = new GlideRecord("sc_req_item");
+		if (!itemsGR.isValid())
+			continue;
+		
+    itemsGR.addQuery("request", task.sys_id);
+    itemsGR.query();
+    if (itemsGR.getRowCount() &gt; 1)
+      t.short_description = itemsGR.getRowCount() + " requested items";
+
+    while (itemsGR.next()) {
+     var item = {};
+     item.short_description = itemsGR.short_description.toString();
+     if (itemsGR.getValue("price") &gt; 0)
+       item.price = itemsGR.getDisplayValue("price");
+     if (itemsGR.getValue("recurring_price") &gt; 0) {
+      item.recurring_price = itemsGR.getDisplayValue("recurring_price");
+      item.recurring_frequency = itemsGR.getDisplayValue("recurring_frequency");
+     }
+     if (itemsGR.getRowCount() == 1) {
+      item.variables = new GlobalServiceCatalogUtil().getVariablesForTask(itemsGR, true);
+      item.variableSummarizerWidget = $sp.getWidget('sc-variable-summarizer', {'variables' : item.variables, 'toggle' : false, 'task': t.number});
+      t.short_description = itemsGR.short_description.toString();
+     }
+
+    items[idx] = item;
+    idx++;
+		}
+
+		var j = {};
+		j.sys_id = gr.getUniqueValue();
+		j.table = gr.getRecordClassName();
+		j.task = t;
+		if (task) {
+			j.variables = new GlobalServiceCatalogUtil().getVariablesForTask(task, true);
+			j.variableSummarizerWidget = $sp.getWidget('sc-variable-summarizer', {'variables' : j.variables, 'toggle' : false, 'task': t.number});
+		}
+
+		j.items = items;
+		j.state = gr.getValue("state");
+		j.stateLabel = gr.state.getDisplayValue();
+		approvals.push(j);
+	}
+	data.approvals.ids = ids;
+	data.approvals.approval_list = approvals;
+
+	data.approvals.hasAny = approvals.length &gt; 0 ? true : false;
+	}
+
+	function getRecordBeingApproved(gr) {
+		if (!gr.sysapproval.nil())
+			return gr.sysapproval.getRefRecord();
+		return gr.document_id.getRefRecord();
+	}
+	delete g_approval_form_request;
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;true&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2017-08-02 04:01:37&lt;/sys_created_on&gt;&lt;sys_id&gt;69deca02675003004b8d794717415a9b&lt;/sys_id&gt;&lt;sys_mod_count&gt;156&lt;/sys_mod_count&gt;&lt;sys_name&gt;Requests and Approvals&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal - Service Catalog v2" source="com.glideapp.servicecatalog.portal"&gt;1b0d355819c312104f3423cebaaa85d3&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_69deca02675003004b8d794717415a9b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-03-29 11:16:29&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div class="panel panel-default" ng-if="$root.hasRequestsOrApprovals || $root.hasSavedCarts"&gt;
+    &lt;div class="panel-heading pad-bottom"&gt;
+        &lt;ul class="nav nav-tabs" style="border-bottom : 0px" role="tablist"&gt;
+            &lt;li id="tab-my-requests" class="item" role="presentation" ng-click="changePanel('request')"
+                ng-keydown="switchTab($event, 'request')"&gt;
+                &lt;div ng-class="{'sc-tab-div' : show_request}" class="request"
+                     ng-attr-tabindex="{{!show_request ? '-1' : 0}}" aria-selected="{{show_request}}"
+                     ng-attr-aria-controls="{{show_request ? 'tabpanel-my-requests' : undefined}}" role="tab"&gt;
+                    &lt;span&gt; ${My Requests} &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li id="tab-my-approvals" ng-if="c.data.approvals.hasAny &amp;&amp; c.data.showApprovals" class="item"
+                role="presentation" ng-click="changePanel('approval')" ng-keydown="switchTab($event, 'approval')"&gt;
+                &lt;div ng-class="{'sc-tab-div' : !show_request}" class="approval"
+                     ng-attr-tabindex="{{show_request ? '-1' : 0}}" aria-selected="{{!show_request}}"
+                     ng-attr-aria-controls="{{!show_request ? 'tabpanel-my-approvals' : undefined}}" role="tab"&gt;
+                    &lt;span&gt; ${My Approvals} &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Requests Panel --&gt;
+    &lt;div ng-if="show_request &amp;&amp; c.data.request.hasAny == false " class="panel-body panels-container"&gt;
+        ${ You do not have any Requests }
+    &lt;/div&gt;
+
+    &lt;div id="tabpanel-my-requests" ng-if="show_request &amp;&amp; c.data.request.hasAny == true"
+         class="panels-container list-group" role="tabpanel" aria-labelledby="tab-my-requests"&gt;
+        &lt;span class="sr-only" role="heading" aria-level="2"&gt; ${My Requests} &lt;/span&gt;
+        &lt;ul class="item-list-style-type-none" role="list"&gt;
+            &lt;li class="list-group-item row" ng-repeat="item in c.data.request.req_list" style="margin:0px"
+                role="listitem"&gt;
+                &lt;div class="col-xs-8" style=""&gt;
+                    &lt;div&gt;
+                        &lt;a href="?id={{::item.url.id}}&amp;table={{::item.url.table}}&amp;sys_id={{::item.url.sys_id}}"
+                           aria-label="{{::item.display_field}} ${with request number} {{::item.task_number.display_value}}"&gt;
+                            &lt;span role="heading" aria-level="3"&gt;{{::item.display_field}}&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;small class="text-muted"&gt;
+                        &lt;div ng-repeat="f in item.secondary_displays"&gt;
+                            &lt;span&gt;{{::f.display_value}}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/small&gt;
+                &lt;/div&gt;
+                &lt;div class="col-xs-4"&gt;
+                    &lt;i class="fa fa-clock-o" aria-hidden="true"&gt;&lt;/i&gt;
+                    &lt;sn-time-ago timestamp="::item.updated_on"/&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class="col-sm-12" ng-show="c.data.request.maximum_entries" style="padding:15px;text-align:center;"&gt;
+            &lt;a href="?id=requests"&gt;${View All Requests}&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+
+    &lt;!-- Approvals Panel --&gt;
+    &lt;div id="tabpanel-my-approvals" class="panels-container" ng-if="!show_request" role="tabpanel"
+         aria-labelledby="tab-my-approvals"&gt;
+        &lt;span class="sr-only" role="heading" aria-level="2"&gt; ${My Approvals} &lt;/span&gt;
+        &lt;ul class="item-list-style-type-none" role="list"&gt;
+            &lt;li ng-repeat="approval in data.approvals.approval_list" class="sp-approval" role="listitem"&gt;
+                &lt;div class="row approval-rows" style="margin:0px"&gt;
+                    &lt;div class="col-sm-9"&gt;
+                        &lt;div ng-if="approval.task.number || approval.task.short_description"&gt;
+                            &lt;a ng-href="?id=approval&amp;table=sysapproval_approver&amp;sys_id={{::approval.sys_id}}"
+                               id="task_approval_{{::approval.sys_id}}" title="{{data.ViewApprovalPageMsg}}"&gt;
+                                &lt;span role="heading" aria-level="3" ng-if="approval.task.number"&gt;{{::approval.task.number}}&lt;/span&gt;
+                                &lt;span ng-if="approval.task.number &amp;&amp; approval.task.short_description"&gt; - &lt;/span&gt;
+                                &lt;span ng-if="approval.task.short_description"&gt;{{::approval.task.short_description}}&lt;/span&gt;
+                            &lt;/a&gt;
+                        &lt;/div&gt;
+                        &lt;div ng-if="approval.task.opened_by"&gt;&lt;label&gt;${Requestor}&lt;/label&gt; {{::approval.task.opened_by}}
+                        &lt;/div&gt;
+                        &lt;div ng-if="approval.task.approver"&gt;&lt;label&gt;${Approver}&lt;/label&gt; {{::approval.task.approver}}
+                        &lt;/div&gt;
+                        &lt;div ng-if="approval.task.start_date"&gt;&lt;label&gt;${Start}&lt;/label&gt; {{::approval.task.start_date}}
+                        &lt;/div&gt;
+                        &lt;div ng-if="approval.task.end_date"&gt;&lt;label&gt;${End}&lt;/label&gt; {{::approval.task.end_date}}&lt;/div&gt;
+                        &lt;div ng-if="approval.task.quantity"&gt;&lt;label&gt;${Quantity}&lt;/label&gt; {{::approval.task.quantity}}
+                        &lt;/div&gt;
+                        &lt;div ng-if="approval.task.price"&gt;&lt;label&gt;${Price}&lt;/label&gt; {{::approval.task.price}}
+                            &lt;span ng-if="approval.task.recurring_price"&gt;&lt;label&gt;${Recurring price}&lt;/label&gt; {{::approval.task.recurring_price}} {{::approval.task.recurring_frequency}}&lt;/span&gt;
+                            &lt;label ng-if="approval.task.quantity &amp;&amp; approval.task.quantity &gt; 1"&gt; ${each}&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div ng-if="approval.items.length == 1"&gt;
+                            &lt;div ng-repeat="item in approval.items"&gt;
+                                &lt;sp-widget ng-if="item.variableSummarizerWidget"
+                                           widget="item.variableSummarizerWidget"&gt;&lt;/sp-widget&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;sp-widget ng-if="approval.variableSummarizerWidget"
+                                   widget="approval.variableSummarizerWidget"&gt;&lt;/sp-widget&gt;
+                    &lt;/div&gt;
+                    &lt;div class="col-sm-3"&gt;
+                        &lt;button id="task_approve_button_{{::approval.sys_id}}" ng-if="approval.state == 'requested'"
+                                aria-label="${Approve} {{::approval.task.number}}" class="btn btn-primary btn-block"
+                                style="border-width:1px;" ng-click="approve(approval.sys_id);"&gt;${Approve}
+                        &lt;/button&gt;
+                        &lt;button id="task_reject_button_{{::approval.sys_id}}" ng-if="approval.state == 'requested'"
+                                aria-label="${Reject} {{::approval.task.number}}" class="btn btn-default btn-block"
+                                ng-click="reject(approval.sys_id);"&gt;${Reject}
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class="col-sm-12" ng-show="c.data.approvals.show_viewAll" style="padding:15px"&gt;
+            &lt;a href="?id=approvals"&gt;
+                &lt;center&gt; ${View All Approvals}&lt;/center&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:28:44</sys_created_on>
+        <sys_id>43145657c32466109518b11ed40131a4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>8f145657c32466109518b11ed40131a0</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_43145657c32466109518b11ed40131a4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:28:44</sys_updated_on>
+    </sp_rel_widget_clone>
+</record_update>

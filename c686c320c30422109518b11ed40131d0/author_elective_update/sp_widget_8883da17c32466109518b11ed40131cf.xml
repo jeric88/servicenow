@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[function ($scope, spModal, spUtil) {
+  var c = this;
+  $scope.$on('record.updated', function(name, data) {
+    spUtil.update($scope);
+  });
+
+	c.openRelatedRecord = function(widgetId, widgetInput, title) {
+	spModal.open({
+		title: title,
+		buttons: [],
+		widget: widgetId,
+		widgetInput: widgetInput,
+		size: 'lg'});
+  };
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.options-btn {&#13;
+    border:none;&#13;
+    background-image:none;&#13;
+    background-color:transparent;&#13;
+    -webkit-box-shadow: none;&#13;
+    -moz-box-shadow: none;&#13;
+    box-shadow: none;&#13;
+    margin-left: -8px;&#13;
+    margin-right: -8px;&#13;
+}&#13;
+&#13;
+.req-item {&#13;
+	margin-left: 20px;&#13;
+}&#13;
+.options-btn:focus {&#13;
+  	outline: 0.2rem solid $primary !important;&#13;
+    outline-offset: -0.4rem;&#13;
+}&#13;
+&#13;
+.req-item-title {&#13;
+	padding-left: 0.4rem;&#13;
+}&#13;
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Widget to display the individual items of the approval request to the approving user</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Copy of Approval Request Items</name>
+        <option_schema>[{"name":"requested_items_header","section":"other","default_value":"Requested Items","label":"Related Requested Items Widget Header","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles>snc_external,snc_internal</roles>
+        <script><![CDATA[(function(){
+	var approvalTaskGr;
+    data.modalWidgetId = '5736bf52cb30020000f8d856634c9c2d';
+    var approvalSysId = $sp.getParameter('sys_id');
+    var approvalGr = new GlideRecord('sysapproval_approver');
+    approvalGr.get(approvalSysId);
+	//In case of manual approval task, document_id field is not set, instead sysapproval field is set
+	if (approvalGr.document_id) {
+		approvalTaskGr = approvalGr.document_id;
+	} else if (approvalGr.sysapproval){
+		approvalTaskGr = approvalGr.sysapproval;
+	}
+		
+    if (approvalTaskGr.getRefRecord().getRecordClassName() == 'sc_request') {
+        var requestItems = new global.CaseApprovalUtils().getApprovalRequestItems(approvalSysId);
+       var requestInfo = {};
+       requestInfo['number'] = approvalTaskGr.getRefRecord().number+'';
+       requestInfo['sys_id'] = approvalTaskGr.getRefRecord().sys_id+'';
+       requestInfo['items'] = requestItems;
+       data.request = requestInfo;
+   }    
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:26:04</sys_created_on>
+        <sys_id>8883da17c32466109518b11ed40131cf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of Approval Request Items</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sp_widget_8883da17c32466109518b11ed40131cf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:26:04</sys_updated_on>
+        <template><![CDATA[<div id="request-items" class="panel panel-primary b" ng-if="c.data.request">
+   <div class="panel-heading">
+      <h2 class="panel-title">${{{c.options.requested_items_header}}}</h2>
+   </div>
+   <div class="panel-body">
+      <div class="row">
+         <div class="col-md-12 col-sm-12 col-xs-12">
+           <div is-open="status.open[$index]" ng-init="status.open[$index] = true">
+             <button class="options-btn" ng-click="status.open[$index] = !status.open[$index]" aria-expanded="{{status.open[$index]}}" aria-label="${'Request details'}">
+               <span class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open[$index], 'glyphicon-chevron-down': !status.open[$index]}"></span>
+             </button> 
+             <label class="m-n req-item-title">{{data.request.number}}</label>
+             <div ng-if="status.open[$index]" id="req-item-toggle" aria-hidden="{{!status.open[$index]}}">
+               <div ng-repeat="item in data.request.items" aria-live="polite" class="text-overflow-ellipsis req-item">
+                 <a href="javascript:void(0)" ng-click="c.openRelatedRecord(data.modalWidgetId, 
+                 {table: item.table, sys_id: item.sys_id}, 
+                 ${item.cat_item})">
+                 {{item.number}}
+                 <span> - </span>
+                 {{item.short_desc}}
+                 </a>
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
+   </div>
+</div>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sp_widget_8883da17c32466109518b11ed40131cf</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function ($scope, spModal, spUtil) {
+  var c = this;
+  $scope.$on('record.updated', function(name, data) {
+    spUtil.update($scope);
+  });
+
+	c.openRelatedRecord = function(widgetId, widgetInput, title) {
+	spModal.open({
+		title: title,
+		buttons: [],
+		widget: widgetId,
+		widgetInput: widgetInput,
+		size: 'lg'});
+  };
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.options-btn {&amp;#13;
+    border:none;&amp;#13;
+    background-image:none;&amp;#13;
+    background-color:transparent;&amp;#13;
+    -webkit-box-shadow: none;&amp;#13;
+    -moz-box-shadow: none;&amp;#13;
+    box-shadow: none;&amp;#13;
+    margin-left: -8px;&amp;#13;
+    margin-right: -8px;&amp;#13;
+}&amp;#13;
+&amp;#13;
+.req-item {&amp;#13;
+	margin-left: 20px;&amp;#13;
+}&amp;#13;
+.options-btn:focus {&amp;#13;
+  	outline: 0.2rem solid $primary !important;&amp;#13;
+    outline-offset: -0.4rem;&amp;#13;
+}&amp;#13;
+&amp;#13;
+.req-item-title {&amp;#13;
+	padding-left: 0.4rem;&amp;#13;
+}&amp;#13;
+&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description&gt;Widget to display the individual items of the approval request to the approving user&lt;/description&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id/&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {  }]]&gt;&lt;/link&gt;&lt;name&gt;Copy of Approval Request Items&lt;/name&gt;&lt;option_schema&gt;[{"name":"requested_items_header","section":"other","default_value":"Requested Items","label":"Related Requested Items Widget Header","type":"string"}]&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles&gt;snc_external,snc_internal&lt;/roles&gt;&lt;script&gt;&lt;![CDATA[(function(){
+	var approvalTaskGr;
+    data.modalWidgetId = '5736bf52cb30020000f8d856634c9c2d';
+    var approvalSysId = $sp.getParameter('sys_id');
+    var approvalGr = new GlideRecord('sysapproval_approver');
+    approvalGr.get(approvalSysId);
+	//In case of manual approval task, document_id field is not set, instead sysapproval field is set
+	if (approvalGr.document_id) {
+		approvalTaskGr = approvalGr.document_id;
+	} else if (approvalGr.sysapproval){
+		approvalTaskGr = approvalGr.sysapproval;
+	}
+		
+    if (approvalTaskGr.getRefRecord().getRecordClassName() == 'sc_request') {
+        var requestItems = new global.CaseApprovalUtils().getApprovalRequestItems(approvalSysId);
+       var requestInfo = {};
+       requestInfo['number'] = approvalTaskGr.getRefRecord().number+'';
+       requestInfo['sys_id'] = approvalTaskGr.getRefRecord().sys_id+'';
+       requestInfo['items'] = requestItems;
+       data.request = requestInfo;
+   }    
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-04-02 06:26:04&lt;/sys_created_on&gt;&lt;sys_id&gt;8883da17c32466109518b11ed40131cf&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Copy of Approval Request Items&lt;/sys_name&gt;&lt;sys_package display_value="New Employee Access Request" source="x_1636309_employ_0"&gt;c686c320c30422109518b11ed40131d0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="New Employee Access Request"&gt;c686c320c30422109518b11ed40131d0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_8883da17c32466109518b11ed40131cf&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-04-02 06:26:04&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div id="request-items" class="panel panel-primary b" ng-if="c.data.request"&gt;
+   &lt;div class="panel-heading"&gt;
+      &lt;h2 class="panel-title"&gt;${{{c.options.requested_items_header}}}&lt;/h2&gt;
+   &lt;/div&gt;
+   &lt;div class="panel-body"&gt;
+      &lt;div class="row"&gt;
+         &lt;div class="col-md-12 col-sm-12 col-xs-12"&gt;
+           &lt;div is-open="status.open[$index]" ng-init="status.open[$index] = true"&gt;
+             &lt;button class="options-btn" ng-click="status.open[$index] = !status.open[$index]" aria-expanded="{{status.open[$index]}}" aria-label="${'Request details'}"&gt;
+               &lt;span class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open[$index], 'glyphicon-chevron-down': !status.open[$index]}"&gt;&lt;/span&gt;
+             &lt;/button&gt; 
+             &lt;label class="m-n req-item-title"&gt;{{data.request.number}}&lt;/label&gt;
+             &lt;div ng-if="status.open[$index]" id="req-item-toggle" aria-hidden="{{!status.open[$index]}}"&gt;
+               &lt;div ng-repeat="item in data.request.items" aria-live="polite" class="text-overflow-ellipsis req-item"&gt;
+                 &lt;a href="javascript:void(0)" ng-click="c.openRelatedRecord(data.modalWidgetId, 
+                 {table: item.table, sys_id: item.sys_id}, 
+                 ${item.cat_item})"&gt;
+                 {{item.number}}
+                 &lt;span&gt; - &lt;/span&gt;
+                 {{item.short_desc}}
+                 &lt;/a&gt;
+               &lt;/div&gt;
+             &lt;/div&gt;
+           &lt;/div&gt;
+         &lt;/div&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-2036631702</payload_hash>
+        <record_name>Copy of Approval Request Items</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:26:04</sys_created_on>
+        <sys_id>0883da17c32466109518b11ed40131d2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195f52da8200000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:26:04</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>0c83da17b6246610c1d0c831029b6bd1</update_guid>
+        <update_guid_history>0c83da17b6246610c1d0c831029b6bd1:-2036631702</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Copy of Approval Request Items">5de31a57c32466109518b11ed401311f</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:27:48</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>02f08a77fa78433081574f18fefbb481</sys_id>
+        <sys_metadata>8883da17c32466109518b11ed40131cf</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of Approval Request Items</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sp_widget_8883da17c32466109518b11ed40131cf</sys_update_name>
+        <sys_update_version display_value="sp_widget_8883da17c32466109518b11ed40131cf">0883da17c32466109518b11ed40131d2</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:27:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_ng_pro_sp_widget">
+    <m2m_sp_ng_pro_sp_widget action="DELETE">
+        <sp_angular_provider display_value="scBasicSelect">e225f8b43b0523008ed00d8044efc4fe</sp_angular_provider>
+        <sp_widget display_value="Copy of My Requests">acba0e57c3e066109518b11ed40131bb</sp_widget>
+        <sys_class_name>m2m_sp_ng_pro_sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 05:47:37</sys_created_on>
+        <sys_id>24ba0e57c3e066109518b11ed40131bf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>scBasicSelect.Copy of My Requests</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>m2m_sp_ng_pro_sp_widget_24ba0e57c3e066109518b11ed40131bf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 05:47:37</sys_updated_on>
+    </m2m_sp_ng_pro_sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>m2m_sp_ng_pro_sp_widget_24ba0e57c3e066109518b11ed40131bf</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="m2m_sp_ng_pro_sp_widget"><m2m_sp_ng_pro_sp_widget action="INSERT_OR_UPDATE"><sp_angular_provider display_value="scBasicSelect">e225f8b43b0523008ed00d8044efc4fe</sp_angular_provider><sp_widget display_value="Copy of My Requests">acba0e57c3e066109518b11ed40131bb</sp_widget><sys_class_name>m2m_sp_ng_pro_sp_widget</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-02 05:47:37</sys_created_on><sys_id>24ba0e57c3e066109518b11ed40131bf</sys_id><sys_mod_count>0</sys_mod_count><sys_name>scBasicSelect.Copy of My Requests</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>m2m_sp_ng_pro_sp_widget_24ba0e57c3e066109518b11ed40131bf</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-02 05:47:37</sys_updated_on></m2m_sp_ng_pro_sp_widget></record_update>]]></payload>
+        <payload_hash>-314702923</payload_hash>
+        <record_name>scBasicSelect.Copy of My Requests</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 05:47:37</sys_created_on>
+        <sys_id>68ba0e57c3e066109518b11ed40131c1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195f50a714c0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 05:47:37</sys_updated_on>
+        <type>Angular Providers</type>
+        <update_guid>6cba0e571ee066109364aae787eb5cc0</update_guid>
+        <update_guid_history>6cba0e571ee066109364aae787eb5cc0:-314702923</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="scBasicSelect.Copy of My Requests">9f2d0e9bc3e066109518b11ed40131d3</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 05:58:26</sys_created_on>
+        <sys_db_object display_value="" name="m2m_sp_ng_pro_sp_widget">m2m_sp_ng_pro_sp_widget</sys_db_object>
+        <sys_id>777529f81b074eee9ee611fa1f7b8e91</sys_id>
+        <sys_metadata>24ba0e57c3e066109518b11ed40131bf</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>scBasicSelect.Copy of My Requests</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>m2m_sp_ng_pro_sp_widget_24ba0e57c3e066109518b11ed40131bf</sys_update_name>
+        <sys_update_version display_value="m2m_sp_ng_pro_sp_widget_24ba0e57c3e066109518b11ed40131bf">68ba0e57c3e066109518b11ed40131c1</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 05:58:26</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

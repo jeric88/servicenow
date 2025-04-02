@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_profile">
+    <oauth_entity_profile action="DELETE">
+        <default>true</default>
+        <grant_type>password</grant_type>
+        <jwt_provider/>
+        <name>Okta Integration Prod default_profile</name>
+        <oauth_entity display_value="Okta Integration Prod">28959d13c3ec26109518b11ed4013135</oauth_entity>
+        <saml2_assertion_producer/>
+        <sys_class_name>oauth_entity_profile</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 01:59:12</sys_created_on>
+        <sys_id>7a669d1fc3ac26109518b11ed401310e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Okta Integration Prod default_profile</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>oauth_entity_profile_7a669d1fc3ac26109518b11ed401310e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 01:59:12</sys_updated_on>
+    </oauth_entity_profile>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>oauth_entity_profile_7a669d1fc3ac26109518b11ed401310e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_profile"><oauth_entity_profile action="INSERT_OR_UPDATE"><default>true</default><grant_type>password</grant_type><jwt_provider/><name>Okta Integration Prod default_profile</name><oauth_entity display_value="Okta Integration Prod">28959d13c3ec26109518b11ed4013135</oauth_entity><saml2_assertion_producer/><sys_class_name>oauth_entity_profile</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-02 01:59:12</sys_created_on><sys_id>7a669d1fc3ac26109518b11ed401310e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Okta Integration Prod default_profile</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>oauth_entity_profile_7a669d1fc3ac26109518b11ed401310e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-02 01:59:12</sys_updated_on></oauth_entity_profile></record_update>]]></payload>
+        <payload_hash>-1661100130</payload_hash>
+        <record_name>Okta Integration Prod default_profile</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 01:59:12</sys_created_on>
+        <sys_id>b666dd53c3ec26109518b11ed40131a4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195f439541f0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 01:59:12</sys_updated_on>
+        <type>OAuth Entity Profile</type>
+        <update_guid>ba66dd539fec261067da44b0d68e1ba3</update_guid>
+        <update_guid_history>ba66dd539fec261067da44b0d68e1ba3:-1661100130</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Okta Integration Prod default_profile">478a99d7c3ec26109518b11ed40131fa</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 02:17:14</sys_created_on>
+        <sys_db_object display_value="" name="oauth_entity_profile">oauth_entity_profile</sys_db_object>
+        <sys_id>0b5872eec9dc40b4818fddce5b1b6d10</sys_id>
+        <sys_metadata>7a669d1fc3ac26109518b11ed401310e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Okta Integration Prod default_profile</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>oauth_entity_profile_7a669d1fc3ac26109518b11ed401310e</sys_update_name>
+        <sys_update_version display_value="oauth_entity_profile_7a669d1fc3ac26109518b11ed401310e">b666dd53c3ec26109518b11ed40131a4</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:17:14</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

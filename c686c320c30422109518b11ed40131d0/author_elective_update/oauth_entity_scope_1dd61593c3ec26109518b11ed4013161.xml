@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_scope">
+    <oauth_entity_scope action="DELETE">
+        <in_default_profile>false</in_default_profile>
+        <name>profile</name>
+        <oauth_entity display_value="Okta Integration Prod">28959d13c3ec26109518b11ed4013135</oauth_entity>
+        <oauth_entity_scope>profile</oauth_entity_scope>
+        <sys_class_name>oauth_entity_scope</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 02:01:25</sys_created_on>
+        <sys_id>1dd61593c3ec26109518b11ed4013161</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>profile</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>oauth_entity_scope_1dd61593c3ec26109518b11ed4013161</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:01:25</sys_updated_on>
+    </oauth_entity_scope>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>oauth_entity_scope_1dd61593c3ec26109518b11ed4013161</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_scope"><oauth_entity_scope action="INSERT_OR_UPDATE"><in_default_profile>false</in_default_profile><name>profile</name><oauth_entity display_value="Okta Integration Prod">28959d13c3ec26109518b11ed4013135</oauth_entity><oauth_entity_scope>profile</oauth_entity_scope><sys_class_name>oauth_entity_scope</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-02 02:01:25</sys_created_on><sys_id>1dd61593c3ec26109518b11ed4013161</sys_id><sys_mod_count>0</sys_mod_count><sys_name>profile</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>oauth_entity_scope_1dd61593c3ec26109518b11ed4013161</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-02 02:01:25</sys_updated_on></oauth_entity_scope></record_update>]]></payload>
+        <payload_hash>1020851763</payload_hash>
+        <record_name>profile</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 02:01:25</sys_created_on>
+        <sys_id>97e65193c3ec26109518b11ed40131ff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195f43b5c5a0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:01:25</sys_updated_on>
+        <type>OAuth Entity Scope</type>
+        <update_guid>9be6519376ec2610f0d663d8245e48fe</update_guid>
+        <update_guid_history>9be6519376ec2610f0d663d8245e48fe:1020851763</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="profile">f68a9d97c3ec26109518b11ed401316d</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 02:17:14</sys_created_on>
+        <sys_db_object display_value="" name="oauth_entity_scope">oauth_entity_scope</sys_db_object>
+        <sys_id>5fb58f39c0de4490a9d376ff4d7ac9a4</sys_id>
+        <sys_metadata>1dd61593c3ec26109518b11ed4013161</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>profile</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>oauth_entity_scope_1dd61593c3ec26109518b11ed4013161</sys_update_name>
+        <sys_update_version display_value="oauth_entity_scope_1dd61593c3ec26109518b11ed4013161">97e65193c3ec26109518b11ed40131ff</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:17:14</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

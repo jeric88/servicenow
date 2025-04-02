@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity">
+    <oauth_entity action="DELETE">
+        <access>public</access>
+        <access_token_lifespan>1800</access_token_lifespan>
+        <active>true</active>
+        <auth_code_lifespan>0</auth_code_lifespan>
+        <auth_url>https://dev-47736733.okta.com/oauth2/default</auth_url>
+        <certificate_url/>
+        <client_id>0oao3rghiwVC8zwK95d7</client_id>
+        <client_secret>﷞﷟﷒316ab79bc3f312109518b11ed40131e8﷬﷔1﷬﷭KP8BftCHzuNMP8kEiPCKRg==pSVNIjaAMT39UjQ4FRoraz9ExJo8E3sR3D0yN6zmamKRwKOLG5xCf5ib5ICTYR0WtlA0AUnBqa7uubzcUc-xpCol6hskhO4iVAGFcHf89zc=﷮﷯</client_secret>
+        <client_type/>
+        <client_uuid>e4959d13c3ec26109518b11ed4013135</client_uuid>
+        <code_challenge_method>S256</code_challenge_method>
+        <comments/>
+        <default_grant_type>password</default_grant_type>
+        <id_token_lifespan>0</id_token_lifespan>
+        <jwt_provider/>
+        <login_url/>
+        <logo_url/>
+        <message_signature_lifespan>0</message_signature_lifespan>
+        <mobile_client>false</mobile_client>
+        <name>Okta Integration Prod</name>
+        <oauth_api_script/>
+        <protocol_name/>
+        <public_client>false</public_client>
+        <redirect_url>https://dev293354.service-now.com/oauth_redirect.do</redirect_url>
+        <refresh_token_lifespan>8640000</refresh_token_lifespan>
+        <refresh_token_url/>
+        <restricted_binding>false</restricted_binding>
+        <revoke_token_url/>
+        <salt>0</salt>
+        <send_client_credentials_as>request_body_parameter</send_client_credentials_as>
+        <skip_authorize>false</skip_authorize>
+        <sys_class_name>oauth_entity</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 01:59:12</sys_created_on>
+        <sys_id>28959d13c3ec26109518b11ed4013135</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Okta Integration Prod</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>oauth_entity_28959d13c3ec26109518b11ed4013135</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:07:56</sys_updated_on>
+        <token_url>https://dev-47736733.okta.com/oauth2/default/v1/token</token_url>
+        <type>oauth_provider</type>
+        <use_mutual_auth>false</use_mutual_auth>
+        <user/>
+    </oauth_entity>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>oauth_entity_28959d13c3ec26109518b11ed4013135</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity"><oauth_entity action="INSERT_OR_UPDATE"><access>public</access><access_token_lifespan>1800</access_token_lifespan><active>true</active><auth_code_lifespan>0</auth_code_lifespan><auth_url>https://dev-47736733.okta.com/oauth2/default</auth_url><certificate_url/><client_id>0oao3rghiwVC8zwK95d7</client_id><client_secret>﷞﷟﷒316ab79bc3f312109518b11ed40131e8﷬﷔1﷬﷭KP8BftCHzuNMP8kEiPCKRg==pSVNIjaAMT39UjQ4FRoraz9ExJo8E3sR3D0yN6zmamKRwKOLG5xCf5ib5ICTYR0WtlA0AUnBqa7uubzcUc-xpCol6hskhO4iVAGFcHf89zc=﷮﷯</client_secret><client_type/><client_uuid>e4959d13c3ec26109518b11ed4013135</client_uuid><code_challenge_method>S256</code_challenge_method><comments/><default_grant_type>password</default_grant_type><id_token_lifespan>0</id_token_lifespan><jwt_provider/><login_url/><logo_url/><message_signature_lifespan>0</message_signature_lifespan><mobile_client>false</mobile_client><name>Okta Integration Prod</name><oauth_api_script/><protocol_name/><public_client>false</public_client><redirect_url>https://dev293354.service-now.com/oauth_redirect.do</redirect_url><refresh_token_lifespan>8640000</refresh_token_lifespan><refresh_token_url/><restricted_binding>false</restricted_binding><revoke_token_url/><salt>0</salt><send_client_credentials_as>request_body_parameter</send_client_credentials_as><skip_authorize>false</skip_authorize><sys_class_name>oauth_entity</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-02 01:59:12</sys_created_on><sys_id>28959d13c3ec26109518b11ed4013135</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Okta Integration Prod</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>oauth_entity_28959d13c3ec26109518b11ed4013135</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-02 02:07:56</sys_updated_on><token_url>https://dev-47736733.okta.com/oauth2/default/v1/token</token_url><type>oauth_provider</type><use_mutual_auth>false</use_mutual_auth><user/></oauth_entity></record_update>]]></payload>
+        <payload_hash>-295117787</payload_hash>
+        <record_name>Okta Integration Prod</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 02:07:56</sys_created_on>
+        <sys_id>3668d993c3ec26109518b11ed4013154</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195f44153c30000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:07:56</sys_updated_on>
+        <type>Application Registries</type>
+        <update_guid>3a68d99304ec26107a6f97f61a048453</update_guid>
+        <update_guid_history>3a68d99304ec26107a6f97f61a048453:-295117787,3a66dd535bec2610298f9d3af5d229a5:631272533</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Okta Integration Prod">f68a9d97c3ec26109518b11ed4013169</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 02:17:14</sys_created_on>
+        <sys_db_object display_value="" name="oauth_entity">oauth_entity</sys_db_object>
+        <sys_id>00022723309b4308801d2d127757c510</sys_id>
+        <sys_metadata>28959d13c3ec26109518b11ed4013135</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Okta Integration Prod</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>oauth_entity_28959d13c3ec26109518b11ed4013135</sys_update_name>
+        <sys_update_version display_value="oauth_entity_28959d13c3ec26109518b11ed4013135">3668d993c3ec26109518b11ed4013154</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:17:14</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

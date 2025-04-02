@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_scope">
+    <oauth_entity_scope action="INSERT_OR_UPDATE">
+        <in_default_profile>false</in_default_profile>
+        <name>profile</name>
+        <oauth_entity display_value="Okta OAuth Integration">fb1d11dbc3ec26109518b11ed40131da</oauth_entity>
+        <oauth_entity_scope>profile</oauth_entity_scope>
+        <sys_class_name>oauth_entity_scope</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 02:30:54</sys_created_on>
+        <sys_id>20ad995bc3ec26109518b11ed4013110</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>profile</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>oauth_entity_scope_20ad995bc3ec26109518b11ed4013110</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:30:54</sys_updated_on>
+    </oauth_entity_scope>
+</record_update>

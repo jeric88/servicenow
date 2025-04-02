@@ -1,0 +1,1263 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, $timeout, $location, $window) {
+    var c = this;
+    $scope.isLoading = false;
+
+
+    c.redirect = function($event, url, target) {
+        $event.stopPropagation();
+        if (url) {
+            target = target ? target : "_self";
+            if (target === "_self") {
+                $location.search(url.substr(1));
+            } else {
+                $window.open(url, target);
+            }
+        }
+    };
+
+    $scope.$on('isActionWidgetVisible', function(event, evntData) {
+        event.stopPropagation();
+        c.listViewData.every(function(listViewItem) {
+            if (listViewItem.actionsContext === evntData.context) {
+                listViewItem.isActionWidgetVisible = evntData.visibility;
+                return false;
+            }
+            return true;
+        });
+    });
+
+    $scope.$on('sn_ex_sp_action.result', function(event, actionOutput) {
+        c.asyncGet();
+    });
+
+    c.checkForData = function() {
+        if (!(c.primaryActivity) && !(c.secondaryActivity && c.secondaryActivity.length))
+            return true;
+        return false;
+    };
+
+    c.asyncGet = function() {
+        c.data.action = "loadData";
+        $scope.isLoading = true;
+        c.server.update().then(function(response) {
+            fetchMyItemsData();
+            if (c.data.card_behaviour == 'single') {
+                resetCarousel();
+            } else {
+                adaptCardGrid();
+            }
+            handleTextOnlyZoom();
+        }).finally(function() {
+            $scope.isLoading = false;
+        });
+    };
+
+    var fetchMyItemsData = function() {
+        if (!c.data.hideWidget) {
+            c.activitySummaries = [];
+            c.primaryActivity = c.data.activityDetails.primaryCountData.length ? c.data.activityDetails.primaryCountData[0] : null;
+            c.secondaryActivity = c.data.activityDetails.summaryCountData;
+            c.listViewData = c.data.activityDetails.listViewData;
+            c.showViewAll = c.data.activityDetails.showViewAll;
+            if (c.primaryActivity && c.primaryActivity.itemCount == 0) {
+                c.activitySummaries.push(c.primaryActivity);
+            }
+            c.activitySummaries = c.activitySummaries.concat(c.secondaryActivity);
+            $scope.isLoading = false;
+        }
+    };
+
+    var load_config = c.data.load_config;
+    if (load_config === "async") {
+        $timeout(c.asyncGet);
+    } else {
+        fetchMyItemsData();
+        if (c.data.card_behaviour == 'single') {
+            resetCarousel();
+        } else {
+            adaptCardGrid();
+        }
+        handleTextOnlyZoom();
+    }
+
+
+    //Carousel methods
+
+    c.getCardsContainer = function() {
+        return $(".cards-flex-container");
+    };
+
+    c.getCardsContainerWidth = function() {
+        return $(".cards-flex-container").width();
+    };
+
+    c.getCardHolder = function() {
+        return $(".activity-card-holder-carousel");
+    };
+
+    //Returns card width + margin
+    c.getCardHolderWidth = function() {
+        return c.getCardHolder().outerWidth(true);
+    };
+
+    //Computing the no of dots to be shown below the carousel
+    c.computeIndicatorDots = function() {
+        var value = Math.ceil(c.data.noOfCards / c.getCardsInView());
+        c.indicatorDots = value === 1 ? 0 : value;
+    };
+
+
+    /* @param: swipeRotation - the no of rotations/swipes you need to move the flex container
+     * @param: swipeRotationDirection - the direction you wish to swipe - 'right' or 'left'
+     *
+     * @return: the scroll value for the movement of the card
+     */
+
+    c.getScrollLength = function(swipeRotation, swipeRotationDirection) {
+        var scrollValue = 0;
+        for (var i = 0; i < swipeRotation; i++) {
+            var cardRightMargin = (c.getCardHolder().outerWidth(true) - c.getCardHolder().outerWidth(false));
+            var cardsVisible = c.getCardsInView(); //no of cards visible in the flexbox container
+
+            if (c.activeIndicatorIndex == (c.indicatorDots - 1)) {
+                //Figuring out the cut out card width
+                var cardsScrolledAtLast = c.data.noOfCards - cardsVisible * (c.indicatorDots - 1);
+                var cutOffSectionWidth = c.getCardsContainerWidth() - (c.getCardsInView() * c.getCardHolderWidth());
+                scrollValue += (cardsScrolledAtLast * c.getCardHolderWidth()) - cutOffSectionWidth - cardRightMargin;
+            } else {
+                scrollValue += c.getCardsInView() * c.getCardHolderWidth();
+            }
+
+            switch (swipeRotationDirection) {
+                case "right":
+
+                    if (c.activeIndicatorIndex < c.indicatorDots - 1)
+                        c.activeIndicatorIndex++;
+                    break;
+                case "left":
+                    if (c.activeIndicatorIndex > 0)
+                        c.activeIndicatorIndex--;
+                    break;
+            }
+        }
+        return scrollValue;
+    };
+
+    //no of cards visible in the flex container
+    c.getCardsInView = function() {
+        var value = parseInt(Math.floor((c.getCardsContainerWidth()) / c.getCardHolderWidth()));
+        return value ? value : 1;
+    };
+
+    //Move cards right
+    c.swipeRight = function(swipeRotation, $event) {
+        if ($event && $event.type == "keypress")
+            return;
+        var swipeRotationDirection = 'right';
+        var scrollVal = c.getScrollLength(swipeRotation, swipeRotationDirection);
+        var leftPos = c.getCardsContainer().scrollLeft();
+
+        c.getCardsContainer().animate({
+            scrollLeft: leftPos + scrollVal
+        }, 100);
+        // focus on the first indicator dot if we've reached the end of the carousel
+        if ($event && c.activeIndicatorIndex === (c.indicatorDots - 1)) {
+            $(".scrolling-panel-footer .activity-carousel-indicator:not(.hidden)")[0].focus();
+        }
+        $("div.slide-control").blur();
+    };
+
+    //Move cards left
+    c.swipeLeft = function(swipeRotation, $event) {
+        if ($event && $event.type == "keypress")
+            return;
+        var swipeRotationDirection = 'left';
+        var scrollVal = c.getScrollLength(swipeRotation, swipeRotationDirection);
+        var leftPos = c.getCardsContainer().scrollLeft();
+        c.getCardsContainer().animate({
+            scrollLeft: leftPos - scrollVal
+        }, 100);
+        // focus on the first card if we've reached the beginning of the carousel
+        if ($event && c.activeIndicatorIndex === 0) {
+            $('.activity-card').get(0).focus();
+        }
+        $("div.slide-control").blur();
+    };
+
+    //Function to swipe to a particular indicator
+    c.indicatorNavigation = function(index, event) {
+        if (event && event.type == 'keypress') {
+            event.preventDefault();
+        }
+        var swipeRotation; //The no of swipes aka rotations that are needed for swipe
+        if (index == c.activeIndicatorIndex)
+            return;
+        else if (index > c.activeIndicatorIndex) {
+            swipeRotation = index - c.activeIndicatorIndex;
+            c.swipeRight(swipeRotation);
+        } else {
+            swipeRotation = c.activeIndicatorIndex - index;
+            c.swipeLeft(swipeRotation);
+        }
+    };
+
+    //Toggle tabindex of tabbable items inside non-tabbable activity cards.
+    function toggleTabIndex(index, setTabbable) {
+        var CUSTOM_TAB_INDEX = '-7';
+        if (setTabbable) {
+            $('.activity-card').eq(index).siblings().find('[tabindex=' + CUSTOM_TAB_INDEX + ']').attr('aria-hidden', 'false');
+            $('.activity-card').eq(index).siblings().find('[tabindex=' + CUSTOM_TAB_INDEX + ']').attr('tabindex', '0');
+        } else {
+            $('.activity-card').eq(index).siblings().find('a , button').attr('aria-hidden', 'true');
+            $('.activity-card').eq(index).siblings().find('a , button').attr('tabindex', CUSTOM_TAB_INDEX);
+        }
+    }
+
+    //Manually setting the tabIndex of the cards for A11y
+    c.setCardTabIndex = function(index) {
+        if (c.data.card_behaviour == 'wrap') {
+            return 0;
+        }
+        //If indicatorDots don't exist
+        if (c.indicatorDots == null)
+            c.computeIndicatorDots();
+
+        if (c.indicatorDots == 0) {
+            toggleTabIndex(index, true);
+            return 0;
+        }
+
+        var lastCardIndex = c.data.noOfCards - 1;
+        var cardsVisible = c.getCardsInView();
+
+        // When the active indicator dot is in the end 
+        if (c.activeIndicatorIndex == (c.indicatorDots - 1)) {
+            if ((lastCardIndex - cardsVisible) < index &&
+                index <= (lastCardIndex)) {
+                toggleTabIndex(index, true);
+                return 0;
+            }
+        }
+
+        if (c.activeIndicatorIndex * cardsVisible <= index &&
+            index < ((c.activeIndicatorIndex + 1) * cardsVisible)) {
+            toggleTabIndex(index, true);
+            return 0;
+        }
+        toggleTabIndex(index, false);
+        return -1;
+    };
+
+    function resetCarousel() {
+        $timeout(function() {
+            c.activeIndicatorIndex = 0;
+            c.indicatorNavigation(0);
+            c.setCarouselCardWidth();
+            c.computeIndicatorDots();
+        }, 100);
+    }
+
+    var appWindow = angular.element($window);
+    appWindow.bind('resize', _.debounce(function() {
+        if (c.data.card_behaviour === 'single' && !$scope.isLoading) {
+            c.getCardsContainer().animate({
+                scrollLeft: 0
+            }, 100);
+            resetCarousel();
+        } else {
+            adaptCardGrid();
+        }
+    }, 500));
+
+    function handleTextOnlyZoom() {
+        var fontSize = getComputedStyle(document.documentElement).fontSize;
+        setInterval(function() {
+            var currentFontSize = getComputedStyle(document.documentElement).fontSize;
+            if (fontSize !== currentFontSize) {
+                fontSize = currentFontSize;
+                if (c.data.card_behaviour === 'single' && !$scope.isLoading) {
+                    c.getCardsContainer().animate({
+                        scrollLeft: 0
+                    }, 100);
+                    resetCarousel();
+                } else {
+                    adaptCardGrid();
+                }
+            }
+        }, 500);
+    }
+
+    c.getIndicatorClass = function() {
+        var width = getWidgetWidth();
+        return (width > 500 ? 'activity-carousel-indicator-wrapper' : 'activity-carousel-indicator-wrapper-mobile');
+    };
+
+    c.setCarouselCardWidth = function() {
+        var CAROUSEL_BASE_CARD = 200;
+        var CAROUSEL_OFFSET = 25;
+        var remToPixel = 10;
+        // HTML font size on different devices which is used for conversion
+        var deviceRemToPixel = $('html').css('font-size');
+        deviceRemToPixel = parseFloat(deviceRemToPixel, 10);
+
+        var containerWidth = c.getCardsContainerWidth();
+        var cardRightMargin = c.getCardHolder().outerWidth(true) - c.getCardHolder().outerWidth(false),
+            cardWidth = (CAROUSEL_BASE_CARD / remToPixel) * deviceRemToPixel,
+            minCardWidth = cardWidth + cardRightMargin,
+            cardWidthOffset = (CAROUSEL_OFFSET / remToPixel) * deviceRemToPixel;
+
+        var availableContainerWidth = containerWidth - cardWidthOffset;
+        var noOfCards = parseInt(Math.floor(availableContainerWidth / minCardWidth));
+
+        noOfCards = c.data.noOfCards <= noOfCards ? c.data.noOfCards : noOfCards;
+        var extraWidth = (c.data.noOfCards <= noOfCards ? containerWidth : availableContainerWidth) - (noOfCards * minCardWidth);
+        if (noOfCards > 0)
+            cardWidth = minCardWidth + (extraWidth / noOfCards);
+
+        c.getCardHolder().width(Math.floor(cardWidth - cardRightMargin));
+        $scope.$broadcast("sn_ex_sp.reEvaluateActionsWidth");
+    };
+
+    function getWidgetWidth() {
+        return $('.my-items-container').width();
+    }
+
+    function adaptCardGrid() {
+        $timeout(function() {
+            var width = getWidgetWidth();
+            var gridLayout = $('.my-items-container').find('.cards-grid-container');
+            if (width <= 550) {
+                gridLayout.addClass('grid-single-column');
+                gridLayout.removeClass('grid-multi-column');
+            } else {
+                gridLayout.addClass('grid-multi-column');
+                gridLayout.removeClass('grid-single-column');
+            }
+            $scope.$broadcast("sn_ex_sp.reEvaluateActionsWidth");
+        }, 500);
+
+    }
+
+    c.getDotClass = function(index) {
+        var start = getStart(c.activeIndicatorIndex + 1, c.indicatorDots);
+        var end = getEnd(c.activeIndicatorIndex + 1, c.indicatorDots);
+        var isActive = index === c.activeIndicatorIndex;
+        var isSmall = (index === start - 1 && start > 1) || (index === end - 1 && end < c.indicatorDots);
+        var isHidden = index < start - 1 || index > end - 1;
+        return (isActive ? 'active ' : '') + (isSmall ? 'small ' : '') + (isHidden ? 'hidden' : '');
+    };
+
+    function getStart(currentPage, numberOfPages) {
+        var firstDisplayablePage = currentPage - 2;
+        var lastDisplayablePage = numberOfPages - 4;
+        return Math.max(1, Math.min(firstDisplayablePage, lastDisplayablePage));
+    }
+
+    function getEnd(currentPage, numberOfPages) {
+        var pagesToShow = 4;
+        return Math.min(getStart(currentPage, numberOfPages) + pagesToShow, numberOfPages);
+    }
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>$font-size-large : 20px !default;
+$font-size-small : 12px !default;
+$font-size-h3 : 20px !default;
+$font-size-h2 : 24px !default;
+$font-size-h6 : 14px !default;
+$font-size-base : 16px !default;
+$font-size-xs : 12px !default;
+$headings-font-weight : 600 !default;
+
+$sp-space--xxs: 2px !default;
+$sp-space--sm : 8px !default;
+$sp-space--xs : 4px !default;
+$sp-space--md : 12px !default;
+$sp-space--lg : 16px !default;
+$sp-space--xl : 24px !default;
+$sp-space--xxl : 32px !default;
+
+$padding-small-horizontal : 12px !default;
+$padding-base-vertical : 6px !default;
+$padding-large-vertical : 8px !default;
+$padding-xs-horizontal : 8px !default;
+$padding-base-horizontal : 16px !default;
+$padding-small-vertical : 4px !default;
+
+$link-color : #3c59e7 !default;
+$link-hover-color : #263994 !default;
+
+$border-radius-base : 4px !default;
+$border-radius-small: 2px !default;
+
+$input-border-focus: #3c59e7 !default;
+
+$label-margin-bottom : 4px !default;
+
+$btn-default-color: #4f52bd !default;
+$btn-default-border: #4f52bd !default;
+
+$text-primary : #181A1F !default;
+$text-secondary : #474D5A !default;
+$text-tertiary : #656E81 !default;
+
+$background-primary : #ffffff !default;
+$background-secondary : #f6f6f8 !default; 
+$background-tertiary : #F0F1F5 !default;
+
+$border-secondary : #ACB2BE !default;
+$border-tertiary : #DADDE2 !default;
+$color-sp-separator: #EAEAEA;
+
+$sp-panel-box-shadow : 0 4px 8px 0 rgba(23,40,52,0.08) !default;
+
+$circle-size: 12px;
+$small-circle-size: 8px;
+
+$brand-primary-lightest: #D1D2EE;
+
+.my-items-container {
+  box-shadow: $sp-panel-box-shadow;
+  background-color: $background-primary;
+  border-radius: $border-radius-large;
+  .activity-check {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 12rem;
+  }
+  .no-items {
+    font-size: $font-size-base;
+    color: $text-secondary;
+  }
+  .my-items-body {
+    padding: $sp-space--md $sp-space--xl $sp-space--xl $sp-space--xl;
+    .activity-container {
+      position: relative;
+      display: flex;
+      gap: $sp-space--xl;
+      align-items: center;
+      justify-content: space-between;
+      color: $text-primary;
+      padding: $sp-space--md 0;
+      .activity-title-container {
+        display: flex;
+        gap: $sp-space--md;
+        align-items: center;
+        .activity-title {
+          font-weight: 400;
+          word-break: break-all;
+          &amp;:hover {
+            color: $link-hover-color;
+          }
+        }
+        .activity-icon {
+          height: 32px;
+          width: 32px;
+          text-align: center;
+          border-radius: 50%;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .fa {
+            color: $brand-primary;
+          }
+        }
+      }
+      .activity-count-container {
+        display: flex;
+        align-items: center;
+        gap: $sp-space--sm;
+        .activity-count {
+          font-weight: 400;
+          color: $link-color;
+        }
+        .right-arrow {
+          color: $text-secondary;
+          font-size: $font-size-base;
+        }
+      }
+    }
+    .text-ellipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      word-break: break-word;
+    }
+    .text-ellipsis-one-line {
+      -webkit-line-clamp: 1;
+    }
+    .text-ellipsis-two-line {
+      -webkit-line-clamp: 2;
+    }
+    .right-arrow {
+      font-size: $font-size-xs;
+    }
+    .primary-activity-container {
+      margin-bottom: $sp-space--md;
+      .activity-container {
+        padding-bottom: 0;
+        border: none;
+      }
+      .list-view {
+        .list-count-summary {
+          font-size: $font-size-h6;
+          font-weight: 400;
+          margin: $sp-space--lg 0 $sp-space--md 0;
+          word-break: break-all;
+        }
+        .carousel-card-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1.6rem;
+
+          .view-all-container {
+            display: flex;
+            justify-content: center;
+            .view-all {
+              padding: 0 $sp-space--xs;
+              font-size: $font-size-base;
+              font-weight: $headings-font-weight;
+              display: flex;
+              align-items: center;
+              gap: $sp-space--sm;
+            }
+            .view-all:hover {
+              color: $link-hover-color;
+            }
+          }
+        }
+      }
+      .summary-view-container {
+        display: grid;
+        grid-column-gap: 48px;
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      }
+    }
+  }
+
+  .activity-card-holder{
+    position: relative;
+    flex-shrink : 0;
+  }
+  .activity-card:hover {
+    box-shadow: $sp-panel-box-shadow;
+  }
+  .activity-card-holder-carousel:not(:last-child) {
+    margin-right: $sp-space--lg;
+  }
+  .activity-card.activity-card-carousel{
+    padding-left: $padding-small-horizontal;
+    padding-right: $padding-small-horizontal;
+  }
+
+  .activity-card {
+    display: block;
+    height: 100%;
+    position: relative;
+    border: 1px solid $border-tertiary;
+    background: $background-primary;
+    border-radius: $border-radius-base;
+    min-height: 136px;
+    padding: $padding-base-horizontal;
+    p {
+      margin-bottom: 0px;
+    }
+    .item-badge {
+      padding: $sp-space--xxs $sp-space--xs;
+      border-radius: $border-radius-small;
+      height: $font-size-large;
+      min-height: $font-size-large;
+      font-size: $font-size-xs;
+      font-weight: normal;
+      background-color: $label-info-bg;
+    }
+    .item-title {
+      min-height: 2rem;
+      color: $text-primary;
+      font-size: $font-size-base;
+      font-weight: $headings-font-weight;
+      margin-bottom: $sp-space--sm;
+      margin-top: -3px;
+    }
+    .item-description {
+      display: flex;
+      align-items: center;
+      min-height: $font-size-large;
+      color: $text-secondary;
+      font-size: $font-size-xs;
+      font-weight: normal;
+    }
+    .item-field {
+      display: flex;
+      font-size: $font-size-xs;
+      color: $text-tertiary;
+    }
+    .item-value {
+      display: flex;
+      font-size: $font-size-xs;
+      color: $text-primary;
+    }
+    .card-image {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: $sp-space--sm;
+      .card-text-container {
+        padding-left: $sp-space--sm;
+      }
+      .image-item {
+        height: 70px;
+        width: 70px;
+        min-width: 70px;
+      }
+    }
+    .field-name {
+      display: flex;
+      margin-top: $sp-space--sm;
+    }
+    .field-value {
+      display: flex;
+      margin-top: $sp-space--xxs;
+    }
+  }
+  .my-item-actions-carousel {
+    position: absolute;
+    bottom: $sp-space--lg;
+    right: $sp-space--md;
+    left: $sp-space--md;
+
+    .action-container {
+      justify-content: flex-end;
+      height: 28px;
+
+      .actions{
+        max-width: fit-content;
+      }
+
+      a , button {
+        font-size: 14px;
+      }
+
+      a{
+        padding: $sp-space--xs $sp-space--md;
+      }
+
+      .button-container{
+        justify-content: flex-end;
+      }
+      
+      #action-dropdown{
+        flex-direction: row;
+      }
+    }
+  }
+  .my-item-actions {
+    position: absolute;
+    width: calc(100% - 3.2rem);
+    bottom: $sp-space--lg;
+    left: $sp-space--lg;
+
+    .action-container &amp;gt; .button-container {
+      width: 100%;
+    }
+
+    .action-container &amp;gt; .button-container &amp;gt; .btn{
+      flex: 1 1 0px;
+      justify-content: center;
+      max-width: 100%;
+    }
+  }
+  .card-with-action-carousel {
+    padding-bottom: 52px;
+  }
+  .card-with-action {
+    padding-bottom: 56px;
+  }
+
+  .view-details-container {
+    position: absolute;
+    width: calc(100% - 3.2rem);
+    bottom: $sp-space--lg;
+    left: $sp-space--lg;
+    .view-details {
+      margin-top: $sp-space--sm;
+      width: 100%;
+    }
+  }
+
+  .view-details-container-carousel {
+    position: absolute;
+    bottom: $sp-space--lg;
+    right: $sp-space--md;
+    display: flex;
+    justify-content: flex-end;
+    .view-details {
+      margin-top: $sp-space--sm;
+      height: 28px;
+    }
+
+  }
+
+  .activity-card:focus{
+    box-shadow: 0 0 0 .15rem $input-border-focus;
+    outline: .2rem solid transparent;
+  }
+}
+.fix-width {
+  width: 50%;	
+}	
+.full-fix-width {	
+  width: 100%;	
+}
+
+.field-container {
+  padding-right: 1.0rem;
+  word-break: break-word;
+  -webkit-line-clamp: 1;
+}
+
+.cards-grid-container {
+  display: grid;
+  grid-column-gap: $sp-space--lg;
+  grid-row-gap: $sp-space--lg;
+}
+
+.cards-grid-container:focus{
+  border: none;
+  box-shadow: none;
+}
+
+.grid-single-column {
+  grid-template-columns: 1fr;
+}
+.grid-multi-column {
+  grid-template-columns: repeat(auto-fit,minmax(31.2rem,1fr));
+}
+
+.summary-view-container {
+  display: grid;
+  grid-column-gap: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.view-all-grid-container {
+  display: flex;
+  justify-content: center;
+  margin-top: $sp-space--lg;
+}
+
+/* IE specific Class to override */
+@media screen and (-ms-high-contrast: active),
+  (-ms-high-contrast: none) and (min-width: 992px, (max-width: 380px)){
+    .my-items-container {
+      min-width: auto !important;
+      .list-view {
+        .carousel-card-container {
+          justify-content: flex-start !important;
+          .activity-card {
+            flex: 1 1 242px !important;
+            .card-image &gt; div {
+              width: 100% !important;
+            }
+            .text-ellipsis {
+              width: auto !important;
+            }
+          }
+        }
+      }
+    }
+}
+
+@media (max-width: 992px) {
+  .my-items-container .my-items-body .summary-view-container {
+    grid-column-gap: $sp-space--xxl;
+  }
+}
+
+@media (max-width: 430px) {
+  .my-items-container .my-items-body .summary-view-container {
+    grid-template-columns: 1fr;
+  }
+  .cards-grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (-ms-high-contrast: active),
+  (-ms-high-contrast: none) {
+    .my-items-container{
+      min-width: 362px;
+      .list-view {
+        .view-all {
+          height: 22px;
+        }
+      }
+      .carousel-card-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        .activity-card {
+          p {
+            display: inline;
+          }
+          width: 312px;
+          .card-text-container {
+            .text-ellipsis {
+              width: 203px;
+            }
+          }
+          .text-ellipsis {
+            white-space: nowrap;
+            width: 278px;
+          }
+        }
+      }
+    }
+
+}
+
+.activity-control-circle {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $sp-space--xl;
+  height: $sp-space--xl;
+  border: 1px solid $btn-default-border;
+  border-radius: 50%;
+  padding: 0px;
+}
+
+.cards-flex-container {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  padding: $sp-space--xxs;
+}
+
+.fix-action-overflow{
+  padding-bottom: 100px;
+  margin-bottom: -100px;
+}
+
+.cards-flex-container:focus{
+  border: none;
+  box-shadow: none;
+}
+
+.scrolling-panel {
+  position: relative;
+}
+
+.scrolling-panel .scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+
+.scrolling-panel .slide-control-container{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 1;
+  .btn {
+    font-size: $font-size-base;
+  }
+
+  .glyphicon {
+    top: auto;
+    padding: 3px;
+    border: 1px solid $input-border-focus;
+    border-radius: 50%;
+  }
+}
+.scrolling-panel .slide-control {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0rem 0rem 0.5rem transparent;
+  background: transparent;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+
+}
+
+.scrolling-panel .slide-control:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.scrolling-panel-footer{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.scrolling-panel-footer &gt; :only-child{
+  margin: auto;
+}
+
+.scrolling-panel .left-control {
+  left: 0px;
+  margin-left: -$sp-space--xl;
+}
+
+.scrolling-panel .right-control {
+  right: 0px;
+  margin-right: -$sp-space--xl;
+}
+
+.left-button {
+  left: $sp-space--lg;
+}
+
+.scrolling-panel .fader {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+}
+
+.activity-carousel-indicator-wrapper {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.activity-carousel-indicator-wrapper-mobile {
+  display: flex;
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.activity-carousel-indicator.circle {
+  width: $circle-size;
+  height: $circle-size;
+  margin: $sp-space--xxs;
+  border-radius: 50%;
+  border: 1px solid $brand-primary;
+  overflow: hidden;
+  opacity: 0.5;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+  will-change: background, transform;
+  text-indent: -9999px;
+}
+
+.activity-carousel-indicator.circle[aria-current="page"] {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.activity-carousel-indicator.small {
+  width: $small-circle-size;
+  height: $small-circle-size;
+  margin: $sp-space--xs;
+}
+
+.activity-carousel-indicator.active {
+  background-color: $brand-primary;
+}
+
+.activity-carousel-indicator.hidden {
+  width: 0px;
+  height: 0px;
+  border: 0px;
+}
+
+.right-fade {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%);
+  right: -$sp-space--xl;
+}
+
+.left-fade {
+  background: linear-gradient(90deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+  left: -$sp-space--xl;
+}
+
+.has-icon {
+  background-color: $brand-primary-lightest;
+}
+.empty-icon {
+  background-color: transparent;
+}
+@keyframes progress {
+  0% {
+    background-position: -200px 0;
+  }
+
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+.skeleton-loading {
+  $loader-line-height: 15px;
+  .primary-activity-heading-loader {
+    height: $loader-line-height;
+    width: 100%;
+  }
+  .primary-activity-count-loader {
+    height: $loader-line-height;
+    width: 50%;
+    margin: $sp-space--lg 0 $sp-space--md 0;
+  }
+  .card-loader {
+    border: 1px solid $border-tertiary;
+    padding: $sp-space--lg;
+    padding-bottom: $sp-space--xxl;
+    border-radius: $border-radius-base;
+  }
+  .item-badge-loader {
+    height: $loader-line-height;
+    width: 55%;
+    margin-bottom: $sp-space--md;
+  }
+  .item-title-loader {
+    height: $loader-line-height;
+    width: 100%;
+    margin-bottom: $sp-space--sm;
+  }
+  .item-description-loader {
+    height: 25px;
+    width: 40%;
+    margin-bottom: $sp-space--sm;
+  }
+  .item-field-loader {
+    height: $loader-line-height;
+    width: 50%
+  }
+  .view-all-loader {
+    height: $loader-line-height;
+    width: 50%;
+    margin-top: $sp-space--xl;
+    margin-bottom: $sp-space--md;
+  }
+  .secondary-activity-loader {
+    height: $loader-line-height;
+    width: 100%;
+    margin-bottom: $sp-space--md;
+  }
+  .skeleton-loader {
+    box-sizing: border-box;
+    animation: progress 2s ease-in-out infinite;
+    background: rgb(239, 241, 246) no-repeat;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    background-size: 200px 100%;
+    border-radius: 5px;
+    display: inline-block;
+    &amp;:after,
+    &amp;:before {
+      box-sizing: border-box;
+    }
+  }
+}
+
+ </css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>my_items</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+    controller.keyboardAction = function(event) {
+        if (event.keyCode === 13 || event.keyCode === 32) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.target.click();
+        }
+    };
+}]]></link>
+        <name>My Items</name>
+        <option_schema>[{"name":"list_view_count","section":"other","default_value":"4","label":"List View Count","type":"choice","choices":[{"label":"2","value":"2"},{"label":"3","value":"3"},{"label":"4","value":"4"},{"label":"5","value":"5"},{"label":"6","value":"6"}]},{"name":"load_config","section":"other","default_value":"async","label":"Load configuration","type":"choice","choices":[{"label":"Synchronous","value":"sync"},{"label":"Asynchronous","value":"async"}]},{"name":"card_behaviour","section":"other","default_value":"wrap","label":"Card Behaviour","type":"choice","choices":[{"label":"Single","value":"single"},{"label":"Wrap","value":"wrap"}]},{"name":"show_icons","section":"other","default_value":"true","label":"Show icons","type":"boolean"},{"name":"show_view_details","section":"other","default_value":"true","label":"Show view details when no actions are defined","type":"boolean"}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.load_config = options.load_config;
+    if (data.load_config === "async" && !input)
+        return;
+    data.card_behaviour = options.card_behaviour;
+
+    try {
+        data.recordLimit = options.list_view_count;
+        data.showViewDetails = options.show_view_details;
+        data.showIcons = options.show_icons;
+        var activityConfigUtil = new sn_ex_sp.ActivityConfigurationUtil();
+        data.activityDetails = activityConfigUtil.getActivityData(data.recordLimit);
+        //Map actions with associated card
+        for (var cardDataIndex = 0; cardDataIndex < data.activityDetails.listViewData.length; cardDataIndex++) {
+            var currCardData = data.activityDetails.listViewData[cardDataIndex];
+            if (currCardData.actionsWidgetDetail) {
+                var context = currCardData.actionsWidgetDetail.parentRecordSysId;
+
+                var actionsWidget = $sp.getWidget("action-widget", {
+                    table: currCardData.actionsWidgetDetail.parentTable,
+                    context: context,
+                    action_group: currCardData.actionsWidgetDetail.actionGrpSysId,
+                    max_button_count: 2,
+                    primary_colored_button: true,
+                    more_icon: 'fa-ellipsis-v'
+                });
+
+                currCardData.actionsWidget = actionsWidget;
+                currCardData.actionsContext = context;
+                currCardData.isActionWidgetVisible = true;
+            }
+        }
+
+        data.title = gs.getMessage("My active items");
+        if (data.activityDetails.listViewData && data.activityDetails.listViewData.length > 0) {
+
+            var isSessionLangGerman = gs.getSession().getLanguage() == "de";
+            var itemName = data.activityDetails.primaryCountData.length > 0 ? data.activityDetails.primaryCountData[0].itemName : undefined;
+            //Nouns always start with capital letter in German
+            itemName = isSessionLangGerman ? itemName : itemName.toLowerCase();
+
+            data.listCountSummary = gs.getMessage("Showing {0} of {1} {2}",
+                [data.activityDetails.listViewData.length.toString(),
+                    data.activityDetails.primaryCountData[0].itemCount.toString(), itemName
+                ]);
+            data.noOfCards = data.activityDetails.listViewData.length;
+        }
+        data.hideWidget = false;
+        return data;
+    } catch (e) {
+        data.hideWidget = true;
+        gs.addErrorMessage(gs.getMessage("Error in loading the My Items widget"));
+        return data;
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:29:30</sys_created_on>
+        <sys_id>c2449e17c32466109518b11ed40131fe</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>My Items</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sp_widget_c2449e17c32466109518b11ed40131fe</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:31:58</sys_updated_on>
+        <template><![CDATA[<div ng-if="!isLoading" class="my-items-container panel panel-default b panel-wrapper">
+  <div class="panel-heading b-b">
+    <h3 class="panel-title">{{::data.title}}</h3>
+  </div>
+  <div class="activity-check" ng-if="c.checkForData()">
+    <p class="no-items">${You don't have any items yet.}</p>
+  </div>
+  <div class="my-items-body panel-body">
+    <div class="primary-activity-container" ng-if="c.primaryActivity && c.primaryActivity.totalItemCount > 0">
+      <div ng-init="activity = c.primaryActivity" ng-include="'activity-template'"></div>
+      <div class="list-view" ng-if="c.listViewData.length > 0">
+        <p class="list-count-summary" ng-if="c.data.listCountSummary">{{c.data.listCountSummary}}</p>
+        <div class="carousel-card-container" ng-if="(c.data.card_behaviour=='single')">
+          <div class="scrolling-panel">
+            <div class="slide-control-container left-control" ng-if="c.indicatorDots > 0 && c.activeIndicatorIndex != 0">
+              <div class="slide-control"
+                   ng-click="c.swipeLeft(1, $event)" tabindex="-1" aria-hidden="true">
+              </div>
+              <button  class="btn btn-default activity-control-circle left-button"
+                      aria-label="${Click to swipe the cards to left}" ng-click="c.swipeLeft(1, $event)">
+                <i class="glyphicon glyphicon-menu-left"></i> 
+              </button>
+            </div>
+
+            <div ng-include="'card-template'"></div>
+
+            <div class="slide-control-container right-control" ng-if="c.indicatorDots > 0 && c.activeIndicatorIndex != c.indicatorDots-1">
+              <div class="slide-control"
+                   ng-click="c.swipeRight(1, $event)" tabindex="-1" aria-hidden="true">
+              </div>
+              <button class="btn btn-default activity-control-circle"
+                      aria-label="${Click to swipe the cards to right}" ng-click="c.swipeRight(1, $event)">
+                <i class="glyphicon glyphicon-menu-right"></i> 
+              </button>
+            </div>
+            <div class="fader left-fade" ng-if="c.indicatorDots > 0" ng-show="c.activeIndicatorIndex != 0">
+            </div>
+            <div class="fader right-fade" ng-if="c.indicatorDots > 0"
+                 ng-show="c.activeIndicatorIndex != c.indicatorDots-1"></div>
+          </div>
+          <div class="scrolling-panel-footer">
+            <div ng-class="c.getIndicatorClass()" ng-if="c.indicatorDots > 0">
+              <span ng-repeat="x in [].constructor(c.indicatorDots) track by $index" class="activity-carousel-indicator circle" role="button" tabindex="0"
+                    ng-attr-aria-label="{{'Go to page ' + ($index + 1)}}" id="{{$index + 1}}" ng-click="c.indicatorNavigation($index, $event)"
+                    ng-class="c.getDotClass($index)" ng-attr-aria-current="{{$index === c.activeIndicatorIndex ? 'page' : undefined}}"></span>
+            </div>
+            <div class="view-all-container">
+              <a class="view-all" ng-href="{{c.primaryActivity.itemUrl}}"
+                 target="{{c.primaryActivity.target}}">${View all}
+                <i aria-hidden="true" class="right-arrow fa fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="list-card-container" ng-if="(c.data.card_behaviour=='wrap')">
+          <div ng-include="'card-template'"></div>
+          <div class="view-all-container view-all-grid-container">
+            <a class="view-all" ng-href="{{c.primaryActivity.itemUrl}}"
+               target="{{c.primaryActivity.target}}">${View all}
+              <i aria-hidden="true" class="right-arrow fa fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="summary-view-container">
+      <div ng-repeat="activity in c.activitySummaries track by $index">
+        <div ng-include="'activity-template'"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-if="isLoading" class="skeleton-loading flex-column my-items-container">
+  <div class="panel-heading b-b">
+    <h3 class="panel-title">{{::data.title}}</h3>
+  </div>
+  <div class="my-items-body panel-body">
+    <span class="skeleton-loader primary-activity-heading-loader"></span>
+    <span class="skeleton-loader primary-activity-count-loader"></span>
+    <div class="cards-grid-container">
+      <div class="cards-grid-container" ng-repeat="item in [1,2,3]">
+        <div class="card-loader flex-column">
+          <span class="skeleton-loader item-badge-loader"></span>
+          <span class="skeleton-loader item-title-loader"></span>
+          <span class="skeleton-loader item-description-loader"></span>
+          <span class="skeleton-loader item-field-loader"></span>
+        </div>
+      </div>
+    </div>
+    <span class="skeleton-loader view-all-loader"></span>
+    <div class="summary-view-container">
+      <div class="flex-column" ng-repeat="item in [1,2,3,4]">
+        <span class="skeleton-loader secondary-activity-loader"></span>
+      </div>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

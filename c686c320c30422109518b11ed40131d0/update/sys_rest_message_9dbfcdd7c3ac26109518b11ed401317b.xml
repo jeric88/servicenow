@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message">
     <sys_rest_message action="INSERT_OR_UPDATE">
-        <access>package_private</access>
-        <authentication_type>oauth2</authentication_type>
+        <access>public</access>
+        <authentication_type>no_authentication</authentication_type>
         <basic_auth_password/>
         <basic_auth_profile/>
         <basic_auth_user/>
         <description/>
-        <name>Okta Integration - NEAR</name>
-        <oauth2_profile/>
+        <name>Okta User Creation</name>
+        <oauth2_profile display_value="Okta OAuth Integration default_profile">ba8d59dbc3ec26109518b11ed401319b</oauth2_profile>
         <protocol_name/>
-        <rest_endpoint>https://trial-2843604.workflows.okta.com//api/v1/users</rest_endpoint>
+        <rest_endpoint>https://dev-47736733.okta.com/oauth2/default</rest_endpoint>
         <sys_class_name>sys_rest_message</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-04-01 03:49:16</sys_created_on>
-        <sys_id>4aa420c3c3a4e2109518b11ed401317e</sys_id>
-        <sys_mod_count>12</sys_mod_count>
-        <sys_name>Okta Integration - NEAR</sys_name>
+        <sys_created_on>2025-04-02 01:31:12</sys_created_on>
+        <sys_id>9dbfcdd7c3ac26109518b11ed401317b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Okta User Creation</sys_name>
         <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
         <sys_policy/>
         <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
-        <sys_update_name>sys_rest_message_4aa420c3c3a4e2109518b11ed401317e</sys_update_name>
+        <sys_update_name>sys_rest_message_9dbfcdd7c3ac26109518b11ed401317b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-04-02 16:21:19</sys_updated_on>
+        <sys_updated_on>2025-04-02 02:47:00</sys_updated_on>
         <use_basic_auth>false</use_basic_auth>
         <use_mutual_auth>false</use_mutual_auth>
     </sys_rest_message>

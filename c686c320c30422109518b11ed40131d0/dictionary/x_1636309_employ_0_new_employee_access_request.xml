@@ -20,9 +20,9 @@
         <element display="true" label="Requested For" max_length="32" name="requested_for" reference="x_1636309_employ_0_custom_users" type="reference"/>
         <element choice="3" default="Pending" label="Approval Status" max_length="255" name="approval_status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Rejected" sequence="1" value="Rejected"/>
-                <element inactive_on_update="false" label="Pending" sequence="2" value="Pending"/>
-                <element inactive_on_update="false" label="Approved" sequence="0" value="Approve"/>
+                <element inactive_on_update="false" label="Rejected" sequence="2" value="Rejected"/>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="Pending"/>
+                <element inactive_on_update="false" label="Approved" sequence="1" value="Approve"/>
             </choice>
         </element>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Request Number" max_length="40" name="number" type="string"/>

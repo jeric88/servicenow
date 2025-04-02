@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="DELETE">
+        <child display_value="Copy of My Requests">adfc869bc3e066109518b11ed401315e</child>
+        <cloned>2025-04-02 05:57:31</cloned>
+        <last_validated>2025-04-02 05:57:31</last_validated>
+        <parent display_value="My Requests">f1672671d7301200a9addd173e24d47d</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;standard&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function ($location, $rootScope) {
+	var c = this;
+	this.filterText = "";
+	this.showFilter = false;
+
+	this.onClick = function($event, item, url, action) {
+		$event.stopPropagation();
+		$event.preventDefault();
+		if (url)
+			$location.search(url);
+		else {
+			var evt = {};
+			evt.url = url;
+			evt.table = c.data.table;
+			evt.sys_id = item.sys_id;
+			evt.record = item;
+			evt.rectangle_id = c.data.sys_id;
+			evt.action = action;
+			// put out the selection with simple list "sl_" prefix
+			$location.search('sl_sys_id', evt.sys_id);
+			$location.search('sl_table', evt.table);
+			$location.search('spa', 1); // spa means "I've got this"
+			$rootScope.$broadcast('$sp.list.click', evt);
+		}
+	};
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.panel-heading {
+  position: relative;
+  &amp;gt; .fa-filter { 
+    position: absolute;
+    top: 1rem; 
+    right: 1rem; 
+  }
+}
+
+.list-group-item &amp;gt; a {
+	display: inline-block;
+}
+
+input[ng-model="c.filterText"]:-moz-focusring {
+	border-style: solid;
+	border-color: $input-border-focus;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list&gt;title,color&lt;/field_list&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id/&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link/&gt;&lt;name&gt;My Requests&lt;/name&gt;&lt;option_schema&gt;[{"hint":"Number of records to show","name":"maximum_entries","section":"Presentation","label":"Maximum entries","type":"integer"}]&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+	if (!options.maximum_entries)
+		options.maximum_entries = 20;
+	var gr = new GlideRecordSecure('sc_request'); // does ACL checking for us
+	gr.addActiveQuery();
+	options.title = options.title || gr.getPlural();
+	data.display_field = 'sys_created_on';
+	data.secondary_fields = ['number','sys_updated_on'];
+	data.filterMsg = gs.getMessage("Filter...");
+
+	gr = $sp.addQueryString(gr, 'requested_for=javascript:gs.getUserID()');
+	gr.orderByDesc('sys_created_on');
+	gr.query();
+	data.count = gr.getRowCount();
+	data.list = [];
+	var recordIdx = 0;
+	while (gr.next()) {
+		if (recordIdx == options.maximum_entries)
+			break;
+
+		var record = {};
+		record.sys_id = gr.getValue('sys_id');
+		var ritm = new GlideRecord("sc_req_item");
+		ritm.addQuery("request", gr.getUniqueValue());
+		ritm.query();
+		if (ritm.getRowCount() == 0)
+			continue;
+
+		if (ritm.getRowCount() &gt; 1)
+			record.display_field = gs.getMessage("{0} requested items", ritm.getRowCount());
+		else {
+			ritm.next();
+			record.display_field = ritm.cat_item.getDisplayValue() || ritm.getDisplayValue("short_description");
+		}
+
+		record.secondary_fields = [];
+		data.secondary_fields.forEach(function(f) {
+			record.secondary_fields.push(getField(gr, f));
+		});
+
+		record.url = {id: 'sc_request', table: 'sc_request', sys_id: record.sys_id};
+		data.list.push(record);
+		recordIdx++;
+	}
+
+	function getField(gr, name) {
+		var f = {};
+		f.display_value = gr.getDisplayValue(name);
+		f.value = gr.getValue(name);
+		var ge = gr.getElement(name);
+		f.type = ge.getED().getInternalType()
+		f.label = ge.getLabel();
+		return f;
+	}
+
+})()
+]]&gt;&lt;/script&gt;&lt;servicenow&gt;true&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-01-07 19:08:14&lt;/sys_created_on&gt;&lt;sys_id&gt;f1672671d7301200a9addd173e24d47d&lt;/sys_id&gt;&lt;sys_mod_count&gt;92&lt;/sys_mod_count&gt;&lt;sys_name&gt;My Requests&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal - Core" source="com.glide.service-portal"&gt;d4ccb11819c312104f3423cebaaa8565&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_f1672671d7301200a9addd173e24d47d&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-02-22 16:20:34&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div class="panel panel-{{c.options.color}} b" ng-if="c.always_show ||c.data.list.length"&gt;
+  &lt;div class="panel-heading" &gt;
+    &lt;h4 class="panel-title"&gt;{{c.options.title}}&lt;/h4&gt;
+    &lt;i class="fa fa-filter" tabindex="0" ng-click="c.showFilter = !myreq.showFilter;" aria-expanded="{{c.showFilter}}" title="${Show filters for:} {{c.options.title}}" aria-label="${Show filters for:} {{c.options.title}}" data-toggle="tooltip" data-placement="left" role="button"&gt;&lt;/i&gt;
+    &lt;div ng-show="c.showFilter"&gt;
+      &lt;input ng-model="c.filterText" sn-focus="c.showFilter" style="color: grey; width: 100%; margin-top: .5em;" placeholder="{{data.filterMsg}}" title="{{data.filterMsg}}" data-toggle="tooltip" data-placement="bottom" aria-label="{{data.filterMsg}}"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="list-group" style="max-height: none; overflow-y: auto;"&gt;
+    &lt;div class="list-group-item" ng-repeat="item in c.data.list | filter:c.filterText" &gt;
+      &lt;a  ng-click="c.onClick($event, item, item.url, {})" href="javascript:void(0)"&gt; 
+        &lt;div ng-class="{'l-h-40': !item.secondary_fields.length}"&gt;{{item.display_field}}&lt;/div&gt;
+        &lt;small class="text-muted" ng-repeat="f in item.secondary_fields"&gt;
+          &lt;span ng-if="!$first"&gt; • &lt;/span&gt;
+          &lt;span ng-switch="f.type" title="{{::f.label}}"&gt;
+            &lt;span ng-switch-when="glide_date"&gt;&lt;sn-time-ago timestamp="::f.value"&gt;&lt;/sn-time-ago&gt;&lt;/span&gt;
+            &lt;span ng-switch-when="glide_date_time"&gt;&lt;sn-time-ago timestamp="::f.value"&gt;&lt;/sn-time-ago&gt;&lt;/span&gt;
+            &lt;span ng-switch-default=""&gt;{{f.display_value}}&lt;/span&gt;
+          &lt;/span&gt;
+        &lt;/small&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="panel-footer" ng-if="c.options.maximum_entries &amp;&amp; c.data.count &gt; c.options.maximum_entries"&gt;
+    &lt;h4 class="panel-title"&gt;${First {{c.options.maximum_entries}} of {{c.data.count}} shown}&lt;/h4&gt;
+  &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 05:57:31</sys_created_on>
+        <sys_id>21fc869bc3e066109518b11ed4013162</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>adfc869bc3e066109518b11ed401315e</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_21fc869bc3e066109518b11ed4013162</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 05:57:31</sys_updated_on>
+    </sp_rel_widget_clone>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sp_rel_widget_clone_21fc869bc3e066109518b11ed4013162</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone"><sp_rel_widget_clone action="INSERT_OR_UPDATE"><child display_value="Copy of My Requests">adfc869bc3e066109518b11ed401315e</child><cloned>2025-04-02 05:57:31</cloned><last_validated>2025-04-02 05:57:31</last_validated><parent display_value="My Requests">f1672671d7301200a9addd173e24d47d</parent><payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;standard&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function ($location, $rootScope) {
+	var c = this;
+	this.filterText = "";
+	this.showFilter = false;
+
+	this.onClick = function($event, item, url, action) {
+		$event.stopPropagation();
+		$event.preventDefault();
+		if (url)
+			$location.search(url);
+		else {
+			var evt = {};
+			evt.url = url;
+			evt.table = c.data.table;
+			evt.sys_id = item.sys_id;
+			evt.record = item;
+			evt.rectangle_id = c.data.sys_id;
+			evt.action = action;
+			// put out the selection with simple list "sl_" prefix
+			$location.search('sl_sys_id', evt.sys_id);
+			$location.search('sl_table', evt.table);
+			$location.search('spa', 1); // spa means "I've got this"
+			$rootScope.$broadcast('$sp.list.click', evt);
+		}
+	};
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.panel-heading {
+  position: relative;
+  &amp;gt; .fa-filter { 
+    position: absolute;
+    top: 1rem; 
+    right: 1rem; 
+  }
+}
+
+.list-group-item &amp;gt; a {
+	display: inline-block;
+}
+
+input[ng-model="c.filterText"]:-moz-focusring {
+	border-style: solid;
+	border-color: $input-border-focus;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list&gt;title,color&lt;/field_list&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id/&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link/&gt;&lt;name&gt;My Requests&lt;/name&gt;&lt;option_schema&gt;[{"hint":"Number of records to show","name":"maximum_entries","section":"Presentation","label":"Maximum entries","type":"integer"}]&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+	if (!options.maximum_entries)
+		options.maximum_entries = 20;
+	var gr = new GlideRecordSecure('sc_request'); // does ACL checking for us
+	gr.addActiveQuery();
+	options.title = options.title || gr.getPlural();
+	data.display_field = 'sys_created_on';
+	data.secondary_fields = ['number','sys_updated_on'];
+	data.filterMsg = gs.getMessage("Filter...");
+
+	gr = $sp.addQueryString(gr, 'requested_for=javascript:gs.getUserID()');
+	gr.orderByDesc('sys_created_on');
+	gr.query();
+	data.count = gr.getRowCount();
+	data.list = [];
+	var recordIdx = 0;
+	while (gr.next()) {
+		if (recordIdx == options.maximum_entries)
+			break;
+
+		var record = {};
+		record.sys_id = gr.getValue('sys_id');
+		var ritm = new GlideRecord("sc_req_item");
+		ritm.addQuery("request", gr.getUniqueValue());
+		ritm.query();
+		if (ritm.getRowCount() == 0)
+			continue;
+
+		if (ritm.getRowCount() &gt; 1)
+			record.display_field = gs.getMessage("{0} requested items", ritm.getRowCount());
+		else {
+			ritm.next();
+			record.display_field = ritm.cat_item.getDisplayValue() || ritm.getDisplayValue("short_description");
+		}
+
+		record.secondary_fields = [];
+		data.secondary_fields.forEach(function(f) {
+			record.secondary_fields.push(getField(gr, f));
+		});
+
+		record.url = {id: 'sc_request', table: 'sc_request', sys_id: record.sys_id};
+		data.list.push(record);
+		recordIdx++;
+	}
+
+	function getField(gr, name) {
+		var f = {};
+		f.display_value = gr.getDisplayValue(name);
+		f.value = gr.getValue(name);
+		var ge = gr.getElement(name);
+		f.type = ge.getED().getInternalType()
+		f.label = ge.getLabel();
+		return f;
+	}
+
+})()
+]]&gt;&lt;/script&gt;&lt;servicenow&gt;true&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-01-07 19:08:14&lt;/sys_created_on&gt;&lt;sys_id&gt;f1672671d7301200a9addd173e24d47d&lt;/sys_id&gt;&lt;sys_mod_count&gt;92&lt;/sys_mod_count&gt;&lt;sys_name&gt;My Requests&lt;/sys_name&gt;&lt;sys_package display_value="Service Portal - Core" source="com.glide.service-portal"&gt;d4ccb11819c312104f3423cebaaa8565&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_f1672671d7301200a9addd173e24d47d&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2024-02-22 16:20:34&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div class="panel panel-{{c.options.color}} b" ng-if="c.always_show ||c.data.list.length"&gt;
+  &lt;div class="panel-heading" &gt;
+    &lt;h4 class="panel-title"&gt;{{c.options.title}}&lt;/h4&gt;
+    &lt;i class="fa fa-filter" tabindex="0" ng-click="c.showFilter = !myreq.showFilter;" aria-expanded="{{c.showFilter}}" title="${Show filters for:} {{c.options.title}}" aria-label="${Show filters for:} {{c.options.title}}" data-toggle="tooltip" data-placement="left" role="button"&gt;&lt;/i&gt;
+    &lt;div ng-show="c.showFilter"&gt;
+      &lt;input ng-model="c.filterText" sn-focus="c.showFilter" style="color: grey; width: 100%; margin-top: .5em;" placeholder="{{data.filterMsg}}" title="{{data.filterMsg}}" data-toggle="tooltip" data-placement="bottom" aria-label="{{data.filterMsg}}"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="list-group" style="max-height: none; overflow-y: auto;"&gt;
+    &lt;div class="list-group-item" ng-repeat="item in c.data.list | filter:c.filterText" &gt;
+      &lt;a  ng-click="c.onClick($event, item, item.url, {})" href="javascript:void(0)"&gt; 
+        &lt;div ng-class="{'l-h-40': !item.secondary_fields.length}"&gt;{{item.display_field}}&lt;/div&gt;
+        &lt;small class="text-muted" ng-repeat="f in item.secondary_fields"&gt;
+          &lt;span ng-if="!$first"&gt; • &lt;/span&gt;
+          &lt;span ng-switch="f.type" title="{{::f.label}}"&gt;
+            &lt;span ng-switch-when="glide_date"&gt;&lt;sn-time-ago timestamp="::f.value"&gt;&lt;/sn-time-ago&gt;&lt;/span&gt;
+            &lt;span ng-switch-when="glide_date_time"&gt;&lt;sn-time-ago timestamp="::f.value"&gt;&lt;/sn-time-ago&gt;&lt;/span&gt;
+            &lt;span ng-switch-default=""&gt;{{f.display_value}}&lt;/span&gt;
+          &lt;/span&gt;
+        &lt;/small&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="panel-footer" ng-if="c.options.maximum_entries &amp;&amp; c.data.count &gt; c.options.maximum_entries"&gt;
+    &lt;h4 class="panel-title"&gt;${First {{c.options.maximum_entries}} of {{c.data.count}} shown}&lt;/h4&gt;
+  &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload><sys_class_name>sp_rel_widget_clone</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-02 05:57:31</sys_created_on><sys_id>21fc869bc3e066109518b11ed4013162</sys_id><sys_mod_count>0</sys_mod_count><sys_name>adfc869bc3e066109518b11ed401315e</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sp_rel_widget_clone_21fc869bc3e066109518b11ed4013162</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-02 05:57:31</sys_updated_on></sp_rel_widget_clone></record_update>]]></payload>
+        <payload_hash>-1943014963</payload_hash>
+        <record_name>adfc869bc3e066109518b11ed401315e</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 05:57:31</sys_created_on>
+        <sys_id>65fc869bc3e066109518b11ed4013164</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195f51381f60000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 05:57:31</sys_updated_on>
+        <type>Widget Clone</type>
+        <update_guid>69fc869b97e066100c0ba4cb5e556863</update_guid>
+        <update_guid_history>69fc869b97e066100c0ba4cb5e556863:-1943014963</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">d32d0e9bc3e066109518b11ed40131f5</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 05:58:27</sys_created_on>
+        <sys_db_object display_value="" name="sp_rel_widget_clone">sp_rel_widget_clone</sys_db_object>
+        <sys_id>1f9c7f3ede6d49af89149e84f9c82529</sys_id>
+        <sys_metadata>21fc869bc3e066109518b11ed4013162</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>adfc869bc3e066109518b11ed401315e</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sp_rel_widget_clone_21fc869bc3e066109518b11ed4013162</sys_update_name>
+        <sys_update_version display_value="sp_rel_widget_clone_21fc869bc3e066109518b11ed4013162">65fc869bc3e066109518b11ed4013164</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 05:58:27</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

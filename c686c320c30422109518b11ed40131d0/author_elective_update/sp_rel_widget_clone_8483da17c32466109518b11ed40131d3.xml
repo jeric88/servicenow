@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone">
+    <sp_rel_widget_clone action="DELETE">
+        <child display_value="Copy of Approval Request Items">8883da17c32466109518b11ed40131cf</child>
+        <cloned>2025-04-02 06:26:04</cloned>
+        <last_validated>2025-04-02 06:26:04</last_validated>
+        <parent display_value="Approval Request Items">2c5ef86fc7073300271beb861dc26063</parent>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function ($scope, spModal, spUtil) {
+  var c = this;
+  $scope.$on('record.updated', function(name, data) {
+    spUtil.update($scope);
+  });
+
+	c.openRelatedRecord = function(widgetId, widgetInput, title) {
+	spModal.open({
+		title: title,
+		buttons: [],
+		widget: widgetId,
+		widgetInput: widgetInput,
+		size: 'lg'});
+  };
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.options-btn {&amp;#13;
+    border:none;&amp;#13;
+    background-image:none;&amp;#13;
+    background-color:transparent;&amp;#13;
+    -webkit-box-shadow: none;&amp;#13;
+    -moz-box-shadow: none;&amp;#13;
+    box-shadow: none;&amp;#13;
+    margin-left: -8px;&amp;#13;
+    margin-right: -8px;&amp;#13;
+}&amp;#13;
+&amp;#13;
+.req-item {&amp;#13;
+	margin-left: 20px;&amp;#13;
+}
+.options-btn:focus {
+  	outline: 0.2rem solid $primary !important;
+    outline-offset: -0.4rem;
+}
+
+.req-item-title {
+	padding-left: 0.4rem;
+}
+&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description&gt;Widget to display the individual items of the approval request to the approving user&lt;/description&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;approval_request_items&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {  }]]&gt;&lt;/link&gt;&lt;name&gt;Approval Request Items&lt;/name&gt;&lt;option_schema&gt;[{"name":"requested_items_header","section":"other","default_value":"Requested Items","label":"Related Requested Items Widget Header","type":"string"}]&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles&gt;snc_external,snc_internal&lt;/roles&gt;&lt;script&gt;&lt;![CDATA[(function(){
+	var approvalTaskGr;
+    data.modalWidgetId = '5736bf52cb30020000f8d856634c9c2d';
+    var approvalSysId = $sp.getParameter('sys_id');
+    var approvalGr = new GlideRecord('sysapproval_approver');
+    approvalGr.get(approvalSysId);
+	//In case of manual approval task, document_id field is not set, instead sysapproval field is set
+	if (approvalGr.document_id) {
+		approvalTaskGr = approvalGr.document_id;
+	} else if (approvalGr.sysapproval){
+		approvalTaskGr = approvalGr.sysapproval;
+	}
+		
+    if (approvalTaskGr.getRefRecord().getRecordClassName() == 'sc_request') {
+        var requestItems = new global.CaseApprovalUtils().getApprovalRequestItems(approvalSysId);
+       var requestInfo = {};
+       requestInfo['number'] = approvalTaskGr.getRefRecord().number+'';
+       requestInfo['sys_id'] = approvalTaskGr.getRefRecord().sys_id+'';
+       requestInfo['items'] = requestItems;
+       data.request = requestInfo;
+   }    
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2019-08-09 19:26:41&lt;/sys_created_on&gt;&lt;sys_id&gt;2c5ef86fc7073300271beb861dc26063&lt;/sys_id&gt;&lt;sys_mod_count&gt;111&lt;/sys_mod_count&gt;&lt;sys_name&gt;Approval Request Items&lt;/sys_name&gt;&lt;sys_package display_value="Customer Service Portal Classic" source="com.glide.service-portal.customer-portal"&gt;411ff996c3a022109518b11ed401314d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_2c5ef86fc7073300271beb861dc26063&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-03-16 04:48:23&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div id="request-items" class="panel panel-primary b" ng-if="c.data.request"&gt;
+   &lt;div class="panel-heading"&gt;
+      &lt;h2 class="panel-title"&gt;${{{c.options.requested_items_header}}}&lt;/h2&gt;
+   &lt;/div&gt;
+   &lt;div class="panel-body"&gt;
+      &lt;div class="row"&gt;
+         &lt;div class="col-md-12 col-sm-12 col-xs-12"&gt;
+           &lt;div is-open="status.open[$index]" ng-init="status.open[$index] = true"&gt;
+             &lt;button class="options-btn" ng-click="status.open[$index] = !status.open[$index]" aria-expanded="{{status.open[$index]}}" aria-label="${'Request details'}"&gt;
+               &lt;span class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open[$index], 'glyphicon-chevron-down': !status.open[$index]}"&gt;&lt;/span&gt;
+             &lt;/button&gt; 
+             &lt;label class="m-n req-item-title"&gt;{{data.request.number}}&lt;/label&gt;
+             &lt;div ng-if="status.open[$index]" id="req-item-toggle" aria-hidden="{{!status.open[$index]}}"&gt;
+               &lt;div ng-repeat="item in data.request.items" aria-live="polite" class="text-overflow-ellipsis req-item"&gt;
+                 &lt;a href="javascript:void(0)" ng-click="c.openRelatedRecord(data.modalWidgetId, 
+                 {table: item.table, sys_id: item.sys_id}, 
+                 ${item.cat_item})"&gt;
+                 {{item.number}}
+                 &lt;span&gt; - &lt;/span&gt;
+                 {{item.short_desc}}
+                 &lt;/a&gt;
+               &lt;/div&gt;
+             &lt;/div&gt;
+           &lt;/div&gt;
+         &lt;/div&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload>
+        <sys_class_name>sp_rel_widget_clone</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:26:04</sys_created_on>
+        <sys_id>8483da17c32466109518b11ed40131d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>8883da17c32466109518b11ed40131cf</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sp_rel_widget_clone_8483da17c32466109518b11ed40131d3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:26:04</sys_updated_on>
+    </sp_rel_widget_clone>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sp_rel_widget_clone_8483da17c32466109518b11ed40131d3</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rel_widget_clone"><sp_rel_widget_clone action="INSERT_OR_UPDATE"><child display_value="Copy of Approval Request Items">8883da17c32466109518b11ed40131cf</child><cloned>2025-04-02 06:26:04</cloned><last_validated>2025-04-02 06:26:04</last_validated><parent display_value="Approval Request Items">2c5ef86fc7073300271beb861dc26063</parent><payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sp_widget&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function ($scope, spModal, spUtil) {
+  var c = this;
+  $scope.$on('record.updated', function(name, data) {
+    spUtil.update($scope);
+  });
+
+	c.openRelatedRecord = function(widgetId, widgetInput, title) {
+	spModal.open({
+		title: title,
+		buttons: [],
+		widget: widgetId,
+		widgetInput: widgetInput,
+		size: 'lg'});
+  };
+}]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.options-btn {&amp;#13;
+    border:none;&amp;#13;
+    background-image:none;&amp;#13;
+    background-color:transparent;&amp;#13;
+    -webkit-box-shadow: none;&amp;#13;
+    -moz-box-shadow: none;&amp;#13;
+    box-shadow: none;&amp;#13;
+    margin-left: -8px;&amp;#13;
+    margin-right: -8px;&amp;#13;
+}&amp;#13;
+&amp;#13;
+.req-item {&amp;#13;
+	margin-left: 20px;&amp;#13;
+}
+.options-btn:focus {
+  	outline: 0.2rem solid $primary !important;
+    outline-offset: -0.4rem;
+}
+
+.req-item-title {
+	padding-left: 0.4rem;
+}
+&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description&gt;Widget to display the individual items of the approval request to the approving user&lt;/description&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;approval_request_items&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {  }]]&gt;&lt;/link&gt;&lt;name&gt;Approval Request Items&lt;/name&gt;&lt;option_schema&gt;[{"name":"requested_items_header","section":"other","default_value":"Requested Items","label":"Related Requested Items Widget Header","type":"string"}]&lt;/option_schema&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles&gt;snc_external,snc_internal&lt;/roles&gt;&lt;script&gt;&lt;![CDATA[(function(){
+	var approvalTaskGr;
+    data.modalWidgetId = '5736bf52cb30020000f8d856634c9c2d';
+    var approvalSysId = $sp.getParameter('sys_id');
+    var approvalGr = new GlideRecord('sysapproval_approver');
+    approvalGr.get(approvalSysId);
+	//In case of manual approval task, document_id field is not set, instead sysapproval field is set
+	if (approvalGr.document_id) {
+		approvalTaskGr = approvalGr.document_id;
+	} else if (approvalGr.sysapproval){
+		approvalTaskGr = approvalGr.sysapproval;
+	}
+		
+    if (approvalTaskGr.getRefRecord().getRecordClassName() == 'sc_request') {
+        var requestItems = new global.CaseApprovalUtils().getApprovalRequestItems(approvalSysId);
+       var requestInfo = {};
+       requestInfo['number'] = approvalTaskGr.getRefRecord().number+'';
+       requestInfo['sys_id'] = approvalTaskGr.getRefRecord().sys_id+'';
+       requestInfo['items'] = requestItems;
+       data.request = requestInfo;
+   }    
+})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2019-08-09 19:26:41&lt;/sys_created_on&gt;&lt;sys_id&gt;2c5ef86fc7073300271beb861dc26063&lt;/sys_id&gt;&lt;sys_mod_count&gt;111&lt;/sys_mod_count&gt;&lt;sys_name&gt;Approval Request Items&lt;/sys_name&gt;&lt;sys_package display_value="Customer Service Portal Classic" source="com.glide.service-portal.customer-portal"&gt;411ff996c3a022109518b11ed401314d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_2c5ef86fc7073300271beb861dc26063&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-03-16 04:48:23&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div id="request-items" class="panel panel-primary b" ng-if="c.data.request"&gt;
+   &lt;div class="panel-heading"&gt;
+      &lt;h2 class="panel-title"&gt;${{{c.options.requested_items_header}}}&lt;/h2&gt;
+   &lt;/div&gt;
+   &lt;div class="panel-body"&gt;
+      &lt;div class="row"&gt;
+         &lt;div class="col-md-12 col-sm-12 col-xs-12"&gt;
+           &lt;div is-open="status.open[$index]" ng-init="status.open[$index] = true"&gt;
+             &lt;button class="options-btn" ng-click="status.open[$index] = !status.open[$index]" aria-expanded="{{status.open[$index]}}" aria-label="${'Request details'}"&gt;
+               &lt;span class="glyphicon" ng-class="{'glyphicon-chevron-up': status.open[$index], 'glyphicon-chevron-down': !status.open[$index]}"&gt;&lt;/span&gt;
+             &lt;/button&gt; 
+             &lt;label class="m-n req-item-title"&gt;{{data.request.number}}&lt;/label&gt;
+             &lt;div ng-if="status.open[$index]" id="req-item-toggle" aria-hidden="{{!status.open[$index]}}"&gt;
+               &lt;div ng-repeat="item in data.request.items" aria-live="polite" class="text-overflow-ellipsis req-item"&gt;
+                 &lt;a href="javascript:void(0)" ng-click="c.openRelatedRecord(data.modalWidgetId, 
+                 {table: item.table, sys_id: item.sys_id}, 
+                 ${item.cat_item})"&gt;
+                 {{item.number}}
+                 &lt;span&gt; - &lt;/span&gt;
+                 {{item.short_desc}}
+                 &lt;/a&gt;
+               &lt;/div&gt;
+             &lt;/div&gt;
+           &lt;/div&gt;
+         &lt;/div&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;</payload><sys_class_name>sp_rel_widget_clone</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-02 06:26:04</sys_created_on><sys_id>8483da17c32466109518b11ed40131d3</sys_id><sys_mod_count>0</sys_mod_count><sys_name>8883da17c32466109518b11ed40131cf</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sp_rel_widget_clone_8483da17c32466109518b11ed40131d3</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-02 06:26:04</sys_updated_on></sp_rel_widget_clone></record_update>]]></payload>
+        <payload_hash>807820482</payload_hash>
+        <record_name>8883da17c32466109518b11ed40131cf</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:26:05</sys_created_on>
+        <sys_id>c883da17c32466109518b11ed40131d5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195f52da8430000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:26:05</sys_updated_on>
+        <type>Widget Clone</type>
+        <update_guid>cc83da17c124661060fab7266698e0d4</update_guid>
+        <update_guid_history>cc83da17c124661060fab7266698e0d4:807820482</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">d1e31a57c32466109518b11ed4013131</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 06:27:48</sys_created_on>
+        <sys_db_object display_value="" name="sp_rel_widget_clone">sp_rel_widget_clone</sys_db_object>
+        <sys_id>1703f60ad6c34b80b9abef0a077209e4</sys_id>
+        <sys_metadata>8483da17c32466109518b11ed40131d3</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>8883da17c32466109518b11ed40131cf</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sp_rel_widget_clone_8483da17c32466109518b11ed40131d3</sys_update_name>
+        <sys_update_version display_value="sp_rel_widget_clone_8483da17c32466109518b11ed40131d3">c883da17c32466109518b11ed40131d5</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 06:27:48</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

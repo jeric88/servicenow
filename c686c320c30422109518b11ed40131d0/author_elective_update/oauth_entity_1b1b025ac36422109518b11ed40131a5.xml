@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity">
+    <oauth_entity action="DELETE">
+        <access>public</access>
+        <access_token_lifespan>1800</access_token_lifespan>
+        <active>true</active>
+        <auth_code_lifespan>60</auth_code_lifespan>
+        <auth_url/>
+        <certificate_url/>
+        <client_id>167bf1c654dd4581ae998ba9588fbb2d</client_id>
+        <client_secret>﷞﷟﷒316ab79bc3f312109518b11ed40131e8﷬﷔1﷬﷭tKibCNcD6kSjQznm-2Uxuw==4SpHn65p9bcUqKVYg4Ag16xM3qlwjqRGYTPQWyD_XNqFRRIS﷮﷯</client_secret>
+        <client_type>integration_as_a_service</client_type>
+        <client_uuid>d71b025ac36422109518b11ed40131a5</client_uuid>
+        <code_challenge_method>S256</code_challenge_method>
+        <comments/>
+        <default_grant_type>password</default_grant_type>
+        <id_token_lifespan>86400</id_token_lifespan>
+        <jwt_provider/>
+        <login_url/>
+        <logo_url/>
+        <message_signature_lifespan>60</message_signature_lifespan>
+        <mobile_client>false</mobile_client>
+        <name>OKTA API Integration</name>
+        <oauth_api_script/>
+        <protocol_name/>
+        <public_client>false</public_client>
+        <redirect_url>https://dev293354.service-now.com/oauth_redirect.do</redirect_url>
+        <refresh_token_lifespan>8640000</refresh_token_lifespan>
+        <refresh_token_url/>
+        <restricted_binding>false</restricted_binding>
+        <revoke_token_url/>
+        <salt/>
+        <send_client_credentials_as>request_body_parameter</send_client_credentials_as>
+        <skip_authorize>false</skip_authorize>
+        <sys_class_name>oauth_entity</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-03-30 03:17:49</sys_created_on>
+        <sys_id>1b1b025ac36422109518b11ed40131a5</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>OKTA API Integration</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>oauth_entity_1b1b025ac36422109518b11ed40131a5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-03-31 16:11:36</sys_updated_on>
+        <token_url/>
+        <type>client</type>
+        <use_mutual_auth>false</use_mutual_auth>
+        <user/>
+    </oauth_entity>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>oauth_entity_1b1b025ac36422109518b11ed40131a5</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity"><oauth_entity action="INSERT_OR_UPDATE"><access>public</access><access_token_lifespan>1800</access_token_lifespan><active>true</active><auth_code_lifespan>60</auth_code_lifespan><auth_url/><certificate_url/><client_id>167bf1c654dd4581ae998ba9588fbb2d</client_id><client_secret>﷞﷟﷒316ab79bc3f312109518b11ed40131e8﷬﷔1﷬﷭tKibCNcD6kSjQznm-2Uxuw==4SpHn65p9bcUqKVYg4Ag16xM3qlwjqRGYTPQWyD_XNqFRRIS﷮﷯</client_secret><client_type>integration_as_a_service</client_type><client_uuid>d71b025ac36422109518b11ed40131a5</client_uuid><code_challenge_method>S256</code_challenge_method><comments/><default_grant_type>password</default_grant_type><id_token_lifespan>86400</id_token_lifespan><jwt_provider/><login_url/><logo_url/><message_signature_lifespan>60</message_signature_lifespan><mobile_client>false</mobile_client><name>OKTA API Integration</name><oauth_api_script/><protocol_name/><public_client>false</public_client><redirect_url>https://dev293354.service-now.com/oauth_redirect.do</redirect_url><refresh_token_lifespan>8640000</refresh_token_lifespan><refresh_token_url/><restricted_binding>false</restricted_binding><revoke_token_url/><salt/><send_client_credentials_as>request_body_parameter</send_client_credentials_as><skip_authorize>false</skip_authorize><sys_class_name>oauth_entity</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-03-30 03:17:49</sys_created_on><sys_id>1b1b025ac36422109518b11ed40131a5</sys_id><sys_mod_count>2</sys_mod_count><sys_name>OKTA API Integration</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>oauth_entity_1b1b025ac36422109518b11ed40131a5</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-03-31 16:11:36</sys_updated_on><token_url/><type>client</type><use_mutual_auth>false</use_mutual_auth><user/></oauth_entity></record_update>]]></payload>
+        <payload_hash>125464740</payload_hash>
+        <record_name>OKTA API Integration</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-03-31 16:11:36</sys_created_on>
+        <sys_id>e1560232c328a2109518b11ed4013121</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195ecf9007e0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-03-31 16:11:36</sys_updated_on>
+        <type>Application Registries</type>
+        <update_guid>295602320f28a21030c91fb1399d3d20</update_guid>
+        <update_guid_history>295602320f28a21030c91fb1399d3d20:125464740,6d2682360728a210be3e3413f7702495:229147667,89abca5a5b642210a825ee658d6d5e3a:1590891558</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="OKTA API Integration">f93cd15bc3ec26109518b11ed401317d</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 02:24:31</sys_created_on>
+        <sys_db_object display_value="" name="oauth_entity">oauth_entity</sys_db_object>
+        <sys_id>2cefe8056a554d1e9f7f245a8b352549</sys_id>
+        <sys_metadata>1b1b025ac36422109518b11ed40131a5</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>OKTA API Integration</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>oauth_entity_1b1b025ac36422109518b11ed40131a5</sys_update_name>
+        <sys_update_version display_value="oauth_entity_1b1b025ac36422109518b11ed40131a5">e1560232c328a2109518b11ed4013121</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 02:24:31</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
