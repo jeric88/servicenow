@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_headers">
+    <sys_rest_message_headers action="DELETE">
+        <name>Authorization</name>
+        <rest_message display_value="Okta Integration - NEAR">4aa420c3c3a4e2109518b11ed401317e</rest_message>
+        <sys_class_name>sys_rest_message_headers</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-01 03:58:02</sys_created_on>
+        <sys_id>fbd7ac4bc324e2109518b11ed40131df</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Authorization</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sys_rest_message_headers_fbd7ac4bc324e2109518b11ed40131df</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 15:58:35</sys_updated_on>
+        <value>SSWS 95f1e13db0d2e88ef3e6734b7595b7d2256f197ca49aac85d9a642778b06f2b4</value>
+    </sys_rest_message_headers>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sys_rest_message_headers_fbd7ac4bc324e2109518b11ed40131df</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_headers"><sys_rest_message_headers action="INSERT_OR_UPDATE"><name>Authorization</name><rest_message display_value="Okta Integration - NEAR">4aa420c3c3a4e2109518b11ed401317e</rest_message><sys_class_name>sys_rest_message_headers</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-01 03:58:02</sys_created_on><sys_id>fbd7ac4bc324e2109518b11ed40131df</sys_id><sys_mod_count>4</sys_mod_count><sys_name>Authorization</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sys_rest_message_headers_fbd7ac4bc324e2109518b11ed40131df</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-02 15:58:35</sys_updated_on><value>SSWS 95f1e13db0d2e88ef3e6734b7595b7d2256f197ca49aac85d9a642778b06f2b4</value></sys_rest_message_headers></record_update>]]></payload>
+        <payload_hash>836791027</payload_hash>
+        <record_name>Authorization</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-02 15:58:35</sys_created_on>
+        <sys_id>d68618e3c3ec66109518b11ed40131e2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>195f739ce280000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-02 15:58:35</sys_updated_on>
+        <type>HTTP Headers</type>
+        <update_guid>9e8618e3baec661018d73bd095dffee1</update_guid>
+        <update_guid_history>9e8618e3baec661018d73bd095dffee1:836791027,9ed47c87ade4e21062ed24f86b573a13:947379849,5bd2f8839ae4e210e1fe3a21f23f7f32:1516405464,0990b88387e4e2106e553256db7026be:1339958724,3908e4c771a4e2109929a9db3e34f869:1516405464</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-05 23:42:31</sys_created_on>
+        <sys_db_object display_value="" name="sys_rest_message_headers">sys_rest_message_headers</sys_db_object>
+        <sys_id>0561bf9585ea4d8f80254b3da1fa8a11</sys_id>
+        <sys_metadata>fbd7ac4bc324e2109518b11ed40131df</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Authorization</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sys_rest_message_headers_fbd7ac4bc324e2109518b11ed40131df</sys_update_name>
+        <sys_update_version display_value="sys_rest_message_headers_fbd7ac4bc324e2109518b11ed40131df">d68618e3c3ec66109518b11ed40131e2</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 23:42:31</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message">
+    <sys_rest_message action="DELETE">
+        <access>package_private</access>
+        <authentication_type>no_authentication</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <description/>
+        <name>Okta Integration - NEAR</name>
+        <oauth2_profile/>
+        <protocol_name/>
+        <rest_endpoint>https://trial-2843604.workflows.okta.com/api/flo/1f3c49ddabf72d2b84d4279ebaafc025/invoke?clientToken=95f1e13db0d2e88ef3e6734b7595b7d2256f197ca49aac85d9a642778b06f2b4</rest_endpoint>
+        <sys_class_name>sys_rest_message</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-01 03:49:16</sys_created_on>
+        <sys_id>4aa420c3c3a4e2109518b11ed401317e</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>Okta Integration - NEAR</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sys_rest_message_4aa420c3c3a4e2109518b11ed401317e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 23:40:43</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sys_rest_message_4aa420c3c3a4e2109518b11ed401317e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message"><sys_rest_message action="INSERT_OR_UPDATE"><access>package_private</access><authentication_type>no_authentication</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><description/><name>Okta Integration - NEAR</name><oauth2_profile/><protocol_name/><rest_endpoint>https://trial-2843604.workflows.okta.com/api/flo/1f3c49ddabf72d2b84d4279ebaafc025/invoke?clientToken=95f1e13db0d2e88ef3e6734b7595b7d2256f197ca49aac85d9a642778b06f2b4</rest_endpoint><sys_class_name>sys_rest_message</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-01 03:49:16</sys_created_on><sys_id>4aa420c3c3a4e2109518b11ed401317e</sys_id><sys_mod_count>14</sys_mod_count><sys_name>Okta Integration - NEAR</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sys_rest_message_4aa420c3c3a4e2109518b11ed401317e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-05 23:40:43</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mutual_auth>false</use_mutual_auth></sys_rest_message></record_update>]]></payload>
+        <payload_hash>488636080</payload_hash>
+        <record_name>Okta Integration - NEAR</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-05 23:40:43</sys_created_on>
+        <sys_id>151d1924c3b862109518b11ed4013179</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1960853fb840000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 23:40:43</sys_updated_on>
+        <type>REST Message</type>
+        <update_guid>991d192485b86210abc4f021d7f0f578</update_guid>
+        <update_guid_history>991d192485b86210abc4f021d7f0f578:488636080,1d3855ecc6786210a74c5ca8ac3695a7:-14323977,ebbb546b20ec66106eb682128f44d636:-1187700916,378ad0ab1eec6610482ce12ec8e03b6b:-190476146,01f9946b9aec6610bedb0ac8cc5f18fb:-2026494205,70999c2b91ec6610f74622e541374588:-1944428918,fc0818e39fec661058800e7f4e84374f:488636080,69371467a8ec6610eb6cc8084b1372ca:428480171,9d33d42fb36c6610f230ca56b1e1a7dc:-609018662,a7d630cbf5e4e210213c4d1f79a5b925:1460167044,3fb37c47efe4e2100935baf114667958:-1969252542,e693300750e4e2105242f5dd87a441af:-1606038531,17d2f88357e4e210c48cfae62b1c7435:964308648,9b91b883a2e4e210a9a90bb40975f9d0:1887085835,19062c07bca4e210764eb2390b25b36e:-1969252542</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-05 23:42:32</sys_created_on>
+        <sys_db_object display_value="" name="sys_rest_message">sys_rest_message</sys_db_object>
+        <sys_id>34f745f8be144498a6767e15cee70840</sys_id>
+        <sys_metadata>4aa420c3c3a4e2109518b11ed401317e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Okta Integration - NEAR</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sys_rest_message_4aa420c3c3a4e2109518b11ed401317e</sys_update_name>
+        <sys_update_version display_value="sys_rest_message_4aa420c3c3a4e2109518b11ed401317e">151d1924c3b862109518b11ed4013179</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 23:42:32</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

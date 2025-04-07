@@ -11,7 +11,7 @@
         <column_label>Request Status</column_label>
         <comments/>
         <create_roles/>
-        <default_value/>
+        <default_value>Pending</default_value>
         <defaultsort/>
         <delete_roles/>
         <dependent/>
@@ -53,7 +53,7 @@
         <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
         <sys_update_name>sys_dictionary_x_1636309_employ_0_new_employee_access_request_request_status</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-04-01 05:39:53</sys_updated_on>
+        <sys_updated_on>2025-04-06 00:20:03</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

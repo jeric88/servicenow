@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_1636309_employ_0_new_employee_access_request</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_1636309_employ_0_new_employee_access_request">approval_status=Approve^approval_statusCHANGESTOApprove^EQ<item display_value="Approved" endquery="false" field="approval_status" goto="false" newquery="false" operator="=" or="false" value="Approve"/>
+            <item display_value="Approved" endquery="false" field="approval_status" goto="false" newquery="false" operator="CHANGESTO" or="false" value="Approve"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Trigger Okta API After Approval</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+    // Make sure the request is approved
+    if (current.approval == 'approved' && current.state.changesTo('Approved')) {
+
+		// Parse the incoming Okta response
+		var r = new sn_ws.RESTMessageV2('Okta Integration - NEAR', 'Create Okta User');
+
+		var payload = JSON.stringify({
+			firstname: current.variables.first_name.toString(),
+			lastname: current.variables.last_name.toString(),
+			secondEmail: current.variables.personal_email.toString(),
+			department: current.variables.department.toString(),
+			branch: current.variables.branch.toString(),
+			jobTitle: current.variables.job_title.toString(),
+			mobileNumber: current.variables.mobile_number.toString(),
+			employee_manager_s_name: current.variables.employee_manager_s_name.toString(),
+			requestNumber: current.number.toString()
+		});
+
+		r.setRequestBody(payload);
+		r.setRequestHeader("Content-Type", "application/json");
+
+		try {
+			var response = r.execute();
+			var responseBody = response.getBody();
+			var httpStatus = response.getStatusCode();
+
+			var responseObj = JSON.parse(responseBody);
+
+			// Extract the Okta response data
+			var login = responseObj.profile?.login || '';
+			var email = responseObj.profile?.email || '';
+			var empNumber = responseObj.profile?.employeeNumber || '';
+			var password = responseObj.tempPassword || ''; // if Okta returns it directly
+			var comment = responseObj.comment || 'User created successfully in Okta';
+			var requestNumber = responseObj.requestNumber || '';
+
+			// Find the specific record in ServiceNow using the request number
+			var gr = new GlideRecord('New Employee Access Request');
+			if (gr.get('number', requestNumber)) {
+				// Update fields with the Okta response data
+				gr.company_username = login;
+				gr.company_email = email;
+				gr.employee_number = empNumber;
+				gr.okta_temp_password = password;
+				gr.okta_comment = comment;
+
+				gr.okta_status = 'completed';  // Your own process status
+				gr.update();
+
+				gs.info('Okta user created: ' + login + ', employee #: ' + empNumber);
+			} else {
+				gs.error('Request number not found: ' + requestNumber);
+			}
+
+		} catch (ex) {
+			gs.error('Okta integration failed: ' + ex.message);
+		}
+	}
+})(current, previous);
+]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-04 01:19:46</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f82f9f3fc32022109518b11ed401310b</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Trigger Okta API After Approval</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sys_script_f82f9f3fc32022109518b11ed401310b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-07 05:55:46</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=f82f9f3fc32022109518b11ed401310b"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>f82f9f3fc32022109518b11ed401310b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-06 00:15:10</sys_created_on>
+        <sys_id>7df46d2cc3b862109518b11ed40131a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-06 00:15:10</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

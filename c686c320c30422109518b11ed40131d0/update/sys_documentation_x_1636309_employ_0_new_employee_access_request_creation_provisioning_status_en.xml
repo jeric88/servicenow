@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_documentation element="request_status" label="Request Status" language="en" table="x_1636309_employ_0_new_employee_access_request">
+    <sys_documentation element="creation_provisioning_status" label="Creation/Provisioning Status" language="en" table="x_1636309_employ_0_new_employee_access_request">
         <sys_documentation action="INSERT_OR_UPDATE">
-            <element>request_status</element>
+            <element>creation_provisioning_status</element>
             <help/>
             <hint/>
-            <label>Request Status</label>
+            <label>Creation/Provisioning Status</label>
             <language>en</language>
             <name>x_1636309_employ_0_new_employee_access_request</name>
             <plural/>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-04-01 05:39:53</sys_created_on>
+            <sys_created_on>2025-04-05 02:30:00</sys_created_on>
             <sys_mod_count>7</sys_mod_count>
-            <sys_name>Request Status</sys_name>
+            <sys_name>Creation/Provisioning Status</sys_name>
             <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
             <sys_policy/>
             <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
-            <sys_update_name>sys_documentation_x_1636309_employ_0_new_employee_access_request_request_status_en</sys_update_name>
+            <sys_update_name>sys_documentation_x_1636309_employ_0_new_employee_access_request_creation_provisioning_status_en</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-04-06 00:18:39</sys_updated_on>
+            <sys_updated_on>2025-04-07 02:40:09</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

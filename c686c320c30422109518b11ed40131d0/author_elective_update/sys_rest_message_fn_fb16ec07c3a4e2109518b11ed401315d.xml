@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="DELETE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content>{&#13;
+ "profile": {&#13;
+  "firstname": "first_name",&#13;
+  "lastname": "last_name",&#13;
+  "secondEmail": "personal_email",&#13;
+  "department": "department",&#13;
+  "branch": "branch",&#13;
+  "jobTitle": "job_title",&#13;
+  "mobileNumber": "mobile_number",&#13;
+  "employee_manager_s_name": "employee_manager_s_name",&#13;
+  "requestNumber": "number"&#13;
+  }&#13;
+}</content>
+        <function_name>Create Okta User</function_name>
+        <http_method>post</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>Okta Integration - NEAR [ Create Okta User ]</qualified_name>
+        <rest_endpoint>https://trial-2843604.workflows.okta.com/api/flo/1f3c49ddabf72d2b84d4279ebaafc025/invoke?clientToken=95f1e13db0d2e88ef3e6734b7595b7d2256f197ca49aac85d9a642778b06f2b4</rest_endpoint>
+        <rest_message display_value="Okta Integration - NEAR">4aa420c3c3a4e2109518b11ed401317e</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-01 03:56:03</sys_created_on>
+        <sys_id>fb16ec07c3a4e2109518b11ed401315d</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>Create Okta User</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sys_rest_message_fn_fb16ec07c3a4e2109518b11ed401315d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 23:31:35</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sys_rest_message_fn_fb16ec07c3a4e2109518b11ed401315d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn"><sys_rest_message_fn action="INSERT_OR_UPDATE"><authentication_type>inherit_from_parent</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><content>{&#13;
+ "profile": {&#13;
+  "firstname": "first_name",&#13;
+  "lastname": "last_name",&#13;
+  "secondEmail": "personal_email",&#13;
+  "department": "department",&#13;
+  "branch": "branch",&#13;
+  "jobTitle": "job_title",&#13;
+  "mobileNumber": "mobile_number",&#13;
+  "employee_manager_s_name": "employee_manager_s_name",&#13;
+  "requestNumber": "number"&#13;
+  }&#13;
+}</content><function_name>Create Okta User</function_name><http_method>post</http_method><lock>false</lock><oauth2_profile/><protocol_name/><qualified_name>Okta Integration - NEAR [ Create Okta User ]</qualified_name><rest_endpoint>https://trial-2843604.workflows.okta.com/api/flo/1f3c49ddabf72d2b84d4279ebaafc025/invoke?clientToken=95f1e13db0d2e88ef3e6734b7595b7d2256f197ca49aac85d9a642778b06f2b4</rest_endpoint><rest_message display_value="Okta Integration - NEAR">4aa420c3c3a4e2109518b11ed401317e</rest_message><sys_class_name>sys_rest_message_fn</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-01 03:56:03</sys_created_on><sys_id>fb16ec07c3a4e2109518b11ed401315d</sys_id><sys_mod_count>27</sys_mod_count><sys_name>Create Okta User</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sys_rest_message_fn_fb16ec07c3a4e2109518b11ed401315d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-05 23:31:35</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mid_server/><use_mutual_auth>false</use_mutual_auth></sys_rest_message_fn></record_update>]]></payload>
+        <payload_hash>2096383028</payload_hash>
+        <record_name>Create Okta User</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-05 23:31:35</sys_created_on>
+        <sys_id>d7fa55a0c3b862109518b11ed40131d9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196084b9de00000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 23:31:35</sys_updated_on>
+        <type>HTTP Method</type>
+        <update_guid>5ffa55a088b862102e4d61f8dfb170d8</update_guid>
+        <update_guid_history>5ffa55a088b862102e4d61f8dfb170d8:2096383028,e127d5682e786210ccbb1649aabc1cd1:-442178487,a0e6dd682e78621094125015ccb37eda:2096383028,4d651de8ec786210df017b84e9e0d20a:-502519658,00f491e8797862100f95033b889c1554:-502988335,b514dd688c786210a0a00fc7a56bee23:-42864518,85eb4daca438621005301e5585fb2d1d:-583080403,4ebbc1ecbc386210abfaac0b9e448089:-42864518,f25b496865386210bc7c947ef3a7207e:-583080403,454ed51cca74221009b41c5d50e48f49:723300667,abec99989d74221035705a609f444fec:752737577,0bb3bcd008b022104786c9006476d539:-777843877,fedc5c54df3022102d2c744d4b738926:-739017479,837c1c54b8302210d16fe27cd99fa7d8:2004077093,a2aa14ab5dec661051e954938118ce1c:-42864518,a2c9dc2b62ec661040e00b3ac00d5bcc:2113358776,af995ce790ec66106249e430fca6f6bd:-1644384800,9f08d4e33eec6610e7cf2e540488781c:-42864518,56479c6742ec66102b78fb2d9d262a2e:-340901921,80431823b1ec6610e1685b0b20f93228:-1394688880,1627f40ba1e4e210fe8c4c3e8859f35c:1364088954,7ee670cb35e4e2101d3a77183eec2e37:-1422065096,dbc3b4472be4e2101df25f53ad954f4e:1364088954,83a3b88777e4e210fe3be6b5eaf72cf2:-1198359905,2ae2b007b7e4e21020b7c6f44955fa91:-1288726270,64b1f083bae4e2103dc486cc43e1c99e:-1902963073,55cfa08f99a4e210c8fea66bea34cb3c:1364088954,70976c8789a4e21063133b20e9e44555:1822398872</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-05 23:42:31</sys_created_on>
+        <sys_db_object display_value="" name="sys_rest_message_fn">sys_rest_message_fn</sys_db_object>
+        <sys_id>0edad824893c4785822ad25681f166e9</sys_id>
+        <sys_metadata>fb16ec07c3a4e2109518b11ed401315d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Create Okta User</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sys_rest_message_fn_fb16ec07c3a4e2109518b11ed401315d</sys_update_name>
+        <sys_update_version display_value="sys_rest_message_fn_fb16ec07c3a4e2109518b11ed401315d">d7fa55a0c3b862109518b11ed40131d9</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 23:42:31</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

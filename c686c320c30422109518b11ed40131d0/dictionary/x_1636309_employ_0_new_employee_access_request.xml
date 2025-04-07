@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="955079dac34022109518b11ed4013147" label="New Employee Access Request" max_length="40" name="x_1636309_employ_0_new_employee_access_request" type="collection">
+        <element label="Okta Temp Password" max_length="40" name="okta_temp_password" type="string"/>
         <element label="Employee Manager's Name" max_length="40" name="employee_manager_s_name" type="string"/>
-        <element choice="3" label="Request Status" max_length="40" name="request_status" type="choice">
+        <element label="Employee Number" max_length="40" name="employee_number" type="string"/>
+        <element choice="3" default="Pending" label="Request Status" max_length="40" name="request_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Unprocessed" sequence="2" value="unprocessed"/>
                 <element inactive_on_update="false" label="Completed" sequence="1" value="completed"/>
@@ -17,7 +19,7 @@
                 <element inactive_on_update="false" label="Branch 1" sequence="0" value="Branch 1"/>
             </choice>
         </element>
-        <element display="true" label="Requested For" max_length="32" name="requested_for" reference="x_1636309_employ_0_custom_users" type="reference"/>
+        <element label="Requested For" max_length="32" name="requested_for" reference="x_1636309_employ_0_custom_users" type="reference"/>
         <element choice="3" default="Pending" label="Approval Status" max_length="255" name="approval_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Rejected" sequence="2" value="Rejected"/>
@@ -25,8 +27,17 @@
                 <element inactive_on_update="false" label="Approved" sequence="1" value="Approve"/>
             </choice>
         </element>
+        <element choice="1" default="Pending" label="Creation/Provisioning Status" max_length="40" name="creation_provisioning_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Ready" sequence="1" value="ready"/>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
+                <element inactive_on_update="false" label="Completed" sequence="2" value="completed"/>
+                <element inactive_on_update="false" label="Failed" sequence="3" value="failed"/>
+            </choice>
+        </element>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Request Number" max_length="40" name="number" type="string"/>
         <element label="Personal Email" max_length="40" name="personal_email" type="string"/>
+        <element label="OKTA Comment" max_length="40" name="okta_comment" type="string"/>
         <element label="First Name" max_length="40" name="first_name" type="string"/>
         <element choice="3" label="Employee Access Request" max_length="40" name="employee_access_request" type="choice">
             <choice>
@@ -34,6 +45,8 @@
                 <element inactive_on_update="false" label="No" sequence="1" value="No"/>
             </choice>
         </element>
+        <element label="Company Email" max_length="40" name="company_email" type="string"/>
+        <element display="true" label="Company Username" max_length="40" name="company_username" type="string"/>
         <element choice="3" label="Employee Onboarding Type" max_length="40" name="employee_onboarding_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="New Hire" sequence="0" value="New Hire"/>
