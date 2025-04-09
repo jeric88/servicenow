@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+    <sys_db_object action="DELETE">
+        <access/>
+        <actions_access>true</actions_access>
+        <alter_access>true</alter_access>
+        <caller_access/>
+        <client_scripts_access>true</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>true</create_access>
+        <create_access_controls>false</create_access_controls>
+        <delete_access>false</delete_access>
+        <is_extendable>false</is_extendable>
+        <label>Okta User Provisioning</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_1636309_employ_0_okta_user_provisioning</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-05 00:13:01</sys_created_on>
+        <sys_id>ecead8d0c33022109518b11ed401317a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Employ 0 Okta User Provisioning</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>sys_db_object_ecead8d0c33022109518b11ed401317a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 00:13:01</sys_updated_on>
+        <update_access>true</update_access>
+        <user_role/>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>sys_db_object_ecead8d0c33022109518b11ed401317a</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object"><sys_db_object action="INSERT_OR_UPDATE"><access/><actions_access>true</actions_access><alter_access>true</alter_access><caller_access/><client_scripts_access>true</client_scripts_access><configuration_access>false</configuration_access><create_access>true</create_access><create_access_controls>false</create_access_controls><delete_access>false</delete_access><is_extendable>false</is_extendable><label>Okta User Provisioning</label><live_feed_enabled>false</live_feed_enabled><name>x_1636309_employ_0_okta_user_provisioning</name><number_ref/><provider_class/><read_access>true</read_access><scriptable_table>false</scriptable_table><super_class/><sys_class_name>sys_db_object</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-04-05 00:13:01</sys_created_on><sys_id>ecead8d0c33022109518b11ed401317a</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Employ 0 Okta User Provisioning</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>sys_db_object_ecead8d0c33022109518b11ed401317a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-05 00:13:01</sys_updated_on><update_access>true</update_access><user_role/><ws_access>true</ws_access></sys_db_object></record_update>]]></payload>
+        <payload_hash>1282974810</payload_hash>
+        <record_name>Okta User Provisioning</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-05 00:13:02</sys_created_on>
+        <sys_id>f4ead8d0c33022109518b11ed40131b4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196034b34e30000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-05 00:13:02</sys_updated_on>
+        <type>Table</type>
+        <update_guid>f8ead8d00d302210232fecefaa7960b3</update_guid>
+        <update_guid_history>f8ead8d00d302210232fecefaa7960b3:1282974810</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-09 01:38:44</sys_created_on>
+        <sys_db_object display_value="" name="sys_db_object">sys_db_object</sys_db_object>
+        <sys_id>570618c92dd343f6abdffd4a81613211</sys_id>
+        <sys_metadata>ecead8d0c33022109518b11ed401317a</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Employ 0 Okta User Provisioning</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>sys_db_object_ecead8d0c33022109518b11ed401317a</sys_update_name>
+        <sys_update_version display_value="sys_db_object_ecead8d0c33022109518b11ed401317a">f4ead8d0c33022109518b11ed40131b4</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-09 01:38:44</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

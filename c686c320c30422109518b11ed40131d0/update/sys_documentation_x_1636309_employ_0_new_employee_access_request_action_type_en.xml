@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="action_type" label="Action Type" language="en" table="x_1636309_employ_0_new_employee_access_request">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>action_type</element>
+            <help/>
+            <hint/>
+            <label>Action Type</label>
+            <language>en</language>
+            <name>x_1636309_employ_0_new_employee_access_request</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-04-09 01:54:34</sys_created_on>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_name>Action Type</sys_name>
+            <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+            <sys_update_name>sys_documentation_x_1636309_employ_0_new_employee_access_request_action_type_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-04-09 01:54:35</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

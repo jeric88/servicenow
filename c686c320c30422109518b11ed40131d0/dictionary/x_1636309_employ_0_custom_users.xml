@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="90384cd9c36022109518b11ed40131fa" label="Custom Users" max_length="40" name="x_1636309_employ_0_custom_users" type="collection">
-        <element choice="1" label="Role" max_length="40" name="role" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Employee" sequence="0" value="employee"/>
-                <element inactive_on_update="false" label="Manager" sequence="2" value="manager"/>
-                <element inactive_on_update="false" label="Team Lead" sequence="3" value="team_lead"/>
-                <element inactive_on_update="false" label="Supervisor" sequence="1" value="supervisor"/>
-            </choice>
-        </element>
+        <element label="Role" max_length="40" name="role" type="string"/>
         <element label="Branch" max_length="32" name="branch" reference="x_1636309_employ_0_branch" type="reference"/>
         <element label="Department" max_length="32" name="department" reference="x_1636309_employ_0_department" type="reference"/>
         <element label="Email" max_length="40" name="email" type="string"/>

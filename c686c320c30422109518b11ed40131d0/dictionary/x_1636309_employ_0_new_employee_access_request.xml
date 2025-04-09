@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="955079dac34022109518b11ed4013147" label="New Employee Access Request" max_length="40" name="x_1636309_employ_0_new_employee_access_request" type="collection">
+    <element db_object_id="955079dac34022109518b11ed4013147" label="Employee Request" max_length="40" name="x_1636309_employ_0_new_employee_access_request" type="collection">
+        <element choice="1" label="Action Type" max_length="40" name="action_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Deactivate" sequence="1" value="deactivate"/>
+                <element inactive_on_update="false" label="Reassign" sequence="2" value="reassign"/>
+                <element inactive_on_update="false" label="Provision" sequence="0" value="provision"/>
+            </choice>
+        </element>
         <element label="Okta Temp Password" max_length="40" name="okta_temp_password" type="string"/>
         <element label="Employee Manager's Name" max_length="40" name="employee_manager_s_name" type="string"/>
         <element label="Employee Number" max_length="40" name="employee_number" type="string"/>
@@ -10,15 +17,11 @@
                 <element inactive_on_update="false" label="In progress" sequence="0" value="in_progress"/>
             </choice>
         </element>
+        <element label="Reason for deactivation" max_length="40" name="reason_for_deactivation" type="string"/>
         <element label="Department" max_length="32" name="department" reference="x_1636309_employ_0_department" type="reference"/>
         <element default="YYYY-MM-DD" label="Deployment Date" max_length="255" name="deployment_date" type="glide_date"/>
         <element default="+1" label="Mobile Number" max_length="255" name="mobile_number" type="phone_number_e164"/>
-        <element choice="3" label="Branch" max_length="40" name="branch" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Branch 2" sequence="1" value="Branch 2"/>
-                <element inactive_on_update="false" label="Branch 1" sequence="0" value="Branch 1"/>
-            </choice>
-        </element>
+        <element label="Branch" max_length="32" name="branch" reference="x_1636309_employ_0_branch" type="reference"/>
         <element label="Requested For" max_length="32" name="requested_for" reference="x_1636309_employ_0_custom_users" type="reference"/>
         <element choice="3" default="Pending" label="Approval Status" max_length="255" name="approval_status" type="choice">
             <choice>
@@ -45,16 +48,13 @@
                 <element inactive_on_update="false" label="No" sequence="1" value="No"/>
             </choice>
         </element>
+        <element label="User to deactivate" max_length="32" name="user_to_deactivate" reference="x_1636309_employ_0_custom_users" type="reference"/>
         <element label="Company Email" max_length="40" name="company_email" type="string"/>
         <element display="true" label="Company Username" max_length="40" name="company_username" type="string"/>
-        <element choice="3" label="Employee Onboarding Type" max_length="40" name="employee_onboarding_type" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="New Hire" sequence="0" value="New Hire"/>
-                <element inactive_on_update="false" label="Rehire" sequence="1" value="Rehire"/>
-                <element inactive_on_update="false" label="Reassignment" sequence="2" value="Reassignment"/>
-            </choice>
-        </element>
         <element label="Last Name" max_length="40" name="last_name" type="string"/>
         <element label="Job Title" max_length="40" name="job_title" type="string"/>
+        <index name="index">
+            <element name="user_to_deactivate"/>
+        </index>
     </element>
 </database>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice">
+    <question_choice action="DELETE">
+        <inactive>false</inactive>
+        <order>100</order>
+        <published_ref/>
+        <question display_value="Employee Onboarding Type">ae6885c9c3c022109518b11ed40131e5</question>
+        <sys_class_name>question_choice</sys_class_name>
+        <sys_created_by>aes.creator</sys_created_by>
+        <sys_created_on>2025-03-01 04:41:22</sys_created_on>
+        <sys_id>daa8c9c9c3c022109518b11ed4013193</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Provision</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>question_choice_daa8c9c9c3c022109518b11ed4013193</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-09 01:51:16</sys_updated_on>
+        <text>Provision</text>
+        <value>New Hire</value>
+    </question_choice>
+    <fx_price action="DELETE" query="id=daa8c9c9c3c022109518b11ed4013193"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>question_choice_daa8c9c9c3c022109518b11ed4013193</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>100</order><published_ref/><question display_value="Employee Onboarding Type">ae6885c9c3c022109518b11ed40131e5</question><sys_class_name>question_choice</sys_class_name><sys_created_by>aes.creator</sys_created_by><sys_created_on>2025-03-01 04:41:22</sys_created_on><sys_id>daa8c9c9c3c022109518b11ed4013193</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Provision</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>question_choice_daa8c9c9c3c022109518b11ed4013193</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-09 01:51:16</sys_updated_on><text>Provision</text><value>New Hire</value></question_choice><fx_price action="delete_multiple" query="id=daa8c9c9c3c022109518b11ed4013193"/></record_update>]]></payload>
+        <payload_hash>-287610877</payload_hash>
+        <record_name>Provision</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-09 01:51:16</sys_created_on>
+        <sys_id>0fb795edc3b822109518b11ed40131f1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196183e95380000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-09 01:51:16</sys_updated_on>
+        <type>Question Choice</type>
+        <update_guid>83b795ed29b8221070b6f612f028a9f1</update_guid>
+        <update_guid_history>83b795ed29b8221070b6f612f028a9f1:-287610877,ef7694df63002210f319deb2f0d56938:-397591671,9aa8c9c98ac02210cf77f989255093a8:897785160</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Provision">6518ddedc3b822109518b11ed4013125</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-09 01:52:49</sys_created_on>
+        <sys_db_object display_value="" name="question_choice">question_choice</sys_db_object>
+        <sys_id>585419bf48b843d1bf535d4c17a58189</sys_id>
+        <sys_metadata>daa8c9c9c3c022109518b11ed4013193</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Provision</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>question_choice_daa8c9c9c3c022109518b11ed4013193</sys_update_name>
+        <sys_update_version display_value="question_choice_daa8c9c9c3c022109518b11ed4013193">0fb795edc3b822109518b11ed40131f1</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-09 01:52:49</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

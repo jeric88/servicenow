@@ -15,43 +15,5 @@
             <sys_updated_by>aes.creator</sys_updated_by>
             <sys_updated_on>2025-03-08 00:49:56</sys_updated_on>
         </sys_choice_set>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>branch</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Branch 1</label>
-            <language>en</language>
-            <name>x_1636309_employ_0_new_employee_access_request</name>
-            <sequence>0</sequence>
-            <synonyms/>
-            <sys_created_by>aes.creator</sys_created_by>
-            <sys_created_on>2025-03-08 00:49:56</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>aes.creator</sys_updated_by>
-            <sys_updated_on>2025-03-08 00:49:56</sys_updated_on>
-            <value>Branch 1</value>
-        </sys_choice>
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>branch</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Branch 2</label>
-            <language>en</language>
-            <name>x_1636309_employ_0_new_employee_access_request</name>
-            <sequence>1</sequence>
-            <synonyms/>
-            <sys_created_by>aes.creator</sys_created_by>
-            <sys_created_on>2025-03-08 00:49:56</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>aes.creator</sys_updated_by>
-            <sys_updated_on>2025-03-08 00:49:56</sys_updated_on>
-            <value>Branch 2</value>
-        </sys_choice>
     </sys_choice>
 </record_update>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice">
+    <question_choice action="DELETE">
+        <inactive>false</inactive>
+        <order>200</order>
+        <published_ref/>
+        <question display_value="Employee Onboarding Type">ae6885c9c3c022109518b11ed40131e5</question>
+        <sys_class_name>question_choice</sys_class_name>
+        <sys_created_by>aes.creator</sys_created_by>
+        <sys_created_on>2025-03-01 04:41:22</sys_created_on>
+        <sys_id>16a8c9c9c3c022109518b11ed40131aa</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Deactivate</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_update_name>question_choice_16a8c9c9c3c022109518b11ed40131aa</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-09 01:51:32</sys_updated_on>
+        <text>Deactivate</text>
+        <value>Deactivate</value>
+    </question_choice>
+    <fx_price action="DELETE" query="id=16a8c9c9c3c022109518b11ed40131aa"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</application>
+        <file_path/>
+        <instance_id>e54985e22b53d614323ef9f66e91bfbd</instance_id>
+        <instance_name>dev293354</instance_name>
+        <name>question_choice_16a8c9c9c3c022109518b11ed40131aa</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>200</order><published_ref/><question display_value="Employee Onboarding Type">ae6885c9c3c022109518b11ed40131e5</question><sys_class_name>question_choice</sys_class_name><sys_created_by>aes.creator</sys_created_by><sys_created_on>2025-03-01 04:41:22</sys_created_on><sys_id>16a8c9c9c3c022109518b11ed40131aa</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Deactivate</sys_name><sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package><sys_policy/><sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope><sys_update_name>question_choice_16a8c9c9c3c022109518b11ed40131aa</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-04-09 01:51:32</sys_updated_on><text>Deactivate</text><value>Deactivate</value></question_choice><fx_price action="delete_multiple" query="id=16a8c9c9c3c022109518b11ed40131aa"/></record_update>]]></payload>
+        <payload_hash>-1881446136</payload_hash>
+        <record_name>Deactivate</record_name>
+        <reverted_from/>
+        <source>502c9a56c32022109518b11ed4013136</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-09 01:51:32</sys_created_on>
+        <sys_id>bec719edc3b822109518b11ed4013165</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>196183ed2820000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-09 01:51:32</sys_updated_on>
+        <type>Question Choice</type>
+        <update_guid>3ac7d5adf5b822108cd54493a33e1119</update_guid>
+        <update_guid_history>3ac7d5adf5b822108cd54493a33e1119:-1881446136,ab7694df79002210e1fc990dfa0ab143:530938011,1ea8c9c98ec0221050bb6794561854b2:1492759675</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Deactivate">2118ddedc3b822109518b11ed401310c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-09 01:52:49</sys_created_on>
+        <sys_db_object display_value="" name="question_choice">question_choice</sys_db_object>
+        <sys_id>1e9e895b58d54c7396907d84a68fa5d9</sys_id>
+        <sys_metadata>16a8c9c9c3c022109518b11ed40131aa</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Deactivate</sys_name>
+        <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
+        <sys_scope_delete display_value="">35780f8897214290aa627c3dc29fb100</sys_scope_delete>
+        <sys_update_name>question_choice_16a8c9c9c3c022109518b11ed40131aa</sys_update_name>
+        <sys_update_version display_value="question_choice_16a8c9c9c3c022109518b11ed40131aa">bec719edc3b822109518b11ed4013165</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-09 01:52:49</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
