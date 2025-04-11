@@ -7,7 +7,7 @@
         <billable>false</billable>
         <can_cancel>false</can_cancel>
         <category display_value="Application and Account Access">22555319db0150104327198d1396195c</category>
-        <checked_out/>
+        <checked_out>true</checked_out>
         <cost>0</cost>
         <custom_cart/>
         <delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan>
@@ -55,7 +55,7 @@
 * To access the variables, use `producer.var1` where var1 is the name of the variable
 * To access the Record Producer use `cat_item`
 */]]></post_insert_script>
-        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=0241616dc3f822109518b11ed40131e8&amp;sysparm_preview=true", "summary");</preview>
+        <preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=bf5c3f2dc33862109518b11ed4013172&amp;sysparm_preview=true", "summary");</preview>
         <price>0</price>
         <published_ref/>
         <recurring_frequency/>
@@ -81,22 +81,22 @@
 * Avoid `current.setAbortAction()` and generate a separate record
 * Use `producer.var1` to access variables
 */]]></script>
-        <short_description>Employee Action Request</short_description>
+        <short_description>Request Action</short_description>
         <show_variable_help_on_load>false</show_variable_help_on_load>
         <start_closed>false</start_closed>
-        <state/>
+        <state>published</state>
         <sys_class_name>sc_cat_item_producer</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-04-09 02:33:00</sys_created_on>
-        <sys_id>0241616dc3f822109518b11ed40131e8</sys_id>
+        <sys_created_on>2025-04-09 13:50:35</sys_created_on>
+        <sys_id>bf5c3f2dc33862109518b11ed4013172</sys_id>
         <sys_mod_count>8</sys_mod_count>
         <sys_name>Employee Request</sys_name>
         <sys_package display_value="New Employee Access Request" source="x_1636309_employ_0">c686c320c30422109518b11ed40131d0</sys_package>
         <sys_policy/>
         <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
-        <sys_update_name>sc_cat_item_producer_0241616dc3f822109518b11ed40131e8</sys_update_name>
+        <sys_update_name>sc_cat_item_producer_bf5c3f2dc33862109518b11ed4013172</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-04-09 03:35:31</sys_updated_on>
+        <sys_updated_on>2025-04-09 15:43:29</sys_updated_on>
         <table_name>x_1636309_employ_0_new_employee_access_request</table_name>
         <taxonomy_topic display_value="Technology services">06d3df67c3053010069aec4b7d40dd70</taxonomy_topic>
         <template/>
@@ -104,30 +104,41 @@
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
         <vendor/>
-        <version>8</version>
+        <version>7</version>
         <view/>
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>
         <visible_standalone>true</visible_standalone>
         <workflow/>
     </sc_cat_item_producer>
-    <sys_translated_text action="delete_multiple" query="documentkey=0241616dc3f822109518b11ed40131e8"/>
-    <fx_price action="delete_multiple" query="id=0241616dc3f822109518b11ed40131e8"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=bf5c3f2dc33862109518b11ed4013172"/>
+    <fx_price action="delete_multiple" query="id=bf5c3f2dc33862109518b11ed4013172"/>
     <fx_price action="INSERT_OR_UPDATE">
         <amount>0</amount>
         <currency display_value="USD">USD</currency>
         <field>price</field>
-        <id>0241616dc3f822109518b11ed40131e8</id>
+        <id>bf5c3f2dc33862109518b11ed4013172</id>
         <parent/>
         <reference_amount>0</reference_amount>
         <reference_currency display_value="USD">USD</reference_currency>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-04-09 02:55:25</sys_created_on>
-        <sys_id>22666125c33c22109518b11ed40131ba</sys_id>
+        <sys_created_on>2025-04-09 13:50:35</sys_created_on>
+        <sys_id>7f5c3f2dc33862109518b11ed4013191</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-04-09 02:55:25</sys_updated_on>
+        <sys_updated_on>2025-04-09 13:50:35</sys_updated_on>
         <table>sc_cat_item_producer</table>
         <type>calculated</type>
     </fx_price>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>bf5c3f2dc33862109518b11ed4013172</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-04-09 15:05:45</sys_created_on>
+        <sys_id>f49d08b5c3b862109518b11ed4013138</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-04-09 15:05:45</sys_updated_on>
+        <table>sc_cat_item_producer</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
 </record_update>

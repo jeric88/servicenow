@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="955079dac34022109518b11ed4013147" label="Employee Request" max_length="40" name="x_1636309_employ_0_new_employee_access_request" type="collection">
-        <element choice="1" label="Action Type" max_length="40" name="action_type" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Deactivate" sequence="1" value="deactivate"/>
-                <element inactive_on_update="false" label="Reassign" sequence="2" value="reassign"/>
-                <element inactive_on_update="false" label="Provision" sequence="0" value="provision"/>
-            </choice>
-        </element>
         <element label="Okta Temp Password" max_length="40" name="okta_temp_password" type="string"/>
         <element label="Employee Manager's Name" max_length="40" name="employee_manager_s_name" type="string"/>
         <element label="Employee Number" max_length="40" name="employee_number" type="string"/>
