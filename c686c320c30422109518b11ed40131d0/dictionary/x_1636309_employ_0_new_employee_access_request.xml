@@ -13,7 +13,7 @@
         <element label="Reason for deactivation" max_length="40" name="reason_for_deactivation" type="string"/>
         <element label="Department" max_length="32" name="department" reference="x_1636309_employ_0_department" type="reference"/>
         <element default="YYYY-MM-DD" label="Deployment Date" max_length="255" name="deployment_date" type="glide_date"/>
-        <element default="+1" label="Mobile Number" max_length="255" name="mobile_number" type="phone_number_e164"/>
+        <element default="+1" label="Mobile Number" max_length="40" name="mobile_number" type="phone_number_e164"/>
         <element label="Branch" max_length="32" name="branch" reference="x_1636309_employ_0_branch" type="reference"/>
         <element label="Requested For" max_length="32" name="requested_for" reference="x_1636309_employ_0_custom_users" type="reference"/>
         <element choice="3" default="Pending" label="Approval Status" max_length="255" name="approval_status" type="choice">
