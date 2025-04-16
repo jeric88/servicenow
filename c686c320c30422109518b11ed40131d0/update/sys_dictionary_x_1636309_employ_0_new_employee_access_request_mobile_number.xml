@@ -27,7 +27,7 @@
         <formula/>
         <function_definition/>
         <function_field>false</function_field>
-        <internal_type display_value="">phone_number_e164</internal_type>
+        <internal_type display_value="String">string</internal_type>
         <mandatory>false</mandatory>
         <max_length>40</max_length>
         <name>x_1636309_employ_0_new_employee_access_request</name>
@@ -53,7 +53,7 @@
         <sys_scope display_value="New Employee Access Request">c686c320c30422109518b11ed40131d0</sys_scope>
         <sys_update_name>sys_dictionary_x_1636309_employ_0_new_employee_access_request_mobile_number</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-04-12 22:13:46</sys_updated_on>
+        <sys_updated_on>2025-04-14 18:22:13</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
